@@ -1,5 +1,7 @@
 <?php
-    include('./objects/class.game.php');
+    include_once("./configuration.php");
+    include_once("./objects/class.database.php");
+    include_once("./objects/class.gameobject.php");
     
     if($_POST["GamePictureURL"] == "")
         $_POST["GamePictureURL"] = "#";
@@ -13,7 +15,8 @@
     if($_POST["GameVideoURL"] == "")
         $_POST["GameVideoURL"] = "#";
     
-    $Game = new Game($_POST["GameName"], $_POST["GamePictureURL"], $_POST["GameTweet"], $_POST["GameDescription"], $_POST["GameFilesURL"], $_POST["GameVideoURL"], $_POST["MolyJamLocation"], $_POST["TeamPictureURL"], $_POST["TeamMember"], $_POST["GameLicense"], "0", "0", "0", "0", "0");
+    $Game = new GameObject($_POST["GameName"], $_POST["GamePictureURL"], $_POST["GameTweet"], $_POST["GameDescription"], $_POST["GameFilesURL"], $_POST["GameVideoURL"], $_POST["MolyJamLocation"], $_POST["TeamPictureURL"], $_POST["TeamMember"], $_POST["GameLicense"], "0", "0", "0", "0", "0");
+    $Game->Save();
     
     include('./templates/globals.php'); 
     
@@ -43,14 +46,16 @@
               <br />
               
               <div align="center">
-                <a href="<?php echo $Game->GameVideo; ?>" class="btn btn-large btn-primary">Gameplay Video</a> <a href="<?php echo $Game->GameFile; ?>" class="btn btn-large btn-primary">Download Game</a>
+                <a href="<?php echo $Game->GameVideoURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == "#"){echo "disabled";}?>">Gameplay Video</a> <a href="<?php echo $Game->GameFilesURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameFilesURL == "#"){echo "disabled";}?>">Download Game</a>
               </div>
             </div>
             
             <div class="span5 offset1">
-              <a href="http://placehold.it/800x600" class="thumbnail">
-                <img src="http://placehold.it/800x600" alt="Game Photo">
-              </a>
+             <?php if($Game->GamePictureURL != "#")
+                echo '
+              <a href="<?php echo $Game->GamePictureURL; ?>" class="thumbnail">
+                <img src="<?php echo $Game->GamePictureURL; ?>" alt="Game Photo">
+              </a> '; ?>
             </div>
             
             <br />
@@ -77,14 +82,16 @@
             </div>
             
             <div class="span5 offset1">
-              <a href="http://placehold.it/800x600" class="thumbnail">
-                <img src="http://placehold.it/800x600" alt="Team Photo">
-              </a>
+            <?php if($Game->TeamPictureURL != "#")
+                echo '
+              <a href="<?php echo $Game->TeamPictureURL; ?>" class="thumbnail">
+                <img src="<?php echo $Game->TeamPictureURL; ?>" alt="Team Photo">
+              </a> '; ?>
             </div>
           </div>
     </section>
     <div align="center" class="span12">
-      <a href="./display.php" class="btn btn-large btn-success">Confirm</a> <a href="./Edit.php" class="btn btn-large btn-primary">Edit</a>
+      <a href="./display.php?GameObjectID=<?php echo $Game->gameobjectId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./edit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a>
     </div>
     <br />
     

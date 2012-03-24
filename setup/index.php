@@ -57,10 +57,10 @@ if(count($_POST) > 0 && $_SESSION['diagnosticsSuccessful']==false)
 <?php
 	$errors = 0;
 	AddTrace('Initializing POG Setup....OK!');
-	if (!isset($GLOBALS['configuration']['pdoDriver']))
+	if (isset($GLOBALS['configuration']['pdoDriver']))
 	{
 		$errors++;
-		AddError('Mismatch detected between configuration and setup. Make sure both Configuration and Setup are meant for PHP 5.1+ POG objects.');
+		AddError('POG setup for PHP4/5 objects cannot be run with a PDO configuration file. Regenerate configuration.php');
 	}
 	else
 	{
@@ -100,14 +100,15 @@ if(count($_POST) > 0 && $_SESSION['diagnosticsSuccessful']==false)
 			if (!file_exists($GLOBALS['configuration']['plugins_path']."/plugin.base64.php"))
 			{
 				$errors++;
-		     	AddError('Base64 plugin file (plugins/plugin.base64.php) is missing');
+				AddError('Base64 plugin file (plugins/plugin.base64.php) is missing');
 			}
-		    else
-		    {
+			else
+			{
 				include_once($GLOBALS['configuration']['plugins_path']."/plugin.base64.php");
-		    }
-
+			}
 		}
+
+
 
 		//load object names to be ignored
 		$ignoreObjects = file("../objects/ignore_objects.txt");
@@ -135,26 +136,26 @@ if(count($_POST) > 0 && $_SESSION['diagnosticsSuccessful']==false)
 		if ($errors == 0)
 		{
 			$dir = opendir($GLOBALS['configuration']['plugins_path']);
-
 			$plugins = array();
-			while(($file = readdir($dir)) !== false)
-			{
-				if(file_exists($GLOBALS['configuration']['plugins_path']."/IPlugin.php"))
-				{
-					include_once($GLOBALS['configuration']['plugins_path']."/IPlugin.php");
-				}
-				if(strlen($file) > 4 && substr(strtolower($file), strlen($file) - 4) === '.php' && !is_dir($file) && strtolower(substr($file, 0, 6)) == 'plugin')
-				{
-					include_once($GLOBALS['configuration']['plugins_path']."/{$file}");
-					$pluginName = GetPluginName($file);
-					if ($pluginName != '')
-					{
-						$plugins[] = $file;
-					}
 
-				}
-			}
-			closedir($dir);
+    		while(($file = readdir($dir)) !== false)
+    		{
+    			if(file_exists($GLOBALS['configuration']['plugins_path']."/IPlugin.php"))
+    			{
+    				include_once($GLOBALS['configuration']['plugins_path']."/IPlugin.php");
+    			}
+    			if(strlen($file) > 4 && substr(strtolower($file), strlen($file) - 4) === '.php' && !is_dir($file) && strtolower(substr($file, 0, 6)) == 'plugin')
+    			{
+    				include_once($GLOBALS['configuration']['plugins_path']."/{$file}");
+    				$pluginName = GetPluginName($file);
+    				if ($pluginName != '')
+    				{
+    					$plugins[] = $file;
+    				}
+
+    			}
+    		}
+    		closedir($dir);
 		}
 
 		/**
@@ -163,30 +164,24 @@ if(count($_POST) > 0 && $_SESSION['diagnosticsSuccessful']==false)
 		if ($errors == 0)
 		{
 			AddTrace('File Structure....OK!');
-			try
+			if (!@mysql_connect ($GLOBALS['configuration']['host'].":".$GLOBALS['configuration']['port'], $GLOBALS['configuration']['user'], $GLOBALS['configuration']['pass']))
 			{
-				if ($GLOBALS['configuration']['pdoDriver'] == 'odbc')
-				{
-					$databaseConnection = new PDO($GLOBALS['configuration']['pdoDriver'].':'.$GLOBALS['configuration']['odbcDSN']);
-				}
-				else if ($GLOBALS['configuration']['pdoDriver'] != 'firebird')
-				{
-
-					$databaseConnection = new PDO($GLOBALS['configuration']['pdoDriver'].':host='.$GLOBALS['configuration']['host'].';dbname='.$GLOBALS['configuration']['db'], $GLOBALS['configuration']['user'], $GLOBALS['configuration']['pass']);
-				}
-				if ($GLOBALS['configuration']['pdoDriver'] == 'firebird')
-				{
-					AddError('POG Setup + Firebird database is not yet supported. Create the database and tables manually');
-					$errors++;
-				}
-			}
-			catch (PDOException $e)
-			{
-				AddError('Cannot connect to the specified database server. Edit configuration.php');
-				AddError($e->getMessage());
 				$errors++;
+				AddError('Cannot connect to the specified database server. Edit configuration.php');
 			}
-
+			if (isset($GLOBALS['configuration']['db_encoding']) && $GLOBALS['configuration']['db_encoding'] == 1 && !Base64::IsBase64FunctionInstalled())
+			{
+				$errors++;
+				AddError('$configuration[db_encoding] needs to be set to 0 until you install the base64 plugin. Set db_encoding to 0 by editing configuration.php, run setup again and go to the "Manage Plugins" tab. Install the base64 plugin. Then you can set db_encoding = 1');
+			}
+			if ($errors == 0)
+			{
+				if (!@mysql_select_db ($GLOBALS['configuration']['db']))
+				{
+					$errors++;
+					AddError('Cannot find the specified database "'.$GLOBALS['configuration']['db'].'". Edit configuration.php');
+				}
+			}
 		}
 
 		/**
@@ -305,16 +300,15 @@ if(count($_POST) > 0 && $_SESSION['diagnosticsSuccessful']==false)
 
 		if ($errors == 0)
 		{
-
-			$pluginNameList = array();
-			foreach($plugins as $plugin)
-			{
-				$pluginName = GetPluginName($plugin);
-				if ($pluginName != '')
-				{
-					$pluginNameList[] = $pluginName;
-				}
-			}
+    		$pluginNameList = array();
+    		foreach($plugins as $plugin)
+    		{
+    			$pluginName = GetPluginName($plugin);
+    			if ($pluginName != '')
+    			{
+    				$pluginNameList[] = $pluginName;
+    			}
+    		}
 		}
 
 
@@ -434,7 +428,7 @@ if(count($_POST) > 0 && $_SESSION['diagnosticsSuccessful']==false)
 		$_SESSION['objectNameList'] = serialize($objectNameList);
 		if (isset($pluginNameList))
 		{
-			$_SESSION['pluginNameList'] = serialize($pluginNameList);
+		    $_SESSION['pluginNameList'] = serialize($pluginNameList);
 		}
 	}
 	echo "<textarea>".$diagnostics."</textarea><br/><br/><br/></div>";
@@ -492,7 +486,7 @@ else if($_SESSION['diagnosticsSuccessful'] == true && (!isset($_GET['plugins']) 
 	{
 		include "../objects/class.database.php";
 	}
-	include_once('../objects/class.pog_base.php');
+
 	$fileNames = unserialize($_SESSION['fileNames']);
 	foreach($fileNames as $filename)
 	{
@@ -527,7 +521,6 @@ else if($_SESSION['diagnosticsSuccessful'] == true && (!isset($_GET['plugins']) 
 	$connection = Database::Connect();
 	$count = 0;
 	$sql = 'show index from `'.strtolower($_SESSION['objectName']).'` where Key_name = "searching"';
-
 	$cursor = Database::Reader($sql,$connection);
 	while ($row = Database::Read($cursor))
 	{
@@ -623,7 +616,7 @@ else if ($_SESSION['diagnosticsSuccessful'] && $_GET['plugins'])
 	} else{
 		$_SESSION['pluginName'] = $pluginNameList[0];
 	}
- 	$pluginName = $_SESSION['pluginName'];
+	$pluginName = $_SESSION['pluginName'];
 	for($i=0; $i<count($pluginNameList); $i++)
 	{
 		$name = $pluginNameList[$i];
@@ -636,7 +629,6 @@ else if ($_SESSION['diagnosticsSuccessful'] && $_GET['plugins'])
 	</div><!--subtabs-->
 	<div class="toolbar"><img src="setup_images/button_toolbar_left.gif"/>
 		<a href='http://plugins.phpobjectgenerator.com/?id=<?php echo get_class($pluginInstance)?>' target="_blank"><img src="setup_images/button_toolbar_homepage.gif" border='0'/></a>
-
 		<img src="setup_images/toolbar_separator.gif"/>
 	<?php
 	if ($pluginInstance->AuthorPage() != null)
@@ -648,7 +640,6 @@ else if ($_SESSION['diagnosticsSuccessful'] && $_GET['plugins'])
 	}
 	?>
 		<a href='http://plugins.phpobjectgenerator.com/?id=<?php echo get_class($pluginInstance)?>&help' target="_blank"><img src="setup_images/button_toolbar_help.gif" border='0'/></a>
-
 	</div><div class="middle3">
 	<?php
 	echo '<div id="container"><div style="padding:30px;">';
