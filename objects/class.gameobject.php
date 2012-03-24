@@ -106,11 +106,6 @@ class GameObject extends POG_Base
 	/**
 	 * @var VARCHAR(255)
 	 */
-	public $Email;
-	
-	/**
-	 * @var VARCHAR(255)
-	 */
 	public $EditID;
 	
 	public $pog_attribute_type = array(
@@ -150,7 +145,7 @@ class GameObject extends POG_Base
 		}
 	}
 	
-	function GameObject($GameName='', $GamePictureURL='', $GameTweet='', $GameDescription='', $GameFileURL='', $GameVideoURL='', $MolyJamLocation='', $TeamPictureURL='', $TeamMembers='', $GameLicense='Creative Commons Attribution 3.0 Unported License', $PageViews='', $Downloads='', $CreatedDateTime='', $lastEditedDateTime='', $Email='')
+	function GameObject($GameName='', $GamePictureURL='', $GameTweet='', $GameDescription='', $GameFileURL='', $GameVideoURL='', $MolyJamLocation='', $TeamPictureURL='', $TeamMembers='', $GameLicense='', $PageViews='', $Downloads='', $CreatedDateTime='', $lastEditedDateTime='')
 	{
 		$this->GameName = $GameName;
 		$this->GamePictureURL = $GamePictureURL;
@@ -166,7 +161,6 @@ class GameObject extends POG_Base
 		$this->Downloads = $Downloads;
 		$this->CreatedDateTime = $CreatedDateTime;
 		$this->lastEditedDateTime = $lastEditedDateTime;
-		$this->Email = $Email;
 	}
 	
 	
@@ -197,7 +191,6 @@ class GameObject extends POG_Base
 			$this->Downloads = $this->Unescape($row['downloads']);
 			$this->CreatedDateTime = $row['createddatetime'];
 			$this->lastEditedDateTime = $row['lastediteddatetime'];
-			$this->Email = $row['email'];
 			$this->EditID = $this->Unescape($row['editid']);
 		}
 		return $this;
@@ -230,7 +223,6 @@ class GameObject extends POG_Base
 			$this->Downloads = $this->Unescape($row['downloads']);
 			$this->CreatedDateTime = $row['createddatetime'];
 			$this->lastEditedDateTime = $row['lastediteddatetime'];
-			$this->Email = $row['email'];
 			$this->EditID = $this->Unescape($row['editid']);
 		}
 		return $this;
@@ -337,18 +329,29 @@ class GameObject extends POG_Base
 		return $gameobjectList;
 	}
 	
+	/**
+	* Creates the objects editID
+	* @returns EditID
+	*/
+	function GenerateEditID($email='')
+	{
+		$connection = Database::Connect();
+		$this->EditID = md5( $email . $this->gameobjectId );
+		return $this->EditID;
+	}
 	
 	/**
 	* Saves the object to the database
 	* @return integer $gameobjectId
 	*/
-	function Save()
+	function Save($email='')
 	{
 		$connection = Database::Connect();
 		$this->pog_query = "select `gameobjectid` from `gameobject` where `gameobjectid`='".$this->gameobjectId."' LIMIT 1";
 		$rows = Database::Query($this->pog_query, $connection);
 		if ($rows > 0)
 		{
+			// Update Entry
 			$this->pog_query = "update `gameobject` set 
 			`gamename`='".$this->Escape($this->GameName)."', 
 			`gamepictureurl`='".$this->Escape($this->GamePictureURL)."', 
@@ -363,13 +366,13 @@ class GameObject extends POG_Base
 			`pageviews`='".$this->Escape($this->PageViews)."', 
 			`downloads`='".$this->Escape($this->Downloads)."', 
 			`createddatetime`='".$this->CreatedDateTime."', 
-			`lastediteddatetime`='".$this->lastEditedDateTime."', 
-			`email`='".$this->Email."',
+			`lastediteddatetime`= NOW(), 
 			`editid`='".$this->Escape($this->EditID)."' where `gameobjectid`='".$this->gameobjectId."'";
 		}
 		else
 		{
-			$this->pog_query = "insert into `gameobject` (`gamename`, `gamepictureurl`, `gametweet`, `gamedescription`, `gamefileurl`, `gamevideourl`, `molyjamlocation`, `teampictureurl`, `teammembers`, `gamelicense`, `pageviews`, `downloads`, `createddatetime`, `lastediteddatetime`, `email`, `editid` ) values (
+			// Insert New Entry
+			$this->pog_query = "insert into `gameobject` (`gamename`, `gamepictureurl`, `gametweet`, `gamedescription`, `gamefileurl`, `gamevideourl`, `molyjamlocation`, `teampictureurl`, `teammembers`, `gamelicense`, `pageviews`, `downloads`, `createddatetime`, `lastediteddatetime`, `editid` ) values (
 			'".$this->Escape($this->GameName)."', 
 			'".$this->Escape($this->GamePictureURL)."', 
 			'".$this->Escape($this->GameTweet)."', 
@@ -382,24 +385,26 @@ class GameObject extends POG_Base
 			'".$this->Escape($this->GameLicense)."', 
 			'".$this->Escape($this->PageViews)."', 
 			'".$this->Escape($this->Downloads)."', 
-			'".$this->CreatedDateTime."', 
+			NOW(), 
 			'".$this->lastEditedDateTime."', 
-			'".$this->Email."', 
 			'".$this->Escape($this->EditID)."' )";
 		}
 		$insertId = Database::InsertOrUpdate($this->pog_query, $connection);
 		
 		if ($this->gameobjectId == "")
 		{
-			$this->gameobjectId = $insertId;
-			$this->EditID = md5( $this->Email . $insertId );
+			$this->Get($insertId);
 			
-			Database::InsertOrUpdate( "UPDATE `gameobject` SET `editit`='".$this->EditID."' WHERE `gameobjectid`='" . $this->gameobjectId . "'", $connection );
+			if($email != "")
+			{
+				$this->EditID = $this->GenerateEditID($email);
+				$this->Save("");
+				$this->Get($insertId);
+			}
 		}
 		
 		return $this->gameobjectId;
 	}
-	
 	
 	/**
 	* Clones the object and saves it to the database
