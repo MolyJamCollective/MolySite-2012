@@ -20,6 +20,13 @@
     </style>
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
 
+<?php
+  for($i = 0; $i < sizeof($pageStyles); $i++)
+  {
+  echo "    <link href=\"".$pageStyles[$i]."\" rel=\"stylesheet\">\n";
+  }
+?>
+    
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
