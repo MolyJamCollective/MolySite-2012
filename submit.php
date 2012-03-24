@@ -7,9 +7,28 @@
     $pageScripts = array();
 
     include('./templates/header.php');
+    
+    if( !empty( $_POST[ "GameName" ] ) )
+    {
+    	//Submit Project
+    	
+    	if( !empty( $_FILES[ "GameFiles" ][ "name" ] ) ) //Save file
+    	{
+			$target_path = "/path/to/dir/" . basename( $_FILES[ "GameFiles" ][ "name" ] ); 
+
+			if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
+			{
+			    //success
+			} 
+			else
+			{
+			    //fail
+			}
+   		}
+   	}
 ?>
 
-      <form id="GameSubmission" class="form-horizontal" action="./upload.php" method="post">
+      <form id="GameSubmission" class="form-horizontal" action="./upload.php" method="post" enctype="multipart/form-data">
         <fieldset>
           
           <div class="control-group error">
