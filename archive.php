@@ -39,7 +39,7 @@
 ?>
             <tr>
                 <td><?php echo $Game->gameobjectId ?></td>
-                <td><?php echo $Game->GameName ?></td>
+                <td><a href="display.php?GameObjectID=<?php echo $Game->gameobjectId ?>"><?php echo $Game->GameName ?></a></td>
                 <td><?php echo $Game->MolyJamLocation ?></td>
                 <td><?php echo $Popularity ?></td>
                 <td><?php echo $Game->CreatedDateTime ?></td>

@@ -2,21 +2,112 @@
     include_once("./configuration.php");
     include_once("./objects/class.database.php");
     include_once("./objects/class.gameobject.php");
+    include_once("./objects/class.ftp.php");
     
-    if($_POST["GamePictureURL"] == "")
-        $_POST["GamePictureURL"] = "#";
-        
-    if($_POST["GameFilesURL"] == "")
-        $_POST["GameFilesURL"] = "#";
-        
-    if($_POST["TeamPictureURL"] == "")
-        $_POST["TeamPictureURL"] = "#";
-        
-    if($_POST["GameVideoURL"] == "")
-        $_POST["GameVideoURL"] = "#";
+    $Game = new GameObject();
     
-    $Game = new GameObject($_POST["GameName"], $_POST["GamePictureURL"], $_POST["GameTweet"], $_POST["GameDescription"], $_POST["GameFilesURL"], $_POST["GameVideoURL"], $_POST["MolyJamLocation"], $_POST["TeamPictureURL"], $_POST["TeamMember"], $_POST["GameLicense"], "0", "0", "0", "0", "0");
-    $Game->Save();
+    if( !empty( $_GET[ "EditID" ] ) )
+    {
+    	$Game->GetFromEditId( $_GET[ "EditID" ] );
+   	}
+   	
+   	$Game->GameName = $_POST["GameName"];
+   	$Game->GameTweet = $_POST["GameTweet"];
+    $Game->GameDescription = $_POST["GameDescription"];
+    $Game->GameVideoURL = $_POST["GameVideoURL"];
+    $Game->MolyJamLocation = $_POST["MolyJamLocation"];
+    $Game->TeamMembers = $_POST["TeamMember"];
+    $Game->GameLicense = $_POST["GameLicense"];
+    $Game->Email = $_POST[ "Email" ];
+    
+    if( empty( $_GET[ "EditID" ] ) )
+    {
+    	$Game->CreatedDateTime = date("Y-m-d H:i:s");
+	}
+	else
+	{
+		$Game->lastEditedDateTime = date("Y-m-d H:i:s");
+	}
+	
+	$Game->Save();
+	
+    $ftp = new ftp();
+    
+    if( empty( $_GET[ "EditID" ] ) )
+    {
+	    $ftp->mkdir( $GLOBALS['configuration']['upload_dir']. $Game->gameobjectId );
+	    //$ftp->chmod( $GLOBALS['configuration']['upload_dir'] . $gameObjectId, 0777 );
+    }
+    
+    $uploadedFile = false;
+    
+	if( !empty( $_FILES[ "GameFiles" ][ "name" ] ) ) //Save file
+	{
+		if( $Game->GameFileURL != "" )
+		{
+			$ftp->delete( $Game->GameFileURL );
+		}
+		
+		$target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game.zip"; 
+
+		if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
+		{
+		    //success
+		    $uploadedFile = true;
+		    $Game->GameFileURL = $target_path;
+		} 
+		else
+		{
+		    //fail
+		}
+	}
+	
+	if( !empty( $_FILES[ "GamePicture" ][ "name" ] ) ) //Save file
+	{
+		if( $Game->GamePictureURL != "" )
+		{
+			$ftp->delete( $Game->GamePictureURL );
+		}
+		
+		$target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
+
+		if( move_uploaded_file( $_FILES[ "GamePicture" ][ "tmp_name" ], $target_path ) ) 
+		{
+		    //success
+		    $uploadedFile = true;
+		    $Game->GamePictureURL = $target_path;
+		} 
+		else
+		{
+		    //fail
+		}
+	}	
+	
+	if( !empty( $_FILES[ "TeamPicture" ][ "name" ] ) ) //Save file
+	{
+		if( $Game->TeamPictureURL != "" )
+		{
+			$ftp->delete( $Game->TeamPictureURL );
+		}
+		
+		$target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/team." . strtolower( pathinfo( $_FILES[ "TeamPicture" ][ "name" ], PATHINFO_EXTENSION ) );
+
+		if( move_uploaded_file( $_FILES[ "TeamPicture" ][ "tmp_name" ], $target_path ) ) 
+		{
+		    //success
+		    $uploadedFile = true;
+		    $Game->TeamPictureURL = $target_path;
+		} 
+		else
+		{
+		    //fail
+		}
+	}
+	
+	if( $uploadedFile == true )
+	{
+		$Game->Save();
+	}
     
     include('./templates/globals.php'); 
     
@@ -24,25 +115,6 @@
     $pageHeader = 'MolyJam Game Submission System';
 
     include('./templates/header.php');
-    
-    if( !empty( $_POST[ "GameName" ] ) )
-    {
-    	//Submit Project
-    	
-    	if( !empty( $_FILES[ "GameFiles" ][ "name" ] ) ) //Save file
-    	{
-			$target_path = "/path/to/dir/" . basename( $_FILES[ "GameFiles" ][ "name" ] ); 
-
-			if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
-			{
-			    //success
-			} 
-			else
-			{
-			    //fail
-			}
-   		}
-   	}
 ?>
     <section id="Game" class="well">
       <div class="page-header">
@@ -65,15 +137,15 @@
               <br />
               
               <div align="center">
-                <a href="<?php echo $Game->GameVideoURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == "#"){echo "disabled";}?>">Gameplay Video</a> <a href="<?php echo $Game->GameFilesURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameFilesURL == "#"){echo "disabled";}?>">Download Game</a>
+                <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == "#"){echo "disabled";}?>">Gameplay Video</a> <a href="<?php echo $Game->GameFileURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameFileURL == "#"){echo "disabled";}?>">Download Game</a>
               </div>
             </div>
             
             <div class="span5 offset1">
-             <?php if($Game->GamePictureURL != "#")
+             <?php if($Game->GamePictureURL != "")
                 echo '
-              <a href="<?php echo $Game->GamePictureURL; ?>" class="thumbnail">
-                <img src="<?php echo $Game->GamePictureURL; ?>" alt="Game Photo">
+              <a href="' . $Game->GamePictureURL . '" class="thumbnail">
+                <img src="' .$Game->GamePictureURL . '" alt="Game Photo">
               </a> '; ?>
             </div>
             
@@ -101,16 +173,16 @@
             </div>
             
             <div class="span5 offset1">
-            <?php if($Game->TeamPictureURL != "#")
+            <?php if($Game->TeamPictureURL != "")
                 echo '
-              <a href="<?php echo $Game->TeamPictureURL; ?>" class="thumbnail">
-                <img src="<?php echo $Game->TeamPictureURL; ?>" alt="Team Photo">
+              <a href="' . $Game->TeamPictureURL . '" class="thumbnail">
+                <img src="' . $Game->TeamPictureURL . '" alt="Team Photo">
               </a> '; ?>
             </div>
           </div>
     </section>
     <div align="center" class="span12">
-      <a href="./display.php?GameObjectID=<?php echo $Game->gameobjectId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./edit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a>
+      <a href="./display.php?GameObjectID=<?php echo $Game->gameobjectId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./submit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a>
     </div>
     <br />
     

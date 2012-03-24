@@ -53,8 +53,8 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="archive.php">Games</a></li>
+              <li><a href="submit.php">Game Submission</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

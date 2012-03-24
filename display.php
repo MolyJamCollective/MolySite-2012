@@ -17,7 +17,12 @@
   
   if($Game->GameName != "")
   {
+    $connection = Database::Connect();
+    $query = "UPDATE `gameobject` SET `pageviews`=`pageviews` + 1 WHERE `gameobjectid`='".$Game->gameobjectId."'";
+    Database::InsertOrUpdate($query, $connection);
+  		
 ?>
+	<p><a href="archive.php">Back to Games</a></p>
     <section id="Game">
           <div class="thumbnails">
             <div class="span5">
@@ -36,15 +41,15 @@
               <br />
               
               <div align="center">
-                <a href="<?php echo $Game->GameVideoURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == "#"){echo "disabled";}?>">Gameplay Video</a> <a href="<?php echo $Game->GameFileURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameFileURL == "#"){echo "disabled";}?>">Download Game</a>
+                <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == ""){echo "disabled";}?>">Gameplay Video</a> <a href="<?php echo $Game->GameFileURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameFileURL == ""){echo "disabled";}?>">Download Game</a>
               </div>
             </div>
             
             <div class="span5 offset1">
-             <?php if($Game->GamePictureURL != "#")
+             <?php if($Game->GamePictureURL != "")
                 echo '
-              <a href="<?php echo $Game->GamePictureURL; ?>" class="thumbnail">
-                <img src="<?php echo $Game->GamePictureURL; ?>" alt="Game Photo">
+              <a href="' . $Game->GamePictureURL . '" class="thumbnail">
+                <img src="' . $Game->GamePictureURL . '" alt="Game Photo">
               </a> '; ?>
             </div>
             
@@ -72,15 +77,15 @@
             </div>
             
             <div class="span5 offset1">
-            <?php if($Game->TeamPictureURL != "#")
+            <?php if($Game->TeamPictureURL != "")
                 echo '
-              <a href="<?php echo $Game->TeamPictureURL; ?>" class="thumbnail">
-                <img src="<?php echo $Game->TeamPictureURL; ?>" alt="Team Photo">
+              <a href="' . $Game->TeamPictureURL . '" class="thumbnail">
+                <img src="' . $Game->TeamPictureURL . '" alt="Team Photo">
               </a> '; ?>
             </div>
           </div>
     </section>
-    
+    <p><a href="archive.php">Back to Games</a></p>
 <?php
   }
   else

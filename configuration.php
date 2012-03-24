@@ -19,7 +19,7 @@ $configuration['db_encoding'] = 0;
 
 // edit the information below to match your database settings
 
-$configuration['db']	= 'test'; 		//	database name
+$configuration['db']	= 'molyjam'; 		//	database name
 $configuration['host']	= 'localhost';	//	database host
 $configuration['user']	= 'root';		//	database user
 $configuration['pass']	= '';		//	database password
@@ -36,4 +36,11 @@ $configuration['proxy_password'] = false;
 //plugin settings
 $configuration['plugins_path'] = 'C:\wamp\www\MolyJamGameArchivingSystem\plugins';  //absolute path to plugins folder, e.g c:/mycode/test/plugins or /home/phpobj/public_html/plugins
 
+//file upload and ftp settings
+$configuration['ftp_host'] = '127.0.0.1';
+$configuration['ftp_user'] = '';
+$configuration['ftp_pass'] = '';
+$configuration['ftp_root'] = '';
+
+$configuration['upload_dir'] = 'uploads/';
 ?>
