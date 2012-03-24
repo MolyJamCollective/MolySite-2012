@@ -5,7 +5,7 @@
 
   $Game = new GameObject();
   $Game->Get($_GET['GameObjectID']);
-  
+
   include('./templates/globals.php');
     
   $pageTitle = $Game->GameName;
