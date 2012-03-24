@@ -51,7 +51,8 @@
           <div class="control-group">
             <label class="control-label" for="GamePicture">Picture</label>
             <div class="controls">
-              <input type="file" class="input-xlarge" id="GamePicture" name="GamePicture" maxlength="250" />
+              <input type="file" value="" class="input-xlarge" id="GamePicture" name="GamePicture" maxlength="250" />
+              <input type="hidden" id="GamePictureURL" name="GamePictureURL" value="">
               <p class="help-block">Upload a picture is represent your game, Could be gameplay or title screen.</p>
             </div>
           </div>
@@ -76,14 +77,15 @@
             <label class="control-label" for="GameFiles">Files</label>
             <div class="controls">
               <input type="file" class="input-xlarge" id="GameFiles" name="GameFiles" maxlength="250" />
+              <input type="hidden" id="GameFilesURL" name="GameFilesURL" value="">
               <p class="help-block">Upload a zip the necessary files to play your game and a README.txt file explaining how to install your game.</p>
             </div>
           </div>
           
           <div class="control-group">
-            <label class="control-label" for="GameVideo">Video</label>
+            <label class="control-label" for="GameVideoURL">Video</label>
             <div class="controls">
-              <input type="text" class="input-xlarge validate[optional,custom[url]]" id="GameVideo" name="GameVideo" maxlength="250" />
+              <input type="text" class="input-xlarge validate[optional,custom[url]]" id="GameVideoURL" name="GameVideoURL" maxlength="250" />
               <p class="help-block">Link to a youtube video displaying gameplay. Suggested YouTube naming format: "MolyJam 2012 - GameName - Location"</p>
             </div>
           </div>
@@ -109,6 +111,7 @@
             <label class="control-label" for="TeamPicture">Team Picture</label>
             <div class="controls">
               <input type="file" class="input-xlarge" id="TeamPicture" name="TeamPicture" maxlength="250" />
+              <input type="hidden" id="TeamPictureURL" name="TeamPictureURL" value="">
               <p class="help-block">Upload a picture of your team members.</p>
             </div>
           </div>
