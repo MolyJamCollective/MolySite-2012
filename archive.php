@@ -1,4 +1,7 @@
 <?php
+    // TODO:: Hover over game for image popup
+    // TODO:: Click Row for Display
+
     include_once("./configuration.php");
     include_once("./objects/class.database.php");
     include_once("./objects/class.gameobject.php");
@@ -32,14 +35,14 @@
 <?php
     foreach ($GameList as $Game)
     {
-        $Popularity = ($Game->pageviews * 0.01) + ($Game->downloads * 1);
+        $Popularity = ($Game->PageViews * 0.01) + ($Game->Downloads * 1);
 ?>
             <tr>
-                <td><?php echo $Game->gameobjectid ?></td>
-                <td><?php echo $Game->gamename ?></td>
-                <td><?php echo $Game->molyjamlocation ?></td>
+                <td><?php echo $Game->gameobjectId ?></td>
+                <td><?php echo $Game->GameName ?></td>
+                <td><?php echo $Game->MolyJamLocation ?></td>
                 <td><?php echo $Popularity ?></td>
-                <td><?php echo $Game->createddatetime ?></td>
+                <td><?php echo $Game->CreatedDateTime ?></td>
             </tr>
 <?php
     }
