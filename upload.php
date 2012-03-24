@@ -5,6 +5,25 @@
     $pageHeader = 'MolyJam Game Submission System';
 
     include('./templates/header.php');
+    
+    if( !empty( $_POST[ "GameName" ] ) )
+    {
+    	//Submit Project
+    	
+    	if( !empty( $_FILES[ "GameFiles" ][ "name" ] ) ) //Save file
+    	{
+			$target_path = "/path/to/dir/" . basename( $_FILES[ "GameFiles" ][ "name" ] ); 
+
+			if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
+			{
+			    //success
+			} 
+			else
+			{
+			    //fail
+			}
+   		}
+   	}
 ?>
     <section id="Game" class="well">
       <div class="page-header">
@@ -27,7 +46,7 @@
               <br />
               
               <div align="center">
-                <a href="http://www.YouTube.com" class="btn btn-large btn-primary">Gameplay Video</a> <a href="http://www.YouTube.com" class="btn btn-large btn-primary">Download Game</a>
+                <a href="http://www.YouTube.com" target="_blank" class="btn btn-large btn-primary">Gameplay Video</a> <a href="http://www.YouTube.com" class="btn btn-large btn-primary">Download Game</a>
               </div>
             </div>
             
