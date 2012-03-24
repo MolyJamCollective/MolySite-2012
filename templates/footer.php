@@ -9,7 +9,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./js/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.2.js"></script>
     <script src="./js/bootstrap-transition.js"></script>
     <script src="./js/bootstrap-alert.js"></script>
     <script src="./js/bootstrap-modal.js"></script>
@@ -27,6 +27,8 @@
   {
   echo "    <script src=\"".$pageScripts[$i]."\"></script>\n";
   }
+  
+  echo "$PageScriptsRaw";
 ?>
 
   </body>

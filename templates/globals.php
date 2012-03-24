@@ -9,5 +9,8 @@
  $pageTitle = '';
  $pageHeader = '';
  
+ $pageStyles = array();
+ 
  $pageScripts = array();
+ $PageScriptsRaw = '';
 ?>

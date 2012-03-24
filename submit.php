@@ -4,20 +4,24 @@
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
     
+    $pageStyles = array('./css/validationEngine.jquery.css');
+    
     $pageScripts = array('./js/jquery.validationEngine.js','./js/jquery.validationEngine-en.js','./js/other-validations.js');
-
-    include('./templates/header.php');
-?>
+    $PageScriptsRaw ='
   <script>
     $(document).ready(function(){
       $("#GameSubmission").validationEngine();
     });
   </script>
+  ';
+    
+    include('./templates/header.php');
+?>
 
       <form id="GameSubmission" class="form-horizontal" action="./upload.php" method="post">
         <fieldset>
-          
-          <div class="control-group error">
+
+          <div class="control-group">
             <label class="control-label" for="GameName">Name*</label>
             <div class="controls">
               <input type="text" class="input-xlarge validate[required]" id="GameName" name="GameName" maxlength="250" />
@@ -33,7 +37,7 @@
             </div>
           </div>
           
-          <div class="control-group error">
+          <div class="control-group">
             <label class="control-label" for="GameTweet">Moly*eux Inspirational Tweet*</label>
             <div class="controls">
               <textarea class="input-xlarge validate[required]" id="GameTweet" name="GameTweet" rows="3" maxlength="250" ></textarea>
@@ -41,7 +45,7 @@
             </div>
           </div>
           
-          <div class="control-group error">
+          <div class="control-group">
             <label class="control-label" for="GameDescription">Description*</label>
             <div class="controls">
               <textarea class="input-xlarge validate[required]" id="GameDescription" name="GameDescription" rows="3" maxlength="500" ></textarea>
@@ -60,7 +64,7 @@
           <div class="control-group">
             <label class="control-label" for="GameVideo">Video</label>
             <div class="controls">
-              <input type="url" class="input-xlarge validate[optional,custom[url]]" id="GameVideo" name="GameVideo" maxlength="250" />
+              <input type="text" class="input-xlarge validate[optional,custom[url]]" id="GameVideo" name="GameVideo" maxlength="250" />
               <p class="help-block">Link to a youtube video displaying gameplay. Suggested YouTube naming format: "MolyJam 2012 - GameName - Location"</p>
             </div>
           </div>
@@ -90,7 +94,7 @@
             </div>
           </div>
           
-          <div class="control-group error">
+          <div class="control-group">
             <label class="control-label" for="TeamMember">Team Members*</label>
             <div class="controls">
               <textarea class="input-xlarge validate[required]" id="TeamMember" name="TeamMember" rows="3" maxlength="500"></textarea>
@@ -106,7 +110,7 @@
             </div>
           </div>
           
-          <div class="control-group error">
+          <div class="control-group">
             <label class="control-label" for="Email">Email*</label>
             <div class="controls">
               <input type="text" class="input-xlarge validate[required,custom[email]]" id="Email" name="Email" maxlength="250" />
