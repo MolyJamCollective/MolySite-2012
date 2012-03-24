@@ -3,6 +3,10 @@
     
     $pageTitle = 'Page Title';
     $pageHeader = 'Page Header';
+    $pageStyles = array();
+
+    $pageScripts = array();
+    $PageScriptsRaw = '';
 
     include('./templates/header.php');
 ?>

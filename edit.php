@@ -4,6 +4,8 @@
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
 
+    $Game = $_GET['Game'];
+    
     include('./templates/header.php');
 ?>
 

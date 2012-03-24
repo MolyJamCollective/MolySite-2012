@@ -1,5 +1,24 @@
 <?php
-    include('./templates/globals.php');
+    include_once("./configuration.php");
+    include_once("./objects/class.database.php");
+    include_once("./objects/class.gameobject.php");
+    
+    if($_POST["GamePictureURL"] == "")
+        $_POST["GamePictureURL"] = "#";
+        
+    if($_POST["GameFilesURL"] == "")
+        $_POST["GameFilesURL"] = "#";
+        
+    if($_POST["TeamPictureURL"] == "")
+        $_POST["TeamPictureURL"] = "#";
+        
+    if($_POST["GameVideoURL"] == "")
+        $_POST["GameVideoURL"] = "#";
+    
+    $Game = new GameObject($_POST["GameName"], $_POST["GamePictureURL"], $_POST["GameTweet"], $_POST["GameDescription"], $_POST["GameFilesURL"], $_POST["GameVideoURL"], $_POST["MolyJamLocation"], $_POST["TeamPictureURL"], $_POST["TeamMember"], $_POST["GameLicense"], "0", "0", "0", "0", "0");
+    $Game->Save();
+    
+    include('./templates/globals.php'); 
     
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
@@ -27,12 +46,12 @@
 ?>
     <section id="Game" class="well">
       <div class="page-header">
-          <h1><?php echo $_POST["GameName"]; ?></h1>
+          <h1><?php echo $Game->GameName; ?></h1>
         </div>
           <div class="thumbnails">
             <div class="span5">
               <h3>Description</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare, lacus eget congue mattis, nisi purus luctus est, in dapibus neque risus at eros. Suspendisse rutrum pellentesque hendrerit. Integer quis mauris dui. Vestibulum ut convallis ipsum. Curabit</p>
+              <p><?php echo $Game->GameDescription; ?></p>
               
               <br />
               <br />
@@ -40,20 +59,22 @@
               
               <h3>Moly*eux Inspirational Tweet</h3>
               <div class="well">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare, lacus eget congue mattis, nisi purus luctus est, in dapibus neque risus."</p>
+                <p>"<?php echo $Game->GameTweet; ?>"</p>
               </div>
               
               <br />
               
               <div align="center">
-                <a href="http://www.YouTube.com" target="_blank" class="btn btn-large btn-primary">Gameplay Video</a> <a href="http://www.YouTube.com" class="btn btn-large btn-primary">Download Game</a>
+                <a href="<?php echo $Game->GameVideoURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == "#"){echo "disabled";}?>">Gameplay Video</a> <a href="<?php echo $Game->GameFilesURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameFilesURL == "#"){echo "disabled";}?>">Download Game</a>
               </div>
             </div>
             
             <div class="span5 offset1">
-              <a href="http://placehold.it/800x600" class="thumbnail">
-                <img src="http://placehold.it/800x600" alt="Game Photo">
-              </a>
+             <?php if($Game->GamePictureURL != "#")
+                echo '
+              <a href="<?php echo $Game->GamePictureURL; ?>" class="thumbnail">
+                <img src="<?php echo $Game->GamePictureURL; ?>" alt="Game Photo">
+              </a> '; ?>
             </div>
             
             <br />
@@ -68,26 +89,28 @@
             
             <div class="span5">
               <h3>Team Members</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare, lacus eget congue mattis, nisi purus luctus est, in dapibus neque risus at eros. Suspendisse rutrum pellentesque hendrerit. Integer quis mauris dui. Vestibulum ut convallis ipsum. Curabit</p>
+              <p><?php echo $Game->TeamMembers; ?></p>
   
               <br />
               <br />
               
               <div class="footer">
-                <p><strong>Jam Location:</strong> <?php echo $_POST['MolyJamLocation']; ?></p>
-                <p><strong>Game License:</strong> <?php echo $_POST['GameLicense']; ?></p>
+                <p><strong>Jam Location:</strong> <?php echo $Game->MolyJamLocation; ?></p>
+                <p><strong>Game License:</strong> <?php echo $Game->GameLicense; ?></p>
               </div>
             </div>
             
             <div class="span5 offset1">
-              <a href="http://placehold.it/800x600" class="thumbnail">
-                <img src="http://placehold.it/800x600" alt="Team Photo">
-              </a>
+            <?php if($Game->TeamPictureURL != "#")
+                echo '
+              <a href="<?php echo $Game->TeamPictureURL; ?>" class="thumbnail">
+                <img src="<?php echo $Game->TeamPictureURL; ?>" alt="Team Photo">
+              </a> '; ?>
             </div>
           </div>
     </section>
     <div align="center" class="span12">
-      <a href="./display.php" class="btn btn-large btn-success">Confirm</a> <a href="./Edit.php" class="btn btn-large btn-primary">Edit</a>
+      <a href="./display.php?GameObjectID=<?php echo $Game->gameobjectId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./edit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a>
     </div>
     <br />
     
