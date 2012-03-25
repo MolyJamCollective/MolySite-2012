@@ -28,8 +28,7 @@
     if(!empty($_POST[ "Email" ]))
     {
         $Game->Save($_POST[ "Email" ]);
-        
-		SendConfirmationEmail( $_POST[ "Email" ] );
+		SendConfirmationEmail( $_POST[ "Email" ], $Game );
     }
     else
     {
