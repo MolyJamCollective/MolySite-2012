@@ -39,6 +39,9 @@
    				
    				$newSearchValue = array( "gamedescription", "LIKE", "%".$word."%" );
    				$searchValues[] = $newSearchValue;
+   				
+   				$newSearchValue = array( "molyjamlocation", "=", $word );
+   				$searchValues[] = $newSearchValue;
 			}
 		}
 		
@@ -199,7 +202,7 @@
             <tr class="gameRow" id="<?php echo $Game->gameobjectId ?>">
                 <td><?php echo $Game->gameobjectId ?></td>
                 <td><a href="display.php?GameObjectID=<?php echo $Game->gameobjectId ?>"><?php echo $Game->GameName ?></a></td>
-                <td><?php echo $Game->MolyJamLocation ?></td>
+                <td><a href="?search=<?php echo $Game->MolyJamLocation ?>"><?php echo $Game->MolyJamLocation ?></a></td>
                 <td><?php echo $Popularity ?></td>
                 <td><?php echo $Game->CreatedDateTime ?></td>
             </tr>
