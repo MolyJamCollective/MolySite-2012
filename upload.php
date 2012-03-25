@@ -130,7 +130,19 @@
         <p>"<?php echo $Game->GameTweet; ?>"</p>
       </div>
       <br />
-      <div align="center"> <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == "#"){echo "disabled";}?>">Gameplay Video</a> <a href="<?php echo $Game->GameFileURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameFileURL == "#"){echo "disabled";}?>">Download Game</a> </div>
+      <div align="center">
+      <?php if(empty($Game->GameVideoURL))  { ?>
+            <button href="#" target="_blank" class="btn btn-large btn-primary disabled">Gameplay Video</button>
+      <?php } else { ?>
+            <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary">Gameplay Video</a>
+      <?php } ?>
+      
+      <?php if(empty($Game->GameFileURL))  { ?>
+            <button href="#" target="_blank" class="btn btn-large btn-primary disabled">Download Game</button>
+      <?php } else { ?>
+            <a href="<?php echo $Game->GameFileURL; ?>" target="_blank" class="btn btn-large btn-primary">Download Game</a>
+      <?php } ?>
+      </div>
     </div>
     <div class="span5 offset1">
       <?php if($Game->GamePictureURL != "")
