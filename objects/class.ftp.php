@@ -123,7 +123,7 @@ class ftp
     //Params:	$old	old filename
     //			$new	new filename
     function rename($old, $new) 
-	{
+    {
         ftp_rename( $this->conn, $old, $new );
     }
     
@@ -131,29 +131,29 @@ class ftp
     //Purpose:	Delete a file
     //Params:	$file	File to be deleted
     function delete( $file ) 
+    {
+	if( !file_exists( $file ) )
 	{
-		if( !file_exists( $file ) )
-		{
-			echo "FTP delete: File not found (".$file.")";
-		}
+	    echo "FTP delete: File not found (".$file.")";
+	}
 			
-		return ftp_delete( $this->conn, $file );
+	return ftp_delete( $this->conn, $file );
     }
     
     function rmdir( $dir )
     {
-   		return ftp_rmdir( $this->conn, $dir );
-   	}
+   	return ftp_rmdir( $this->conn, $dir );
+    }
     
     function chmod( $file, $mode )
     {
     	return ftp_chmod( $this->conn, $mode, $file );
-   	}
+    }
 	
     //close
     //Purpose:	Close FTP connection
     function close() 
-	{
+    {
 		ftp_close($this->conn);
     }
 }

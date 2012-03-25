@@ -395,14 +395,13 @@ class GameObject extends POG_Base
 		{
 			$this->Get($insertId);
 			
-			if($email != "")
+			if( !empty($email) )
 			{
 				$this->EditID = $this->GenerateEditID($email);
 				$this->Save("");
 				$this->Get($insertId);
 			}
 		}
-		
 		return $this->gameobjectId;
 	}
 	

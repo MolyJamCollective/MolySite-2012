@@ -6,6 +6,15 @@
     
     $Game = new GameObject();
    	
+    if( !empty( $_GET[ "EditID" ] ) )
+    {
+    	$Game->GetFromEditId( $_GET[ "EditID" ] );
+        if($Game->gameobjectId == "")
+        {
+            // Edit ID not Found
+        }
+    }
+        
     $Game->GameName         = $_POST["GameName"];
     $Game->GameTweet        = $_POST["GameTweet"];
     $Game->GameDescription  = $_POST["GameDescription"];
@@ -14,11 +23,20 @@
     $Game->TeamMembers      = $_POST["TeamMember"];
     $Game->GameLicense      = $_POST["GameLicense"];
     
-    $ftp = new ftp();
-    if( $Game->EditID = "" )
+    if(!empty($_POST[ "Email" ]))
     {
-	$ftp->mkdir( $GLOBALS['configuration']['upload_dir']. $Game->gameobjectId );
-	//$ftp->chmod( $GLOBALS['configuration']['upload_dir'] . $gameObjectId, 0777 );
+        $Game->Save($_POST[ "Email" ]);
+    }
+    else
+    {
+        $Game->Save();
+    }
+    
+    $ftp = new ftp();
+    if( empty( $_GET[ "EditID" ] ) )
+    {
+	$ftp->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameobjectId );
+	//$ftp->chmod( $GLOBALS['configuration']['upload_dir'].$Game->gameobjectId, 0777);
     }
     
     $uploadedFile = false;
@@ -85,8 +103,8 @@
             //fail
         }
     }
-	
-    $Game->Save($_POST[ "Email" ]);
+    
+     $Game->Save();
     
     include('./templates/globals.php'); 
     

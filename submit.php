@@ -27,9 +27,9 @@
     if( !empty( $_GET[ "EditID" ] ) )
     {
     	$Game->GetFromEditId( $_GET[ "EditID" ] );
-   	}
+    }
+    
 ?>
-
       <script>
       function checkImage(field, rules, i, options)
 	  {
@@ -52,11 +52,11 @@
       }
       </script>
       
-	  <?php if( !empty( $_GET[ "EditID" ] ) ): ?>
-  	  <form id="GameSubmission" class="form-horizontal" action="./upload.php?EditID=<?php echo $_GET[ "EditID" ]; ?>" method="post" enctype="multipart/form-data">
-  	  <?php else: ?>
+    <?php if( !empty( $_GET[ "EditID" ] ) ): ?>
+  	<form id="GameSubmission" class="form-horizontal" action="./upload.php?EditID=<?php echo $_GET[ "EditID" ]; ?>" method="post" enctype="multipart/form-data">
+    <?php else: ?>
       <form id="GameSubmission" class="form-horizontal" action="./upload.php" method="post" enctype="multipart/form-data">
-      <?php endif; ?>
+    <?php endif; ?>
         <fieldset>
 
           <div class="control-group">
@@ -168,11 +168,15 @@
               <p class="help-block">This is the license type under which you wish to share your game in. If not sure what to put here consult <a href="http://www.creativecommons.org/choose/" target="_blank">CreativeCommons.org/Choose/</a></p>
             </div>
           </div>
-          
+
           <div class="control-group">
-            <label class="control-label" for="Email">Email*</label>
+            <label class="control-label" for="Email">Email<?php if( empty( $_GET[ "EditID" ] ) ) { echo '*';} ?></label>
             <div class="controls">
-              <input type="text" class="input-xlarge validate[required,custom[email]]" id="Email" name="Email" maxlength="250" value="<?php echo $Game->Email; ?>" />
+	<?php if( !empty( $_GET[ "EditID" ] ) ): ?>
+	    <input type="text" class="input-xlarge disabled" id="Email" name="Email" maxlength="250" value="" disabled>
+	<?php else: ?>
+	    <input type="text" class="input-xlarge validate[required,custom[email]]" id="Email" name="Email" maxlength="250" />
+	<?php endif; ?>
               <p class="help-block">Must be a valid email address to allow you to edit the entry for 24 hours after creation.</p>
             </div>
           </div>
