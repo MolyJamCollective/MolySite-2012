@@ -3,6 +3,8 @@
     include_once("./objects/class.database.php");
     include_once("./objects/class.gameobject.php");
     include_once("./objects/class.ftp.php");
+    include_once("./objects/class.phpmailer.php");
+    include_once("./sendConfirmationEmail.php");    
     
     $Game = new GameObject();
    	
@@ -26,6 +28,8 @@
     if(!empty($_POST[ "Email" ]))
     {
         $Game->Save($_POST[ "Email" ]);
+        
+		SendConfirmationEmail( $_POST[ "Email" ] );
     }
     else
     {

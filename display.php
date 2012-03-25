@@ -10,6 +10,11 @@
     
   $pageTitle = $Game->GameName;
   $pageHeader = $Game->GameName;
+  
+  if( !empty( $_GET[ "download" ] ) && $Game->GameFileURL != "" )
+  {
+  	echo "<meta http-equiv='refresh' content='0; url=". $Game->GameFileURL . "' />"; 
+  }
 
   include('./templates/header.php');
   
@@ -17,8 +22,15 @@
   
   if($Game->GameName != "")
   {
+  	$updateDownloadCounter = "";
+  	
+  	if( !empty( $_GET[ "download" ] ) && $Game->GameFileURL != "" )
+  	{
+  		$updateDownloadCounter = ", `downloads`=`downloads` + 1";
+    }
+    
     $connection = Database::Connect();
-    $query = "UPDATE `gameobject` SET `pageviews`=`pageviews` + 1 WHERE `gameobjectid`='".$Game->gameobjectId."'";
+    $query = "UPDATE `gameobject` SET `pageviews`=`pageviews` + 1" . $updateDownloadCounter . " WHERE `gameobjectid`='".$Game->gameobjectId."'";
     Database::InsertOrUpdate($query, $connection);
   		
 ?>
@@ -41,7 +53,7 @@
               <br />
               
               <div align="center">
-                <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == ""){echo "disabled";}?>">Gameplay Video</a> <a href="<?php echo $Game->GameFileURL; ?>" class="btn btn-large btn-primary <?php if($Game->GameFileURL == ""){echo "disabled";}?>">Download Game</a>
+                <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == ""){echo "disabled";}?>">Gameplay Video</a> <a href="display.php?GameObjectID=<?php echo $_GET[ "GameObjectID" ]; ?>&download=true" class="btn btn-large btn-primary <?php if($Game->GameFileURL == ""){echo "disabled";}?>">Download Game</a>
               </div>
             </div>
             
