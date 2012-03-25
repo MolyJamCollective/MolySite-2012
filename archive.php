@@ -7,7 +7,21 @@
     include_once("./objects/class.gameobject.php");
 
     $Game = new GameObject(); //create a book object
-    $GameList = $Game->GetList(array(array("gameobjectId", ">", 0)));
+    
+    
+    $sortBy = "";
+    if( !empty( $_GET[ "sortBy" ] ) )
+    {
+    	$sortBy = $_GET[ "sortBy" ];
+   	}
+   	
+   	$sortOrder = true;
+   	if( !empty( $_GET[ "sortOrder" ] ) && $_GET[ "sortOrder" ] == "desc" )
+    {
+    	$sortOrder = false;
+   	}
+    
+    $GameList = $Game->GetList(array(array("gameobjectId", ">", 0)), $sortBy, $sortOrder);
     
     include('./templates/globals.php');
     
@@ -51,6 +65,11 @@
             type: "GET",	
             success: function (text) {
               $("#gameThumbnail").html( text );
+              
+              if( text == "" )
+              {
+              	$("#gameThumbnail").hide();
+           	  }
             }
             });
         }
@@ -61,6 +80,24 @@
     });
   </script>
   ';
+  
+	function getSortLinkString( $field )
+	{
+		$order = "asc";
+		
+		if( !empty( $_GET[ "sortBy" ] ) )
+		{
+			if( $_GET[ "sortBy" ] == $field )
+			{
+				if( $_GET[ "sortOrder" ] == "asc" )
+				{
+					$order = "desc";
+				}
+			}
+		}
+		
+		return "?sortBy=" . $field . "&sortOrder=" . $order;
+	}
 
     include('./templates/header.php');
     
@@ -71,9 +108,9 @@
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Location</th>
+                <th><a href="<?php echo getSortLinkString( "gameobjectId" )?>">#</a></th>
+                <th><a href="<?php echo getSortLinkString( "gamename" )?>">Name</a></th>
+                <th><a href="<?php echo getSortLinkString( "molyjamlocation" )?>">Location</a></th>
                 <th>Popularity</th>
                 <th>Created</th>
             </tr>

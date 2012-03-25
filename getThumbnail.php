@@ -6,9 +6,13 @@
 	$cursor = Database::Reader( "select `gamepictureurl` from `gameobject` where `gameobjectid`='".intval($_GET["id"])."' LIMIT 1", $connection);
 	while ($row = Database::Read($cursor))
 	{
-		echo "<img src='" . $row[ "gamepictureurl" ] . "' width='320' height='240' />";
+		if( $row[ "gamepictureurl" ] != "" )
+		{
+			echo "<img src='" . $row[ "gamepictureurl" ] . "' width='320' height='240' />";
+		}
+		
 		die();
 	}
 	
-	echo "Thumbnail not found! Id: " . $_GET["id"];
+	echo "Project Id not found! Id: " . $_GET["id"];
 ?>
