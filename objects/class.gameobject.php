@@ -280,7 +280,12 @@ class GameObject extends POG_Base
 				}
 			}
 		}
-		if ($sortBy != '')
+		
+		if ($sortBy == 'popularity')
+		{
+			$sortBy = "( `pageviews` + `downloads` * 100 )";
+		}
+		else if ($sortBy != '')
 		{
 			if (isset($this->pog_attribute_type[$sortBy]['db_attributes']) && $this->pog_attribute_type[$sortBy]['db_attributes'][0] != 'NUMERIC' && $this->pog_attribute_type[$sortBy]['db_attributes'][0] != 'SET')
 			{
