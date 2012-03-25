@@ -33,6 +33,12 @@
    			{
    				$newSearchValue = array( "gamename", "LIKE", "%".$word."%" );
    				$searchValues[] = $newSearchValue;
+   				
+   				$newSearchValue = array( "gametweet", "LIKE", "%".$word."%" );
+   				$searchValues[] = $newSearchValue;
+   				
+   				$newSearchValue = array( "gamedescription", "LIKE", "%".$word."%" );
+   				$searchValues[] = $newSearchValue;
 			}
 		}
 		

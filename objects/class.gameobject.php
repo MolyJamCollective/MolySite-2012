@@ -257,7 +257,7 @@ class GameObject extends POG_Base
 				{
 					if ($i > 0 && sizeof($fcv_array[$i-1]) != 1)
 					{
-						$this->pog_query .= " AND ";
+						$this->pog_query .= " OR ";
 					}
 					if (isset($this->pog_attribute_type[$fcv_array[$i][0]]['db_attributes']) && $this->pog_attribute_type[$fcv_array[$i][0]]['db_attributes'][0] != 'NUMERIC' && $this->pog_attribute_type[$fcv_array[$i][0]]['db_attributes'][0] != 'SET')
 					{
