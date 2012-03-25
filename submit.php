@@ -161,14 +161,43 @@
             </div>
           </div>
           
-          <div class="control-group">
+	  <div class="control-group">
             <label class="control-label" for="GameLicense">License</label>
             <div class="controls">
-              <input type="text" class="input-xlarge" id="GameLicense" name="GameLicense" maxlength="250" value="<?php echo $Game->GameLicense; ?>" />
-              <p class="help-block">This is the license type under which you wish to share your game in. If not sure what to put here consult <a href="http://www.creativecommons.org/choose/" target="_blank">CreativeCommons.org/Choose/</a></p>
+              <label class="radio">
+                <input type="radio" name="GameLicense" id="LicenseRadios1" value="CC BY" <?php if( $Game->GameLicense == "" || $Game->GameLicense == "CC BY" ) { echo 'checked=""'; } ?>>
+                <img src="http://i.creativecommons.org/l/by/3.0/88x31.png" />
+		<strong>Attribution (CC BY)</strong>
+              </label>
+              <label class="radio">
+                <input type="radio" name="GameLicense" id="LicenseRadios2" value="CC BY-SA" <?php if( $Game->GameLicense == "CC BY-SA" ) { echo 'checked=""'; } ?> >
+                <img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" />
+		<strong>Attribution-ShareAlike (CC BY-SA)</strong>
+              </label>
+	      <label class="radio">
+                <input type="radio" name="GameLicense" id="LicenseRadios3" value="CC BY-ND" <?php if( $Game->GameLicense == "CC BY-ND" ) { echo 'checked=""'; } ?>>
+                <img src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" />
+		<strong>Attribution-NoDerivs (CC BY-ND)</strong>
+              </label>
+	      <label class="radio">
+                <input type="radio" name="GameLicense" id="LicenseRadios4" value="CC BY-NC" <?php if( $Game->GameLicense == "CC BY-NC" ) { echo 'checked=""'; } ?>>
+                <img src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" />
+		<strong>Attribution-NonCommercial (CC BY-NC)</strong>
+              </label>
+	      <label class="radio">
+                <input type="radio" name="GameLicense" id="LicenseRadios5" value="CC BY-NC-SA" <?php if( $Game->GameLicense == "CC BY-NC-SA" ) { echo 'checked=""'; } ?>>
+                <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />
+		<strong>Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)</strong>
+              </label>
+	      <label class="radio">
+                <input type="radio" name="GameLicense" id="LicenseRadios6" value="CC BY-NC-ND" <?php if( $Game->GameLicense == "CC BY-NC-ND" ) { echo 'checked=""'; } ?>>
+                <img src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" />
+		<strong>Attribution-NonCommercial-NoDerivs (CC BY-NC-ND)</strong>
+              </label>
+	      <p class="help-block">This is the license type under which you wish to share your game in. If not sure what to put here consult <a href="http://www.creativecommons.org/choose/" target="_blank">CreativeCommons.org/Choose/</a></p>
             </div>
           </div>
-
+	  
           <div class="control-group">
             <label class="control-label" for="Email">Email<?php if( empty( $_GET[ "EditID" ] ) ) { echo '*';} ?></label>
             <div class="controls">
