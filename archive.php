@@ -81,9 +81,9 @@
   </script>
   ';
   
-	function getSortLinkString( $field )
+	function getSortLinkString( $field, $startWithDesc = false )
 	{
-		$order = "asc";
+		$order = ( $startWithDesc ) ? "desc" : "asc";
 		
 		if( !empty( $_GET[ "sortBy" ] ) )
 		{
@@ -93,10 +93,34 @@
 				{
 					$order = "desc";
 				}
+				else
+				{
+					$order = "asc";
+				}
 			}
 		}
 		
 		return "?sortBy=" . $field . "&sortOrder=" . $order;
+	}
+	
+	function getSortImage( $field )
+	{
+		if( !empty( $_GET[ "sortBy" ] ) )
+		{
+			if( $_GET[ "sortBy" ] == $field )
+			{
+				if( $_GET[ "sortOrder" ] == "asc" )
+				{
+					return "<img src='img/sortAsc.png' alt='Sort Ascending' />";
+				}
+				else
+				{
+					return "<img src='img/sortDesc.png' alt='Sort Descending' />";
+				}
+			}
+		}
+		
+		return "";
 	}
 
     include('./templates/header.php');
@@ -108,11 +132,11 @@
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
-                <th><a href="<?php echo getSortLinkString( "gameobjectId" )?>">#</a></th>
-                <th><a href="<?php echo getSortLinkString( "gamename" )?>">Name</a></th>
-                <th><a href="<?php echo getSortLinkString( "molyjamlocation" )?>">Location</a></th>
-                <th>Popularity</th>
-                <th>Created</th>
+                <th width="50"><a href="<?php echo getSortLinkString( "gameobjectId" )?>"># <?php echo getSortImage( "gameobjectId" ); ?></a></th>
+                <th><a href="<?php echo getSortLinkString( "gamename" )?>">Name <?php echo getSortImage( "gamename" ); ?></a></th>
+                <th width="150"><a href="<?php echo getSortLinkString( "molyjamlocation" )?>">Location <?php echo getSortImage( "molyjamlocation" ); ?></a></th>
+                <th width="90"><a href="<?php echo getSortLinkString( "popularity", true )?>">Popularity <?php echo getSortImage( "popularity" ); ?></a></th>
+                <th width="300"><a href="<?php echo getSortLinkString( "createddatetime" )?>">Created <?php echo getSortImage( "createddatetime" ); ?></a></th>
             </tr>
         </thead>
         <tbody>
