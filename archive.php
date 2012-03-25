@@ -25,9 +25,9 @@
    	{
    		$searchValues = array();
    		
-   		if( !empty( $_POST[ "searchString" ] ) )
+   		if( getSearchString() != "" )
    		{
-   			$words = explode( " ", $_POST[ "searchString" ] );
+   			$words = explode( " ", getSearchString() );
    			
    			foreach( $words as $word )
    			{
@@ -37,7 +37,6 @@
 		}
 		
    		return $searchValues;
-   		//return array(array("gameobjectId", ">", 0));
 	}
     
     $GameList = $Game->GetList(createSearchArray(), $sortBy, $sortOrder);
@@ -119,7 +118,28 @@
 			}
 		}
 		
-		return "?sortBy=" . $field . "&sortOrder=" . $order;
+		$searchString = "";
+		if( getSearchString() != "" )
+		{
+			$searchString = "&search=" . urlencode( getSearchString() );
+		}
+		
+		return "?sortBy=" . $field . "&sortOrder=" . $order . $searchString;
+	}
+	
+	function getSearchString()
+	{
+		if( !empty( $_POST[ "searchString" ] ) )
+		{
+			return $_POST[ "searchString" ];
+		}
+		
+		if( !empty( $_GET[ "search" ] ) )
+		{
+			return urldecode( $_GET[ "search" ] );
+		}
+		
+		return "";
 	}
 	
 	function getSortImage( $field )
@@ -151,8 +171,8 @@
 	<form action="?" method="POST">
 		<input type="text" name="searchString" style="position:relative;top:5px;" /> <button type="submit" class="btn btn-primary">Search</button>
 	</form>
-	<?php if( !empty( $_POST[ "searchString" ] ) ): ?>
-		<h2>Searching for <i><?php echo $_POST[ "searchString" ]; ?></i></h2>
+	<?php if( getSearchString() != "" ): ?>
+		<h2>Searching for <i><?php echo getSearchString(); ?></i></h2>
 	<?php endif; ?>
     <table class="table table-striped table-bordered table-condensed">
         <thead>
