@@ -1,2 +1,5 @@
 .komodotools
+
 *.komodoproject
+uploads
+!uploads/uploads.txt
