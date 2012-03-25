@@ -308,6 +308,7 @@ class GameObject extends POG_Base
 			$sortBy = "gameobjectid";
 		}
 		$this->pog_query .= " order by ".$sortBy." ".($ascending ? "asc" : "desc")." $sqlLimit";
+		
 		$thisObjectName = get_class($this);
 		$cursor = Database::Reader($this->pog_query, $connection);
 		while ($row = Database::Read($cursor))

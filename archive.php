@@ -20,8 +20,27 @@
     {
     	$sortOrder = false;
    	}
+   	
+   	function createSearchArray()
+   	{
+   		$searchValues = array();
+   		
+   		if( !empty( $_POST[ "searchString" ] ) )
+   		{
+   			$words = explode( " ", $_POST[ "searchString" ] );
+   			
+   			foreach( $words as $word )
+   			{
+   				$newSearchValue = array( "gamename", "LIKE", "%".$word."%" );
+   				$searchValues[] = $newSearchValue;
+			}
+		}
+		
+   		return $searchValues;
+   		//return array(array("gameobjectId", ">", 0));
+	}
     
-    $GameList = $Game->GetList(array(array("gameobjectId", ">", 0)), $sortBy, $sortOrder);
+    $GameList = $Game->GetList(createSearchArray(), $sortBy, $sortOrder);
     
     include('./templates/globals.php');
     
@@ -126,9 +145,15 @@
     include('./templates/header.php');
     
 ?>
-	<div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;">
+	<div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;display:none;">
 		Loading Thumbnail...
 	</div>
+	<form action="?" method="POST">
+		<input type="text" name="searchString" style="position:relative;top:5px;" /> <button type="submit" class="btn btn-primary">Search</button>
+	</form>
+	<?php if( !empty( $_POST[ "searchString" ] ) ): ?>
+		<h2>Searching for <i><?php echo $_POST[ "searchString" ]; ?></i></h2>
+	<?php endif; ?>
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
