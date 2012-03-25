@@ -80,13 +80,17 @@
 
     $(document).ready(function(){
    	  $("#gameThumbnail").hide();
-      $("table tbody tr").mouseover(function() {
+      $("table tbody tr").mouseover(function(e) {
       	proceedHidingThumbnail = false;
 	    if( lastMouseOverId != $(this).attr("id") )
 	    {
     	  lastMouseOverId = $(this).attr("id");
           $("#gameThumbnail").html( "Loading Thumbnail..." );
       	  $("#gameThumbnail").show();
+      	  $("#gameThumbnail").css({
+            left:  e.pageX+10,
+            top:   e.pageY+10
+          });
           $.ajax({
             url: "getThumbnail.php?id=" + $(this).attr("id"),
             type: "GET",	
