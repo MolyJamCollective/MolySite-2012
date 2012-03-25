@@ -10,5 +10,5 @@
 		die();
 	}
 	
-	echo "Thumbnail not found! " . $_GET["id"];
+	echo "Thumbnail not found! Id: " . $_GET["id"];
 ?>

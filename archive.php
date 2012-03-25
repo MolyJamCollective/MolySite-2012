@@ -20,6 +20,16 @@
     
     $PageScriptsRaw ='
   <script>
+    var lastMouseOverId = -1;
+    var proceedHidingThumbnail = true;
+    function hideThumbnail()
+    {
+      if( proceedHidingThumbnail == true )
+      {
+        $("#gameThumbnail").hide();
+        lastMouseOverId = -1;
+      }
+   	}
     $(document).bind("mousemove", function(e){
       $("#gameThumbnail").css({
         left:  e.pageX+10,
@@ -30,17 +40,23 @@
     $(document).ready(function(){
    	  $("#gameThumbnail").hide();
       $("table tbody tr").mouseover(function() {
-      	$("#gameThumbnail").html( "Loading Thumbnail..." );
-      	$("#gameThumbnail").show();
-        $.ajax({
-          url: "getThumbnail.php?id=1",
-          type: "GET",	
-          success: function (text) {
-            $("#gameThumbnail").html( text );
-          }
-          });
+      	proceedHidingThumbnail = false;
+	    if( lastMouseOverId != $(this).attr("id") )
+	    {
+    	  lastMouseOverId = $(this).attr("id");
+          $("#gameThumbnail").html( "Loading Thumbnail..." );
+      	  $("#gameThumbnail").show();
+          $.ajax({
+            url: "getThumbnail.php?id=" + $(this).attr("id"),
+            type: "GET",	
+            success: function (text) {
+              $("#gameThumbnail").html( text );
+            }
+            });
+        }
       }).mouseout(function() {
-        $("#gameThumbnail").hide();
+      	proceedHidingThumbnail = true;
+      	setTimeout("hideThumbnail()", 50);
       });
     });
   </script>
@@ -68,7 +84,7 @@
     {
         $Popularity = ($Game->PageViews * 0.01) + ($Game->Downloads * 1);
 ?>
-            <tr class="gameRow">
+            <tr class="gameRow" id="<?php echo $Game->gameobjectId ?>">
                 <td><?php echo $Game->gameobjectId ?></td>
                 <td><a href="display.php?GameObjectID=<?php echo $Game->gameobjectId ?>"><?php echo $Game->GameName ?></a></td>
                 <td><?php echo $Game->MolyJamLocation ?></td>
