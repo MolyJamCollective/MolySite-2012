@@ -43,23 +43,23 @@
     
     if( !empty( $_FILES[ "GameFiles" ][ "name" ] ) ) //Save file
     {
-	if( $Game->GameFileURL != "" )
-	{
-	    $ftp->delete( $Game->GameFileURL );
-	}
-		
-	$target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game.zip"; 
-
-	if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
-	{
-	    //success
-	    $uploadedFile = true;
-	    $Game->GameFileURL = $target_path;
-	} 
-	else
-	{
-	    //fail
-	}
+		if( $Game->GameFileURL != "" )
+		{
+		    $ftp->delete( $Game->GameFileURL );
+		}
+			
+		$target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game.zip"; 
+	
+		if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
+		{
+		    //success
+		    $uploadedFile = true;
+		    $Game->GameFileURL = $target_path;
+		} 
+		else
+		{
+		    //fail
+		}
     }
 	
     if( !empty( $_FILES[ "GamePicture" ][ "name" ] ) ) //Save file

@@ -17,10 +17,41 @@
 
     $pageScripts = array();
     $PageScriptsRaw = '';
+    
+    $PageScriptsRaw ='
+  <script>
+    $(document).bind("mousemove", function(e){
+      $("#gameThumbnail").css({
+        left:  e.pageX+10,
+        top:   e.pageY+10
+      });
+    });
+
+    $(document).ready(function(){
+   	  $("#gameThumbnail").hide();
+      $("table tbody tr").mouseover(function() {
+      	$("#gameThumbnail").html( "Loading Thumbnail..." );
+      	$("#gameThumbnail").show();
+        $.ajax({
+          url: "getThumbnail.php?id=1",
+          type: "GET",	
+          success: function (text) {
+            $("#gameThumbnail").html( text );
+          }
+          });
+      }).mouseout(function() {
+        $("#gameThumbnail").hide();
+      });
+    });
+  </script>
+  ';
 
     include('./templates/header.php');
     
 ?>
+	<div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;">
+		Loading Thumbnail...
+	</div>
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
@@ -37,7 +68,7 @@
     {
         $Popularity = ($Game->PageViews * 0.01) + ($Game->Downloads * 1);
 ?>
-            <tr>
+            <tr class="gameRow">
                 <td><?php echo $Game->gameobjectId ?></td>
                 <td><a href="display.php?GameObjectID=<?php echo $Game->gameobjectId ?>"><?php echo $Game->GameName ?></a></td>
                 <td><?php echo $Game->MolyJamLocation ?></td>
