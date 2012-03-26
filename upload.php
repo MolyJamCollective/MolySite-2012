@@ -6,153 +6,161 @@
     include_once("./objects/class.phpmailer.php");
     include_once("./sendConfirmationEmail.php");    
     
+    
     $Game = new GameObject();
-   	
-    if( !empty( $_GET[ "EditID" ] ) )
-    {
-    	$Game->GetFromEditId( $_GET[ "EditID" ] );
-        if($Game->gameobjectId == "")
-        {
-            // Edit ID not Found
-        }
-    }
         
-    $Game->GameName         = $_POST["GameName"];
-    $Game->GameTweet        = $_POST["GameTweet"];
-    $Game->GameDescription  = $_POST["GameDescription"];
-    $Game->GameVideoURL     = $_POST["GameVideoURL"];
-    $Game->MolyJamLocation  = $_POST["MolyJamLocation"];
-    $Game->TeamMembers      = $_POST["TeamMember"];
-    $Game->GameLicense      = $_POST["GameLicense"];
-    
-    if(!empty($_POST[ "Email" ]))
-    {
-        $Game->Save($_POST[ "Email" ]);
-		SendConfirmationEmail( $_POST[ "Email" ], $Game );
-    }
-    else
-    {
-        $Game->Save();
-    }
-    
-    $ftp = new ftp();
-    if( empty( $_GET[ "EditID" ] ) )
-    {
-	$ftp->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameobjectId );
-	//$ftp->chmod( $GLOBALS['configuration']['upload_dir'].$Game->gameobjectId, 0777);
-    }
-    
-    $uploadedFile = false;
-    
-    if( !empty( $_FILES[ "GameFiles" ][ "name" ] ) ) //Save file
-    {
-		if( $Game->GameFileURL != "" )
-		{
-		    $ftp->delete( $Game->GameFileURL );
-		}
-			
-		$target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game.zip"; 
-	
-		if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
-		{
-		    //success
-		    $uploadedFile = true;
-		    $Game->GameFileURL = $target_path;
-		} 
-		else
-		{
-		    //fail
-		}
-    }
-    
-    function GetThumbnailFilename( $file )
-    {
-    	return pathinfo( $file, PATHINFO_DIRNAME ) . "/" . pathinfo( $file, PATHINFO_FILENAME ) . "_thumb." . pathinfo( $file, PATHINFO_EXTENSION );
-   	}
-   	
-   	function CreateThumbnail( $tmpName, $targetPath )
-   	{
-   		$tsize = getImageSize( $tmpName );
-		$twidth = "320";
-		$theight = (($tsize[1] / $tsize[0]) * $twidth);
-		
-		//resize thumb image
-		$tsrc = "";
-
-		if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
-		{
-			$tsrc = imagecreatefrompng( $tmpName );
-		}
-		else
-		{
-			$tsrc = imagecreatefromjpeg( $tmpName );
-		}		
-		
-		$tdst = imagecreatetruecolor($twidth,$theight);
-		imagecopyresampled($tdst, $tsrc, 0, 0, 0, 0, $twidth, $theight, $tsize[0], $tsize[1]);
-		
-		//save resized thumb image
-		$tfinfile = $targetPath;
-		
-		if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
-		{
-			imagepng($tdst, $tfinfile, 5);
-		}
-		else
-		{
-			imagejpeg($tdst, $tfinfile, 95);
-		}
-  	}
-	
-    if( !empty( $_FILES[ "GamePicture" ][ "name" ] ) ) //Save file
-    {
-        if( $Game->GamePictureURL != "" )
+    if( !empty($_POST["GameName"]) ) // if false, page was refreshed after an edit
+    {  
+        if( !empty( $_GET[ "EditID" ] ) )
         {
-			$ftp->delete( $Game->GamePictureURL );
-			
-			if( file_exists( GetThumbnailFilename( $Game->GamePictureURL  ) ) )
-			{
-				$ftp->Delete( GetThumbnailFilename( $Game->GamePictureURL ) );
-			}
+            $Game->GetFromEditId( $_GET[ "EditID" ] );
+            if($Game->gameobjectId == "")
+            {
+                // Edit ID not Found
+            }
         }
+            
+        $Game->GameName         = $_POST["GameName"];
+        $Game->GameTweet        = $_POST["GameTweet"];
+        $Game->GameDescription  = $_POST["GameDescription"];
+        $Game->GameVideoURL     = $_POST["GameVideoURL"];
+        $Game->MolyJamLocation  = $_POST["MolyJamLocation"];
+        $Game->TeamMembers      = $_POST["TeamMember"];
+        $Game->GameLicense      = $_POST["GameLicense"];
         
-        $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
-
-		CreateThumbnail( $_FILES[ "GamePicture" ][ "tmp_name" ], GetThumbnailFilename( $target_path ) );   
-        if( move_uploaded_file( $_FILES[ "GamePicture" ][ "tmp_name" ], $target_path ) ) 
+        if(!$Game->DuplicateCheck()) // if true, page was refresh as this is a double entry
         {
-            //success
-            $uploadedFile = true;
-            $Game->GamePictureURL = $target_path;         
-        } 
-        else
-        {
-            //fail
-        }
-    }	
-	
-    if( !empty( $_FILES[ "TeamPicture" ][ "name" ] ) ) //Save file
-    {
-        if( $Game->TeamPictureURL != "" )
-        {
-                $ftp->delete( $Game->TeamPictureURL );
-        }
+                
+            if(!empty($_POST[ "Email" ]))
+            {
+                $Game->Save($_POST[ "Email" ]);
+                        SendConfirmationEmail( $_POST[ "Email" ], $Game );
+            }
+            else
+            {
+                $Game->Save();
+            }
+            
+            $ftp = new ftp();
+            if( empty( $_GET[ "EditID" ] ) )
+            {
+                $ftp->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameobjectId );
+                //$ftp->chmod( $GLOBALS['configuration']['upload_dir'].$Game->gameobjectId, 0777);
+            }
+            
+            $uploadedFile = false;
+            
+            if( !empty( $_FILES[ "GameFiles" ][ "name" ] ) ) //Save file
+            {
+                        if( $Game->GameFileURL != "" )
+                        {
+                            $ftp->delete( $Game->GameFileURL );
+                        }
+                                
+                        $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game.zip"; 
+                
+                        if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
+                        {
+                            //success
+                            $uploadedFile = true;
+                            $Game->GameFileURL = $target_path;
+                        } 
+                        else
+                        {
+                            //fail
+                        }
+            }
+            
+            function GetThumbnailFilename( $file )
+            {
+                return pathinfo( $file, PATHINFO_DIRNAME ) . "/" . pathinfo( $file, PATHINFO_FILENAME ) . "_thumb." . pathinfo( $file, PATHINFO_EXTENSION );
+                }
+                
+                function CreateThumbnail( $tmpName, $targetPath )
+                {
+                        $tsize = getImageSize( $tmpName );
+                        $twidth = "320";
+                        $theight = (($tsize[1] / $tsize[0]) * $twidth);
+                        
+                        //resize thumb image
+                        $tsrc = "";
         
-        $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/team." . strtolower( pathinfo( $_FILES[ "TeamPicture" ][ "name" ], PATHINFO_EXTENSION ) );
-
-        if( move_uploaded_file( $_FILES[ "TeamPicture" ][ "tmp_name" ], $target_path ) ) 
-        {
-            //success
-            $uploadedFile = true;
-            $Game->TeamPictureURL = $target_path;
-        } 
-        else
-        {
-            //fail
-        }
+                        if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
+                        {
+                                $tsrc = imagecreatefrompng( $tmpName );
+                        }
+                        else
+                        {
+                                $tsrc = imagecreatefromjpeg( $tmpName );
+                        }		
+                        
+                        $tdst = imagecreatetruecolor($twidth,$theight);
+                        imagecopyresampled($tdst, $tsrc, 0, 0, 0, 0, $twidth, $theight, $tsize[0], $tsize[1]);
+                        
+                        //save resized thumb image
+                        $tfinfile = $targetPath;
+                        
+                        if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
+                        {
+                                imagepng($tdst, $tfinfile, 5);
+                        }
+                        else
+                        {
+                                imagejpeg($tdst, $tfinfile, 95);
+                        }
+                }
+                
+            if( !empty( $_FILES[ "GamePicture" ][ "name" ] ) ) //Save file
+            {
+                if( $Game->GamePictureURL != "" )
+                {
+                                $ftp->delete( $Game->GamePictureURL );
+                                
+                                if( file_exists( GetThumbnailFilename( $Game->GamePictureURL  ) ) )
+                                {
+                                        $ftp->Delete( GetThumbnailFilename( $Game->GamePictureURL ) );
+                                }
+                }
+                
+                $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
+        
+                        CreateThumbnail( $_FILES[ "GamePicture" ][ "tmp_name" ], GetThumbnailFilename( $target_path ) );   
+                if( move_uploaded_file( $_FILES[ "GamePicture" ][ "tmp_name" ], $target_path ) ) 
+                {
+                    //success
+                    $uploadedFile = true;
+                    $Game->GamePictureURL = $target_path;         
+                } 
+                else
+                {
+                    //fail
+                }
+            }	
+                
+            if( !empty( $_FILES[ "TeamPicture" ][ "name" ] ) ) //Save file
+            {
+                if( $Game->TeamPictureURL != "" )
+                {
+                        $ftp->delete( $Game->TeamPictureURL );
+                }
+                
+                $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/team." . strtolower( pathinfo( $_FILES[ "TeamPicture" ][ "name" ], PATHINFO_EXTENSION ) );
+        
+                if( move_uploaded_file( $_FILES[ "TeamPicture" ][ "tmp_name" ], $target_path ) ) 
+                {
+                    //success
+                    $uploadedFile = true;
+                    $Game->TeamPictureURL = $target_path;
+                } 
+                else
+                {
+                    //fail
+                }
+            }
+            
+             $Game->Save();
+         }
     }
-    
-     $Game->Save();
     
     include('./templates/globals.php'); 
     
