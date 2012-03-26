@@ -10,6 +10,7 @@
     
   $pageTitle = $Game->GameName;
   $pageHeader = $Game->GameName;
+  $activeTab = '2';
   
   if( !empty( $_GET[ "download" ] ) && $Game->GameFileURL != "" )
   {

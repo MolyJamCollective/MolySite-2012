@@ -49,12 +49,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">MolyJam</a>
+          <a class="brand" href="./index.php">MolyJam</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="archive.php">Games</a></li>
-              <li><a href="submit.php">Game Submission</a></li>
+              <li <?php if($activeTab == 1) { echo 'class="active"';} ?>><a href="./index.php">Home</a></li>
+              <li <?php if($activeTab == 2) { echo 'class="active"';} ?>><a href="./archive.php">Games</a></li>
+              <li <?php if($activeTab == 3) { echo 'class="active"';} ?>><a href="./submit.php">Game Submission</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

@@ -8,6 +8,7 @@
  
  $pageTitle = '';
  $pageHeader = '';
+ $activeTab = '0'; // Number for Active Tab
  
  $pageStyles = array();
  
