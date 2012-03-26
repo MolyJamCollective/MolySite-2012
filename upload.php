@@ -93,7 +93,15 @@
 		
 		//save resized thumb image
 		$tfinfile = $targetPath;
-		imagejpeg($tdst, $tfinfile, -1);
+		
+		if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
+		{
+			imagepng($tdst, $tfinfile, 5);
+		}
+		else
+		{
+			imagejpeg($tdst, $tfinfile, 95);
+		}
   	}
 	
     if( !empty( $_FILES[ "GamePicture" ][ "name" ] ) ) //Save file
@@ -110,7 +118,7 @@
         
         $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
 
-		CreateThumbnail( $_FILES[ "GamePicture" ][ "tmp_name" ], GetThumbnailFilename( $Game->GamePictureURL ) );   
+		CreateThumbnail( $_FILES[ "GamePicture" ][ "tmp_name" ], GetThumbnailFilename( $target_path ) );   
         if( move_uploaded_file( $_FILES[ "GamePicture" ][ "tmp_name" ], $target_path ) ) 
         {
             //success
