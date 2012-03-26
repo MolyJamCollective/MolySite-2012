@@ -176,7 +176,6 @@
 	}
 
     include('./templates/header.php');
-    
 ?>
 	<div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;display:none;">
 		Loading Thumbnail...

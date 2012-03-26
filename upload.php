@@ -64,21 +64,58 @@
 		    //fail
 		}
     }
+    
+    function GetThumbnailFilename( $file )
+    {
+    	return pathinfo( $file, PATHINFO_DIRNAME ) . "/" . pathinfo( $file, PATHINFO_FILENAME ) . "_thumb." . pathinfo( $file, PATHINFO_EXTENSION );
+   	}
+   	
+   	function CreateThumbnail( $tmpName, $targetPath )
+   	{
+   		$tsize = getImageSize( $tmpName );
+		$twidth = "320";
+		$theight = (($tsize[1] / $tsize[0]) * $twidth);
+		
+		//resize thumb image
+		$tsrc = "";
+
+		if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
+		{
+			$tsrc = imagecreatefrompng( $tmpName );
+		}
+		else
+		{
+			$tsrc = imagecreatefromjpeg( $tmpName );
+		}		
+		
+		$tdst = imagecreatetruecolor($twidth,$theight);
+		imagecopyresampled($tdst, $tsrc, 0, 0, 0, 0, $twidth, $theight, $tsize[0], $tsize[1]);
+		
+		//save resized thumb image
+		$tfinfile = $targetPath;
+		imagejpeg($tdst, $tfinfile, -1);
+  	}
 	
     if( !empty( $_FILES[ "GamePicture" ][ "name" ] ) ) //Save file
     {
         if( $Game->GamePictureURL != "" )
         {
-                $ftp->delete( $Game->GamePictureURL );
+			$ftp->delete( $Game->GamePictureURL );
+			
+			if( file_exists( GetThumbnailFilename( $Game->GamePictureURL  ) ) )
+			{
+				$ftp->Delete( GetThumbnailFilename( $Game->GamePictureURL ) );
+			}
         }
         
         $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
 
+		CreateThumbnail( $_FILES[ "GamePicture" ][ "tmp_name" ], GetThumbnailFilename( $Game->GamePictureURL ) );   
         if( move_uploaded_file( $_FILES[ "GamePicture" ][ "tmp_name" ], $target_path ) ) 
         {
             //success
             $uploadedFile = true;
-            $Game->GamePictureURL = $target_path;
+            $Game->GamePictureURL = $target_path;         
         } 
         else
         {
