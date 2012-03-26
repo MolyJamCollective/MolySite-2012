@@ -28,7 +28,7 @@
         $Game->TeamMembers      = $_POST["TeamMember"];
         $Game->GameLicense      = $_POST["GameLicense"];
         
-        if(!$Game->DuplicateCheck()) // if true, page was refresh as this is a double entry
+        if(!$Game->Duplicate()) // if true, page was refresh as this is a double entry
         {
                 
             if(!empty($_POST[ "Email" ]))
@@ -159,6 +159,10 @@
             }
             
              $Game->Save();
+         }
+         else
+         {
+            $Game = $Game->GetDuplicate();
          }
     }
     

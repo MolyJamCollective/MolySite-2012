@@ -347,6 +347,45 @@ class GameObject extends POG_Base
 	}
 	
 	/**
+	* Checks if there this is a double entry
+	* @param integer $GameObject
+	* @return bool $Results
+	*/
+	function Duplicate()
+	{
+		$connection = Database::Connect();
+		$this->pog_query = "SELECT * FROM `gameobject` WHERE `gamename` = '".$this->GameName."' AND `gametweet` = '".$this->GameTweet."' AND `gamedescription` = '".$this->GameDescription."' AND `gamevideourl` = '".$this->GameVideoURL."' AND `molyjamlocation` = '".$this->MolyJamLocation."' AND `teammembers` = '".$this->TeamMembers."' AND `gamelicense` = '".$this->GameLicense."' LIMIT 1 ";
+		return Database::Query($this->pog_query, $connection);
+	}
+	
+	function GetDuplicate()
+	{
+		$connection = Database::Connect();
+		$this->pog_query = "SELECT * FROM `gameobject`  WHERE `gamename` = '".$this->GameName."' AND `gametweet` = '".$this->GameTweet."' AND `gamedescription` = '".$this->GameDescription."' AND `gamevideourl` = '".$this->GameVideoURL."' AND `molyjamlocation` = '".$this->MolyJamLocation."' AND `teammembers` = '".$this->TeamMembers."' AND `gamelicense` = '".$this->GameLicense."' LIMIT 1 ";
+		$cursor = Database::Reader($this->pog_query, $connection);
+		while ($row = Database::Read($cursor))
+		{
+			$this->gameobjectId = $row['gameobjectid'];
+			$this->GameName = $this->Unescape($row['gamename']);
+			$this->GamePictureURL = $this->Unescape($row['gamepictureurl']);
+			$this->GameTweet = $this->Unescape($row['gametweet']);
+			$this->GameDescription = $this->Unescape($row['gamedescription']);
+			$this->GameFileURL = $this->Unescape($row['gamefileurl']);
+			$this->GameVideoURL = $this->Unescape($row['gamevideourl']);
+			$this->MolyJamLocation = $this->Unescape($row['molyjamlocation']);
+			$this->TeamPictureURL = $this->Unescape($row['teampictureurl']);
+			$this->TeamMembers = $this->Unescape($row['teammembers']);
+			$this->GameLicense = $this->Unescape($row['gamelicense']);
+			$this->PageViews = $this->Unescape($row['pageviews']);
+			$this->Downloads = $this->Unescape($row['downloads']);
+			$this->CreatedDateTime = $row['createddatetime'];
+			$this->lastEditedDateTime = $row['lastediteddatetime'];
+			$this->EditID = $this->Unescape($row['editid']);
+		}
+		return $this;
+	}
+	
+	/**
 	* Saves the object to the database
 	* @return integer $gameobjectId
 	*/
