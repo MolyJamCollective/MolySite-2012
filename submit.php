@@ -3,7 +3,7 @@
     
     include_once("./configuration.php");
     include_once("./objects/class.database.php");
-    include_once("./objects/class.gameobject.php");
+    include_once("./objects/class.game.php");
     include_once("./objects/class.ftp.php");
     
     $pageTitle = 'MolyJam Game Submission System';

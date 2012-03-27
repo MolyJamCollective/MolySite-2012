@@ -2,8 +2,8 @@
 /*
 	This SQL query will create the table to store your object.
 
-	CREATE TABLE `gameobject` (
-	`gameobjectid` int(11) NOT NULL auto_increment,
+	CREATE TABLE `game` (
+	`gameid` int(11) NOT NULL auto_increment,
 	`gamename` VARCHAR(255) NOT NULL,
 	`gamepictureurl` VARCHAR(255) NOT NULL,
 	`gametweet` VARCHAR(255) NOT NULL,
@@ -18,7 +18,7 @@
 	`downloads` INT NOT NULL,
 	`createddatetime` DATETIME NOT NULL,
 	`lastediteddatetime` DATETIME NOT NULL,
-	`editid` VARCHAR(255) NOT NULL, PRIMARY KEY  (`gameobjectid`)) ENGINE=MyISAM;
+	`editid` VARCHAR(255) NOT NULL, PRIMARY KEY  (`gameid`)) ENGINE=MyISAM;
 */
 
 /**
@@ -31,7 +31,7 @@
 include_once('class.pog_base.php');
 class GameObject extends POG_Base
 {
-	public $gameobjectId = '';
+	public $gameId = '';
 
 	/**
 	 * @var VARCHAR(255)
@@ -109,7 +109,7 @@ class GameObject extends POG_Base
 	public $EditID;
 	
 	public $pog_attribute_type = array(
-		"gameobjectId" => array('db_attributes' => array("NUMERIC", "INT")),
+		"gameId" => array('db_attributes' => array("NUMERIC", "INT")),
 		"GameName" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"GamePictureURL" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"GameTweet" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
@@ -166,17 +166,17 @@ class GameObject extends POG_Base
 	
 	/**
 	* Gets object from database
-	* @param integer $gameobjectId 
+	* @param integer $gameId 
 	* @return object $GameObject
 	*/
-	function Get($gameobjectId)
+	function Get($gameId)
 	{
 		$connection = Database::Connect();
-		$this->pog_query = "select * from `gameobject` where `gameobjectid`='".intval($gameobjectId)."' LIMIT 1";
+		$this->pog_query = "select * from `game` where `gameid`='".intval($gameId)."' LIMIT 1";
 		$cursor = Database::Reader($this->pog_query, $connection);
 		while ($row = Database::Read($cursor))
 		{
-			$this->gameobjectId = $row['gameobjectid'];
+			$this->gameId = $row['gameid'];
 			$this->GameName = $this->Unescape($row['gamename']);
 			$this->GamePictureURL = $this->Unescape($row['gamepictureurl']);
 			$this->GameTweet = $this->Unescape($row['gametweet']);
@@ -204,11 +204,11 @@ class GameObject extends POG_Base
 	function GetFromEditId($editId)
 	{
 		$connection = Database::Connect();
-		$this->pog_query = "select * from `gameobject` where `editid`='".$editId."' LIMIT 1";
+		$this->pog_query = "select * from `game` where `editid`='".$editId."' LIMIT 1";
 		$cursor = Database::Reader($this->pog_query, $connection);
 		while ($row = Database::Read($cursor))
 		{
-			$this->gameobjectId = $row['gameobjectid'];
+			$this->gameId = $row['gameid'];
 			$this->GameName = $this->Unescape($row['gamename']);
 			$this->GamePictureURL = $this->Unescape($row['gamepictureurl']);
 			$this->GameTweet = $this->Unescape($row['gametweet']);
@@ -235,14 +235,14 @@ class GameObject extends POG_Base
 	* @param string $sortBy 
 	* @param boolean $ascending 
 	* @param int limit 
-	* @return array $gameobjectList
+	* @return array $gameList
 	*/
 	function GetList($fcv_array = array(), $sortBy='', $ascending=true, $limit='')
 	{
 		$connection = Database::Connect();
 		$sqlLimit = ($limit != '' ? "LIMIT $limit" : '');
-		$this->pog_query = "select * from `gameobject` ";
-		$gameobjectList = Array();
+		$this->pog_query = "select * from `game` ";
+		$gameList = Array();
 		if (sizeof($fcv_array) > 0)
 		{
 			$this->pog_query .= " where ";
@@ -305,7 +305,7 @@ class GameObject extends POG_Base
 		}
 		else
 		{
-			$sortBy = "gameobjectid";
+			$sortBy = "gameid";
 		}
 		$this->pog_query .= " order by ".$sortBy." ".($ascending ? "asc" : "desc")." $sqlLimit";
 		
@@ -313,26 +313,26 @@ class GameObject extends POG_Base
 		$cursor = Database::Reader($this->pog_query, $connection);
 		while ($row = Database::Read($cursor))
 		{
-			$gameobject = new $thisObjectName();
-			$gameobject->gameobjectId = $row['gameobjectid'];
-			$gameobject->GameName = $this->Unescape($row['gamename']);
-			$gameobject->GamePictureURL = $this->Unescape($row['gamepictureurl']);
-			$gameobject->GameTweet = $this->Unescape($row['gametweet']);
-			$gameobject->GameDescription = $this->Unescape($row['gamedescription']);
-			$gameobject->GameFileURL = $this->Unescape($row['gamefileurl']);
-			$gameobject->GameVideoURL = $this->Unescape($row['gamevideourl']);
-			$gameobject->MolyJamLocation = $this->Unescape($row['molyjamlocation']);
-			$gameobject->TeamPictureURL = $this->Unescape($row['teampictureurl']);
-			$gameobject->TeamMembers = $this->Unescape($row['teammembers']);
-			$gameobject->GameLicense = $this->Unescape($row['gamelicense']);
-			$gameobject->PageViews = $this->Unescape($row['pageviews']);
-			$gameobject->Downloads = $this->Unescape($row['downloads']);
-			$gameobject->CreatedDateTime = $row['createddatetime'];
-			$gameobject->lastEditedDateTime = $row['lastediteddatetime'];
-			$gameobject->EditID = $this->Unescape($row['editid']);
-			$gameobjectList[] = $gameobject;
+			$game = new $thisObjectName();
+			$game->gameId = $row['gameid'];
+			$game->GameName = $this->Unescape($row['gamename']);
+			$game->GamePictureURL = $this->Unescape($row['gamepictureurl']);
+			$game->GameTweet = $this->Unescape($row['gametweet']);
+			$game->GameDescription = $this->Unescape($row['gamedescription']);
+			$game->GameFileURL = $this->Unescape($row['gamefileurl']);
+			$game->GameVideoURL = $this->Unescape($row['gamevideourl']);
+			$game->MolyJamLocation = $this->Unescape($row['molyjamlocation']);
+			$game->TeamPictureURL = $this->Unescape($row['teampictureurl']);
+			$game->TeamMembers = $this->Unescape($row['teammembers']);
+			$game->GameLicense = $this->Unescape($row['gamelicense']);
+			$game->PageViews = $this->Unescape($row['pageviews']);
+			$game->Downloads = $this->Unescape($row['downloads']);
+			$game->CreatedDateTime = $row['createddatetime'];
+			$game->lastEditedDateTime = $row['lastediteddatetime'];
+			$game->EditID = $this->Unescape($row['editid']);
+			$gameList[] = $game;
 		}
-		return $gameobjectList;
+		return $gameList;
 	}
 	
 	/**
@@ -342,7 +342,7 @@ class GameObject extends POG_Base
 	function GenerateEditID($email='')
 	{
 		$connection = Database::Connect();
-		$this->EditID = md5( $email . $this->gameobjectId );
+		$this->EditID = md5( $email . $this->gameId );
 		return $this->EditID;
 	}
 	
@@ -354,18 +354,18 @@ class GameObject extends POG_Base
 	function Duplicate()
 	{
 		$connection = Database::Connect();
-		$this->pog_query = "SELECT * FROM `gameobject` WHERE `gamename` = '".$this->GameName."' AND `gametweet` = '".$this->GameTweet."' AND `gamedescription` = '".$this->GameDescription."' AND `gamevideourl` = '".$this->GameVideoURL."' AND `molyjamlocation` = '".$this->MolyJamLocation."' AND `teammembers` = '".$this->TeamMembers."' AND `gamelicense` = '".$this->GameLicense."' LIMIT 1 ";
+		$this->pog_query = "SELECT * FROM `game` WHERE `gamename` = '".$this->GameName."' AND `gametweet` = '".$this->GameTweet."' AND `gamedescription` = '".$this->GameDescription."' AND `gamevideourl` = '".$this->GameVideoURL."' AND `molyjamlocation` = '".$this->MolyJamLocation."' AND `teammembers` = '".$this->TeamMembers."' AND `gamelicense` = '".$this->GameLicense."' LIMIT 1 ";
 		return Database::Query($this->pog_query, $connection);
 	}
 	
 	function GetDuplicate()
 	{
 		$connection = Database::Connect();
-		$this->pog_query = "SELECT * FROM `gameobject`  WHERE `gamename` = '".$this->GameName."' AND `gametweet` = '".$this->GameTweet."' AND `gamedescription` = '".$this->GameDescription."' AND `gamevideourl` = '".$this->GameVideoURL."' AND `molyjamlocation` = '".$this->MolyJamLocation."' AND `teammembers` = '".$this->TeamMembers."' AND `gamelicense` = '".$this->GameLicense."' LIMIT 1 ";
+		$this->pog_query = "SELECT * FROM `game`  WHERE `gamename` = '".$this->GameName."' AND `gametweet` = '".$this->GameTweet."' AND `gamedescription` = '".$this->GameDescription."' AND `gamevideourl` = '".$this->GameVideoURL."' AND `molyjamlocation` = '".$this->MolyJamLocation."' AND `teammembers` = '".$this->TeamMembers."' AND `gamelicense` = '".$this->GameLicense."' LIMIT 1 ";
 		$cursor = Database::Reader($this->pog_query, $connection);
 		while ($row = Database::Read($cursor))
 		{
-			$this->gameobjectId = $row['gameobjectid'];
+			$this->gameId = $row['gameid'];
 			$this->GameName = $this->Unescape($row['gamename']);
 			$this->GamePictureURL = $this->Unescape($row['gamepictureurl']);
 			$this->GameTweet = $this->Unescape($row['gametweet']);
@@ -387,17 +387,17 @@ class GameObject extends POG_Base
 	
 	/**
 	* Saves the object to the database
-	* @return integer $gameobjectId
+	* @return integer $gameId
 	*/
 	function Save($email='')
 	{
 		$connection = Database::Connect();
-		$this->pog_query = "select `gameobjectid` from `gameobject` where `gameobjectid`='".$this->gameobjectId."' LIMIT 1";
+		$this->pog_query = "select `gameid` from `game` where `gameid`='".$this->gameId."' LIMIT 1";
 		$rows = Database::Query($this->pog_query, $connection);
 		if ($rows > 0)
 		{
 			// Update Entry
-			$this->pog_query = "update `gameobject` set 
+			$this->pog_query = "update `game` set 
 			`gamename`='".$this->Escape($this->GameName)."', 
 			`gamepictureurl`='".$this->Escape($this->GamePictureURL)."', 
 			`gametweet`='".$this->Escape($this->GameTweet)."', 
@@ -412,12 +412,12 @@ class GameObject extends POG_Base
 			`downloads`='".$this->Escape($this->Downloads)."', 
 			`createddatetime`='".$this->CreatedDateTime."', 
 			`lastediteddatetime`= NOW(), 
-			`editid`='".$this->Escape($this->EditID)."' where `gameobjectid`='".$this->gameobjectId."'";
+			`editid`='".$this->Escape($this->EditID)."' where `gameid`='".$this->gameId."'";
 		}
 		else
 		{
 			// Insert New Entry
-			$this->pog_query = "insert into `gameobject` (`gamename`, `gamepictureurl`, `gametweet`, `gamedescription`, `gamefileurl`, `gamevideourl`, `molyjamlocation`, `teampictureurl`, `teammembers`, `gamelicense`, `pageviews`, `downloads`, `createddatetime`, `lastediteddatetime`, `editid` ) values (
+			$this->pog_query = "insert into `game` (`gamename`, `gamepictureurl`, `gametweet`, `gamedescription`, `gamefileurl`, `gamevideourl`, `molyjamlocation`, `teampictureurl`, `teammembers`, `gamelicense`, `pageviews`, `downloads`, `createddatetime`, `lastediteddatetime`, `editid` ) values (
 			'".$this->Escape($this->GameName)."', 
 			'".$this->Escape($this->GamePictureURL)."', 
 			'".$this->Escape($this->GameTweet)."', 
@@ -436,7 +436,7 @@ class GameObject extends POG_Base
 		}
 		$insertId = Database::InsertOrUpdate($this->pog_query, $connection);
 		
-		if ($this->gameobjectId == "")
+		if ($this->gameId == "")
 		{
 			$this->Get($insertId);
 			
@@ -447,16 +447,16 @@ class GameObject extends POG_Base
 				$this->Get($insertId);
 			}
 		}
-		return $this->gameobjectId;
+		return $this->gameId;
 	}
 	
 	/**
 	* Clones the object and saves it to the database
-	* @return integer $gameobjectId
+	* @return integer $gameId
 	*/
 	function SaveNew()
 	{
-		$this->gameobjectId = '';
+		$this->gameId = '';
 		return $this->Save();
 	}
 	
@@ -468,7 +468,7 @@ class GameObject extends POG_Base
 	function Delete()
 	{
 		$connection = Database::Connect();
-		$this->pog_query = "delete from `gameobject` where `gameobjectid`='".$this->gameobjectId."'";
+		$this->pog_query = "delete from `game` where `gameid`='".$this->gameId."'";
 		return Database::NonQuery($this->pog_query, $connection);
 	}
 	
@@ -484,7 +484,7 @@ class GameObject extends POG_Base
 		if (sizeof($fcv_array) > 0)
 		{
 			$connection = Database::Connect();
-			$pog_query = "delete from `gameobject` where ";
+			$pog_query = "delete from `game` where ";
 			for ($i=0, $c=sizeof($fcv_array); $i<$c; $i++)
 			{
 				if (sizeof($fcv_array[$i]) == 1)

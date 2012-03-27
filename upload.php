@@ -1,10 +1,10 @@
 <?php
     include_once("./configuration.php");
     include_once("./objects/class.database.php");
-    include_once("./objects/class.gameobject.php");
+    include_once("./objects/class.game.php");
     include_once("./objects/class.ftp.php");
     include_once("./objects/class.phpmailer.php");
-    include_once("./sendConfirmationEmail.php");    
+    include_once("./utility/sendConfirmationEmail.php");    
     
     
     $Game = new GameObject();
@@ -14,7 +14,7 @@
         if( !empty( $_GET[ "EditID" ] ) )
         {
             $Game->GetFromEditId( $_GET[ "EditID" ] );
-            if($Game->gameobjectId == "")
+            if($Game->gameId == "")
             {
                 // Edit ID not Found
             }
@@ -44,8 +44,8 @@
             $ftp = new ftp();
             if( empty( $_GET[ "EditID" ] ) )
             {
-                $ftp->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameobjectId );
-                //$ftp->chmod( $GLOBALS['configuration']['upload_dir'].$Game->gameobjectId, 0777);
+                $ftp->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameId );
+                //$ftp->chmod( $GLOBALS['configuration']['upload_dir'].$Game->gameId, 0777);
             }
             
             $uploadedFile = false;
@@ -57,7 +57,7 @@
                             $ftp->delete( $Game->GameFileURL );
                         }
                                 
-                        $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game.zip"; 
+                        $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game.zip"; 
                 
                         if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) 
                         {
@@ -122,7 +122,7 @@
                                 }
                 }
                 
-                $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
+                $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
         
                         CreateThumbnail( $_FILES[ "GamePicture" ][ "tmp_name" ], GetThumbnailFilename( $target_path ) );   
                 if( move_uploaded_file( $_FILES[ "GamePicture" ][ "tmp_name" ], $target_path ) ) 
@@ -144,7 +144,7 @@
                         $ftp->delete( $Game->TeamPictureURL );
                 }
                 
-                $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameobjectId . "/team." . strtolower( pathinfo( $_FILES[ "TeamPicture" ][ "name" ], PATHINFO_EXTENSION ) );
+                $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/team." . strtolower( pathinfo( $_FILES[ "TeamPicture" ][ "name" ], PATHINFO_EXTENSION ) );
         
                 if( move_uploaded_file( $_FILES[ "TeamPicture" ][ "tmp_name" ], $target_path ) ) 
                 {
@@ -237,7 +237,7 @@
     </div>
   </div>
 </section>
-<div align="center" class="span12"> <a href="./display.php?GameObjectID=<?php echo $Game->gameobjectId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./submit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a> </div>
+<div align="center" class="span12"> <a href="./display.php?GameObjectID=<?php echo $Game->gameId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./submit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a> </div>
 <br />
 <?php
     include('./templates/footer.php');

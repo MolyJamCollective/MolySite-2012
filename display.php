@@ -1,7 +1,7 @@
 <?php
   include_once("./configuration.php");
   include_once("./objects/class.database.php");
-  include_once("./objects/class.gameobject.php");
+  include_once("./objects/class.game.php");
 
   $Game = new GameObject();
   $Game->Get($_GET['GameObjectID']);
@@ -31,7 +31,7 @@
     }
     
     $connection = Database::Connect();
-    $query = "UPDATE `gameobject` SET `pageviews`=`pageviews` + 1" . $updateDownloadCounter . " WHERE `gameobjectid`='".$Game->gameobjectId."'";
+    $query = "UPDATE `game` SET `pageviews`=`pageviews` + 1" . $updateDownloadCounter . " WHERE `gameid`='".$Game->gameId."'";
     Database::InsertOrUpdate($query, $connection);
   		
 ?>

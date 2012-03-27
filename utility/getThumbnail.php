@@ -1,6 +1,6 @@
 <?php
-    include_once("./configuration.php");
-    include_once("./objects/class.database.php");
+    include_once("../configuration.php");
+    include_once("../objects/class.database.php");
     
     function GetThumbnailFilename( $file )
     {
@@ -8,7 +8,7 @@
    	}
    	
     $connection = Database::Connect();
-	$cursor = Database::Reader( "select `gamepictureurl` from `gameobject` where `gameobjectid`='".intval($_GET["id"])."' LIMIT 1", $connection);
+	$cursor = Database::Reader( "select `gamepictureurl` from `game` where `gameid`='".intval($_GET["id"])."' LIMIT 1", $connection);
 	while ($row = Database::Read($cursor))
 	{
 		if( $row[ "gamepictureurl" ] != "" )

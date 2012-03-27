@@ -4,7 +4,7 @@
 
     include_once("./configuration.php");
     include_once("./objects/class.database.php");
-    include_once("./objects/class.gameobject.php");
+    include_once("./objects/class.game.php");
 
     $Game = new GameObject(); //create a book object
     
@@ -93,7 +93,7 @@
             top:   e.pageY+10
           });
           $.ajax({
-            url: "getThumbnail.php?id=" + $(this).attr("id"),
+            url: "./utility/getThumbnail.php?id=" + $(this).attr("id"),
             type: "GET",	
             success: function (text) {
               $("#gameThumbnail").html( text );
@@ -190,7 +190,7 @@
     <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
-                <th width="50"><a href="<?php echo getSortLinkString( "gameobjectId" )?>"># <?php echo getSortImage( "gameobjectId" ); ?></a></th>
+                <th width="50"><a href="<?php echo getSortLinkString( "gameId" )?>"># <?php echo getSortImage( "gameId" ); ?></a></th>
                 <th><a href="<?php echo getSortLinkString( "gamename" )?>">Name <?php echo getSortImage( "gamename" ); ?></a></th>
                 <th width="150"><a href="<?php echo getSortLinkString( "molyjamlocation" )?>">Location <?php echo getSortImage( "molyjamlocation" ); ?></a></th>
                 <th width="90"><a href="<?php echo getSortLinkString( "popularity", true )?>">Popularity <?php echo getSortImage( "popularity" ); ?></a></th>
@@ -203,9 +203,9 @@
     {
         $Popularity = ($Game->PageViews * 0.01) + ($Game->Downloads * 1);
 ?>
-            <tr class="gameRow" id="<?php echo $Game->gameobjectId ?>">
-                <td><?php echo $Game->gameobjectId ?></td>
-                <td><a href="display.php?GameObjectID=<?php echo $Game->gameobjectId ?>"><?php echo $Game->GameName ?></a></td>
+            <tr class="gameRow" id="<?php echo $Game->gameId ?>">
+                <td><?php echo $Game->gameId ?></td>
+                <td><a href="display.php?GameObjectID=<?php echo $Game->gameId ?>"><?php echo $Game->GameName ?></a></td>
                 <td><a href="?search=<?php echo $Game->MolyJamLocation ?>"><?php echo $Game->MolyJamLocation ?></a></td>
                 <td><?php echo $Popularity ?></td>
                 <td><?php echo $Game->CreatedDateTime ?></td>
