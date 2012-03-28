@@ -4,6 +4,7 @@
     $pageTitle = 'MolyJam - Login';
     $pageHeader = 'Sign in to MolyJam';
     $pageStyles = array();
+    $activeTab = '0';
 
     $pageScripts = array();
     $PageScriptsRaw = '';

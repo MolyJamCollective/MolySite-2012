@@ -7,6 +7,7 @@
     $pageTitle = 'MolyJam - Admin';
     $pageHeader = 'Edit User: '.$edituser->getField('username');
     $pageStyles = array();
+    $activeTab = '0';
 
     $pageScripts = array();
     $PageScriptsRaw = '';

@@ -52,7 +52,8 @@
         }
       }
       </script>
-      
+      <div class="row">
+	<div class="span10 offset1">
     <?php if( !empty( $_GET[ "EditID" ] ) ): ?>
   	<form id="GameSubmission" class="form-horizontal" action="./upload.php?EditID=<?php echo $_GET[ "EditID" ]; ?>" method="post" enctype="multipart/form-data">
     <?php else: ?>
@@ -222,7 +223,8 @@
           
         </fieldset>
       </form>
-
+      </div>
+</div>
 <?php
     include_once('./templates/footer.php');
 ?>

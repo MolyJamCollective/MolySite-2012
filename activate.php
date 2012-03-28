@@ -4,6 +4,7 @@
     $pageTitle = 'Page Title';
     $pageHeader = 'Page Header';
     $pageStyles = array();
+    $activeTab = '0';
 
     $pageScripts = array();
     $PageScriptsRaw = '';

@@ -4,6 +4,7 @@
     $pageTitle = 'MolyJam - My Account';
     $pageHeader = 'Account Settings';
     $pageStyles = array();
+    $activeTab = '0';
 
     $pageScripts = array();
     $PageScriptsRaw = '';

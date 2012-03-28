@@ -4,6 +4,7 @@
     $pageTitle = 'MolyJam - Admin';
     $pageHeader = 'Administrator Settings';
     $pageStyles = array();
+    $activeTab = '0';
 
     $pageScripts = array();
     $PageScriptsRaw = '';

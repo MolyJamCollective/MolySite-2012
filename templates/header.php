@@ -21,6 +21,13 @@
       }
     </style>
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
+    
+    
+    <link rel="stylesheet/less" href="./less/bootstrap.less">
+    <link href="./css/additive.css" rel="stylesheet">
+    <script src="./js/less-1.3.0.min.js"></script>
+    
+    
 
 <?php
   for($i = 0; $i < sizeof($pageStyles); $i++)
@@ -83,9 +90,11 @@
       </div>
     </div>
     
-  <div class="container">
+  <div class="container-fluid">
 
+  <?php if(!empty($pageHeader)) { ?>
     <div class="page-header">
         <h1><?php echo $pageHeader; ?></h1>
     </div>
+  <?php } ?>
     
