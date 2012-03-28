@@ -83,7 +83,7 @@ class phplogin_upgrade extends Generic {
 		");
 
 		// Attempt to insert current config settings to the database
-		@include('config.php');
+		@include('../configuration.php');
 
 		parent::query("
 			INSERT INTO `login_settings` (`option_name`, `option_value`) VALUES
@@ -91,7 +91,7 @@ class phplogin_upgrade extends Generic {
 			('default_session', '$minutes'),
 			('admin_email', '$address'),
 			('block-msg-enable', '1'),
-			('block-msg', '<h1>Sorry, Hank.</h1>\r\n\r\n<p>We have detected that your user level does not entitle you to view the page requested.</p>\r\n\r\n<p>Please contact the website administrator if you feel this is in error.</p>\r\n\r\n<h5>What to do now?</h5>\r\n<p>To see this page you must <a href=''logout.php''>logout</a> and login with sufficiant privileges.</p>'),
+			('block-msg', '<h1>Sorry.</h1>\r\n\r\n<p>We have detected that your user level does not entitle you to view the page requested.</p>\r\n\r\n<p>Please contact the website administrator if you feel this is in error.</p>\r\n\r\n<h5>What to do now?</h5>\r\n<p>To see this page you must <a href=''logout.php''>logout</a> and login with sufficiant privileges.</p>'),
 			('block-msg-out', 'You need to login to do that.'),
 			('block-msg-out-enable', '1'),
 			('email-welcome-msg', 'Hello {{full_name}} !\r\n\r\nThanks for registering at {{site_address}}. Here are your account details:\r\n\r\nName: {{full_name}}\r\nUsername: {{username}}\r\nEmail: {{email}}\r\nPassword: *hidden*\r\n\r\nYou will first have to activate your account by clicking on the following link:\r\n\r\n{{activate}}'),

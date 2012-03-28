@@ -73,8 +73,8 @@ class Login extends Generic {
 			$sql = "SELECT * FROM login_users WHERE username='$this->user'";
 			$this->result = mysql_fetch_assoc(parent::query($sql));
 
-			var_dump($this->pass);
-			var_dump($this->result['password']);
+			//var_dump($this->pass);
+			//var_dump($this->result['password']);
 			if(!parent::validatePassword($this->pass, $this->result['password']))
 				$this->error = "<div class=\"alert alert-error\">"._('Incorrect username or password.')."</div>";
 
@@ -145,7 +145,7 @@ class Login extends Generic {
 				unset($_SESSION['token']);
 
 				// Redirect after it's all said and done
-				$referer = (!empty($_SESSION['referer'])) ? $_SESSION['referer'] : "home.php";
+				$referer = (!empty($_SESSION['referer'])) ? $_SESSION['referer'] : "index.php";
 				unset($_SESSION['referer']);
 
 				header("Location: " . $referer);

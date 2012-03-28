@@ -60,6 +60,7 @@ class Generic extends Connect {
 		if (!$result) {
 			if($exit) {
 				echo _('Could not run query: ') . mysql_error();
+				include_once(cINC . 'templates/globals.php');
 				include_once(cINC . 'templates/footer.php');
 				exit;
 			}
@@ -421,6 +422,7 @@ class Generic extends Connect {
 		if(!empty($error)) :
 
 			// Current headers
+			include_once(cINC . 'templates/globals.php');
 			include_once(cINC . 'templates/header.php');
 
 			// The error itself

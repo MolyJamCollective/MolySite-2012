@@ -23,7 +23,7 @@ class Connect {
 	/**
 	 * Checks if installation is complete by seeing if config.php exists.
 	 *
-	 * The user will be prompted to visit home.php and click "Begin Install" if
+	 * The user will be prompted to visit index.php and click "Begin Install" if
 	 * there is no config.php yet setup. This prompt will be persistent and won't
 	 * allow any pages to load until config.php is created.
 	 *
@@ -31,12 +31,12 @@ class Connect {
 	 */
 	public function checkInstall() {
 
-		if(!file_exists(dirname(__FILE__) . '/config.php')) :
+		if(!file_exists(dirname(__FILE__) . '/../configuration.php')) :
 
 			return "<div class='alert alert-warning'>"._('Installation has not yet been ran!')."</div>
 					<h1>"._('Woops!')."</h1>
 					<p>"._('You\'re missing a config.php file preventing a database connection from being made.')."</p>
-					<p>"._('Please click')." <a href='home.php'>"._('Begin Install')."</a> " ._('on the home page to create a config file.')."</p>
+					<p>"._('Please click')." <a href='index.php'>"._('Begin Install')."</a> " ._('on the home page to create a configuration file.')."</p>
 					";
 
 		endif;
@@ -52,18 +52,18 @@ class Connect {
 	 */
 	public function dbConn() {
 
-		include(dirname(__FILE__) . '/config.php');
+		include(dirname(__FILE__) . '/../configuration.php');
 
 		// Suppressing these because we want to show our own error.
-		$link = @mysql_connect($host, $dbUser, $dbPass);
-		$dbSelect = @mysql_select_db($dbName, $link);
+		$link = @mysql_connect($configuration['host'], $configuration['user'], $configuration['pass']);
+		$dbSelect = @mysql_select_db($configuration['db'], $link);
 
 		if(!$link) :
-			return '<div class="alert alert-error">'._('Your database login details are incorrect, Hank.').'</div>';
+			return '<div class="alert alert-error">'._('Your database login details are incorrect.').'</div>';
 		endif;
 
 		if (!$dbSelect) :
-			return '<div class="alert alert-error">'._('Your database name is incorrect, Hank.').'</div>';
+			return '<div class="alert alert-error">'._('Your database name is incorrect.').'</div>';
 		endif;
 
 	}

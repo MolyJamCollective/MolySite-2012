@@ -140,7 +140,7 @@ class SignUp extends Generic {
 				<div class="span4">
 					<h5><?php _e('What to do now?'); ?></h5>
 					<p><?php _e('Check your email to activate your account.'); ?></p>
-					<p><?php sprintf(_('Or go to the <a href="%s"> homepage</a>'), 'home.php'); ?></p>
+					<p><?php sprintf(_('Or go to the <a href="%s"> homepage</a>'), 'index.php'); ?></p>
 				</div>
 			</div>
 <?php

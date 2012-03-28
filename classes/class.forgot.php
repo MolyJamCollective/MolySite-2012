@@ -27,7 +27,7 @@ class Forgot extends Generic {
 				$this->password2 = parent::secure($_POST['password2']);
 			}
 		  // Redirect if not clicking from email, and modal form hasn't been submitted
-		} else if (!isset($_GET['key']) && !isset($_POST['usernamemail'])) header('Location: home.php');
+		} else if (!isset($_GET['key']) && !isset($_POST['usernamemail'])) header('Location: index.php');
 	}
 
 	private function validate() {
@@ -186,7 +186,7 @@ class Forgot extends Generic {
 							$this->error = "<div class='alert alert-success'>"._('We\'ve emailed you password reset instructions. Check your email.')."</div>";
 					}
 
-				} else { $this->error = '<div class="alert alert-error">'._('Hank, I searched for you high and low but couldn\'t find you :(').'</div>'; }
+				} else { $this->error = '<div class="alert alert-error">'._('I searched for you high and low but couldn\'t find you :(').'</div>'; }
 			}
 
 			echo $this->error;

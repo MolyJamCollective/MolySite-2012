@@ -1,7 +1,8 @@
 <?php
 include_once('classes/class.check.php'); protect("*");
 
-//include ('./templates/header.php');
+include_once ('./templates/globals.php');
+include_once ('./templates/header.php');
 
 class myAccount extends Generic {
 
