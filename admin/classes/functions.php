@@ -121,7 +121,7 @@ function list_registered() {
 			$reg_date = date('d M y @ H:i' ,$timestamp);
 
 			$email = $row['email'];
-			echo '<tr><td><a href="users.php?uid='.$row['user_id'].'">'. $row['username'].'</a>' . $admin . $restrict .'</td><td>'.$row['name'].'</td><td>'.$email.'</td><td>'.$reg_date.'</td></tr>';
+			echo '<tr><td><a href="edit_users.php?uid='.$row['user_id'].'">'. $row['username'].'</a>' . $admin . $restrict .'</td><td>'.$row['name'].'</td><td>'.$email.'</td><td>'.$reg_date.'</td></tr>';
 
 		}
 

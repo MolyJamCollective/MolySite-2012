@@ -65,7 +65,8 @@
 				<ul class="dropdown-menu">
 		<?php if(in_array(1, $_SESSION['user_level'])) { ?>
 					<li><a href="./admin/index.php"><i class="icon-home"></i> <?php _e('Control Panel'); ?></a></li>
-					<li><a href="./admin/settings.php"><i class="icon-cog"></i> <?php _e('Settings'); ?></a></li> <?php } ?>
+                                        <li><a href="./admin/users.php"><i class="icon-cog"></i> <?php _e('User Settings'); ?></a></li>
+					<li><a href="./admin/settings.php"><i class="icon-cog"></i> <?php _e('Site Settings'); ?></a></li> <?php } ?>
 					<li><a href="./my-account.php"><i class="icon-user"></i> <?php _e('My Account'); ?></a></li>
 					<li class="divider"></li>
 					<li><a href="./logout.php"><?php _e('Sign out'); ?></a></li>
