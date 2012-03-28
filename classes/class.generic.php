@@ -430,6 +430,7 @@ class Generic extends Connect {
 
 			// Shall we exit or not?
 			if($exit) {
+				include(cINC . 'templates/globals.php');
 				include_once(cINC . 'templates/footer.php');
 				exit();
 			}

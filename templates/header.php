@@ -64,17 +64,17 @@
 				<p class="navbar-text dropdown-toggle" data-toggle="dropdown" id="userDrop"><?php _e('Logged in as'); ?> <a href="#"><?php echo $_SESSION['username']; ?></a><b class="caret"></b></p>
 				<ul class="dropdown-menu">
 		<?php if(in_array(1, $_SESSION['user_level'])) { ?>
-					<li><a href="admin/index.php"><i class="icon-home"></i> <?php _e('Control Panel'); ?></a></li>
-					<li><a href="admin/settings.php"><i class="icon-cog"></i> <?php _e('Settings'); ?></a></li> <?php } ?>
-					<li><a href="my-account.php"><i class="icon-user"></i> <?php _e('My Account'); ?></a></li>
+					<li><a href="./admin/index.php"><i class="icon-home"></i> <?php _e('Control Panel'); ?></a></li>
+					<li><a href="./admin/settings.php"><i class="icon-cog"></i> <?php _e('Settings'); ?></a></li> <?php } ?>
+					<li><a href="./my-account.php"><i class="icon-user"></i> <?php _e('My Account'); ?></a></li>
 					<li class="divider"></li>
-					<li><a href="logout.php"><?php _e('Sign out'); ?></a></li>
+					<li><a href="./logout.php"><?php _e('Sign out'); ?></a></li>
 				</ul>
 			</li>
 		</ul>
 		<?php } else { ?>
 		<ul class="nav pull-right">
-			<li><a href="login.php" class="signup-link"><em><?php _e('Have an account?'); ?></em> <strong><?php _e('Sign in!'); ?></strong></a></li>
+			<li><a href="./login.php" class="signup-link"><strong><?php _e('Sign in'); ?></strong></a></li>
 		</ul>
 		<?php } ?>
           </div><!--/.nav-collapse -->
