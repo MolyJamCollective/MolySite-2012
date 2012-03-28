@@ -50,7 +50,7 @@
     
     $GameList = $Game->GetList(createSearchArray(), $sortBy, $sortOrder);
     
-    include('./templates/globals.php');
+    include_once('./templates/globals.php');
     
     $pageTitle = 'MolyJam Game Archive System';
     $pageHeader = 'MolyJam Game Archive System';
@@ -176,7 +176,7 @@
 		return "";
 	}
 
-    include('./templates/header.php');
+    include_once('./templates/header.php');
 ?>
 	<div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;display:none;">
 		Loading Thumbnail...
@@ -217,5 +217,5 @@
     </table>
 
 <?php
-    include('./templates/footer.php');
+    include_once('./templates/footer.php');
 ?>

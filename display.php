@@ -6,7 +6,7 @@
   $Game = new GameObject();
   $Game->Get($_GET['GameObjectID']);
 
-  include('./templates/globals.php');
+  include_once('./templates/globals.php');
     
   $pageTitle = $Game->GameName;
   $pageHeader = $Game->GameName;
@@ -17,7 +17,7 @@
   	echo "<meta http-equiv='refresh' content='0; url=". $Game->GameFileURL . "' />"; 
   }
 
-  include('./templates/header.php');
+  include_once('./templates/header.php');
   
   
   
@@ -108,5 +108,5 @@
 <?php
   }
 
-  include('./templates/footer.php');
+  include_once('./templates/footer.php');
 ?>

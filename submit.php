@@ -1,5 +1,5 @@
 <?php
-    include('./templates/globals.php');
+    include_once('./templates/globals.php');
     
     include_once("./configuration.php");
     include_once("./objects/class.database.php");
@@ -21,7 +21,7 @@
   </script>
   ';
     
-    include('./templates/header.php');
+    include_once('./templates/header.php');
     
     $Game = new GameObject();
     
@@ -224,5 +224,5 @@
       </form>
 
 <?php
-    include('./templates/footer.php');
+    include_once('./templates/footer.php');
 ?>

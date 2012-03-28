@@ -166,13 +166,13 @@
          }
     }
     
-    include('./templates/globals.php'); 
+    include_once('./templates/globals.php'); 
     
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
     $activeTab = '3';
 
-    include('./templates/header.php');
+    include_once('./templates/header.php');
 ?>
 
 <section id="Game" class="well">
@@ -240,5 +240,5 @@
 <div align="center" class="span12"> <a href="./display.php?GameObjectID=<?php echo $Game->gameId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./submit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a> </div>
 <br />
 <?php
-    include('./templates/footer.php');
+    include_once('./templates/footer.php');
 ?>

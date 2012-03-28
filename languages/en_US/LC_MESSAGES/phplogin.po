@@ -1,0 +1,1602 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PHP Login & User Management\n"
+"Report-Msgid-Bugs-To: Jigowatt <info@jigowatt.com>\n"
+"POT-Creation-Date: 2012-03-23 15:13-0400\n"
+"PO-Revision-Date: 2012-03-23 15:14-0500\n"
+"Last-Translator: Matt <matt.gates@jigoshop.com>\n"
+"Language-Team: Jigowatt <info@jigowatt.co.uk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:56
+msgid "Your account has been activated!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:56
+msgid "You can now see the default access granted to new users."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:57
+msgid "If you require more access please contact the site admin at"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:58
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:76
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:106
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:123
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:127
+#: c:\wamp\www\envato\php-login-user-manage\protected_2.php:12
+#: c:\wamp\www\envato\php-login-user-manage\protected_3.php:11
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:273
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:143
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:276
+msgid "What to do now?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:59
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:77
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:124
+#, php-format
+msgid "Go to the <a href=\"%s\"> homepage</a>"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:75
+msgid "Your activation link is incorrect."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:105
+msgid "Activation link resent to email."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:107
+msgid "Click the link in your email to activate your account."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:108
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_user.php:94
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:184
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:162
+msgid "ERROR. Mail not sent"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:110
+msgid "You do not have an activation code!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:111
+msgid "Please contact an admin:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:122
+msgid "Your account has already been activated."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:126
+msgid "You have not activated your account yet."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:128
+msgid "Please follow the link in your email to activate your account."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:129
+msgid "Would you like us to"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:129
+msgid "resend"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\activate.php:129
+msgid "the link?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:29
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:65
+msgid "You must enter your name."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:31
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:33
+msgid "You have enter an invalid e-mail address, try again."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:37
+msgid "Please enter a subject."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:39
+msgid "Please enter your message."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:41
+msgid "Please enter the verification code."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:43
+msgid "The verification code you entered is incorrect."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:60
+msgid "You've been contacted by"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:67
+msgid "You have been contacted by $name with regards to $subject, their additional message is as follows."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:70
+#, php-format
+msgid "You can contact %s via email, %s"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:78
+msgid "Email Sent Successfully"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:79
+msgid "Thank you"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:79
+msgid "your message has been submitted to us."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:89
+msgid "Oops, Access Denied"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:90
+msgid "Sorry, your username or user group has been disabled!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:91
+msgid "We have detected that your username or user group has been disabled; so you cannot view internal pages."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:92
+msgid "Fill out this form if you feel this is in error"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:100
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:25
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:66
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:20
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:136
+msgid "Name"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:107
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:31
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:30
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:80
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:38
+msgid "Email"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:114
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:131
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:162
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:180
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:210
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:228
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:258
+msgid "Subject"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:117
+msgid "Disabled Message"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:118
+msgid "Report a bug"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:124
+msgid "Your comments"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:131
+msgid "What colour is the sky?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\disabled.php:137
+#: c:\wamp\www\envato\php-login-user-manage\login.php:19
+msgid "Submit"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:42
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:34
+msgid "Jigowatt"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:45
+#: c:\wamp\www\envato\php-login-user-manage\header.php:84
+#: c:\wamp\www\envato\php-login-user-manage\header.php:92
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:45
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:84
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:92
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:36
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:73
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:81
+msgid "Home"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:46
+#: c:\wamp\www\envato\php-login-user-manage\header.php:88
+#: c:\wamp\www\envato\php-login-user-manage\home.php:39
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:46
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:88
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:37
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:77
+msgid "Mixed levels"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:47
+#: c:\wamp\www\envato\php-login-user-manage\header.php:89
+#: c:\wamp\www\envato\php-login-user-manage\home.php:40
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:47
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:89
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:38
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:78
+msgid "Special users"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:48
+#: c:\wamp\www\envato\php-login-user-manage\header.php:90
+#: c:\wamp\www\envato\php-login-user-manage\home.php:41
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:48
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:90
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:39
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:79
+msgid "Standard users"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:53
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:53
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:44
+msgid "Logged in as"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:56
+#: c:\wamp\www\envato\php-login-user-manage\header.php:91
+#: c:\wamp\www\envato\php-login-user-manage\home.php:38
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:56
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:91
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:47
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:80
+msgid "Control Panel"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:57
+#: c:\wamp\www\envato\php-login-user-manage\header.php:93
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:57
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:93
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:26
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:48
+msgid "Settings"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:58
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:58
+msgid "My Account"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:59
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:59
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:49
+msgid "Help"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:61
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:61
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:51
+msgid "Sign out"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:67
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:67
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:57
+msgid "Have an account?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:67
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:67
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:57
+msgid "Sign in!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:83
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:83
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:72
+msgid "Main Menu"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:85
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:85
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:74
+msgid "Docs"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:86
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:86
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:75
+msgid "Twitter Bootstrap"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\header.php:87
+#: c:\wamp\www\envato\php-login-user-manage\admin\header.php:87
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:76
+msgid "Protected Pages"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:4
+msgid "Let's talk about the future"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:5
+msgid "Clean, easy, and friendly user management. Enjoy flexibility through the many features our control panel offers."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:7
+msgid "Purchase this script"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:8
+msgid "Subscribe to updates"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:19
+msgid "Installation"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:22
+msgid "Install complete! Great work, Hank"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:24
+msgid "Looks like you already ran the wizard and you're up and running. If you need to start the install over, delete /classes/config.php"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:26
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:273
+msgid "Important"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:26
+msgid "Please <strong>delete</strong> or <strong>rename</strong> the install folder to prevent intrustion"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:28
+msgid "Start your installation by clicking the button below!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:29
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.connect.php:39
+msgid "Begin Install"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:34
+msgid "Navigation"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:35
+msgid "Use the buttons below to access the various areas of the log in script. To visit the protected pages you will need to be logged in at certain levels."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:47
+#: c:\wamp\www\envato\php-login-user-manage\home.php:49
+msgid "Sign up"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:48
+msgid "If you register, you will be assigned the user level 'user' meaning you can view the 3rd protected page but no others. When logged in as an admin you can change the user level of each member individually."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:58
+msgid "Use any of these credentials to login!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:64
+#: c:\wamp\www\envato\php-login-user-manage\home.php:70
+#: c:\wamp\www\envato\php-login-user-manage\home.php:76
+msgid "Log in as"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:64
+msgid "Admin"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:65
+msgid "Username: admin"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:66
+msgid "Password: admin"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:70
+msgid "Special"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:71
+msgid "Username: special"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:72
+msgid "Password: special"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:76
+msgid "User"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:77
+msgid "Username: user"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\home.php:78
+msgid "Password: user"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:8
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:97
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:113
+msgid "Account Recovery"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:14
+msgid "Username or Email Address"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:19
+msgid "loading..."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:19
+msgid "Done"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:22
+msgid "It'll be easy, I promise."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:29
+msgid "Sign in to Jigowatt"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:31
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:73
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:22
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:113
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:137
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:308
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:342
+msgid "Username"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:34
+msgid "Trouble signing in"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:39
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:26
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:139
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:314
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:348
+msgid "Password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:47
+msgid "Sign in"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:50
+msgid "Stay signed in"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\login.php:53
+msgid "New to Jigowatt? <strong>Join today!</strong>"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:9
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:17
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:13
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:39
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:10
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:18
+msgid "General"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:10
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:11
+msgid "Profile"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:19
+msgid "Current password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:37
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:115
+msgid "New password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:39
+msgid "Leave blank for no change"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:43
+msgid "New password again"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:53
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:69
+msgid "User Profile"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\my-account.php:59
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:407
+msgid "Save changes"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected.php:8
+msgid "This text is viewable only to admins <small>User level: 1</small>"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected.php:9
+msgid "You will only be able to see this content if you have an <span class=\"label label-important\">administrator</span> user level. "
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected.php:13
+msgid "Your user level does grant you permission to view this content."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected.php:17
+msgid "Why hello, special user! <small>User level: 2</small>"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected.php:18
+msgid "You will only be able to see this content if you have a <span class=\"label label-info\">special</span> user level. "
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected.php:22
+msgid "Only a regular user can see this bit! <small>User level: 3</small>"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected.php:23
+msgid "You will only be able to see this bit if you have a <span class=\"label label-info\">standard</span> user level. "
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected_2.php:8
+msgid "Hank, you've done it! <small>You are viewing a protected page! (Admin, Special Users)</small>"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected_2.php:9
+msgid "You will only be able to see this page if you are logged in to the website. Both <span class=\"label label-important\">admin</span> and <span class=\"label label-info\">special</span> users can view this page."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected_2.php:10
+msgid "Standard users will be directed to a page telling them they don't have sufficiant privilages to view this page."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected_2.php:13
+#: c:\wamp\www\envato\php-login-user-manage\protected_3.php:12
+msgid "If you are testing the demo you might want to go"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected_2.php:13
+#: c:\wamp\www\envato\php-login-user-manage\protected_3.php:12
+msgid "to home and try out another page?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected_3.php:8
+msgid "Hank, you've done it! <small>You are viewing a protected page! (Any registered user)</small>"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\protected_3.php:9
+msgid "You will only be able to see this page if you are logged in to the website. <span class=\"label label-important\">admin</span> , <span class=\"label label-info\">special</span> and <span class=\"label label-info\">standard</span> users can view this page."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:10
+msgid "Full name"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:15
+msgid "Choose your username"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:20
+msgid "Create a password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:25
+msgid "Confirm your password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:35
+msgid "Are you human? 4 + 5 ="
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:40
+msgid "Create my account"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:44
+msgid "Create a new account"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:45
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris cursus rhoncus tristique. Mauris ornare ipsum a leo molestie id porttitor justo bibendum. Pellentesque magna augue, sollicitudin ut ornare pretium, mattis imperdiet augue. Morbi semper sapien sit amet velit interdum eu commodo erat fringilla. Nulla et ipsum orci, ac varius nulla. Nam vehicula, mi quis euismod consectetur, magna dui porttitor sem, vel venenatis felis nunc eu diam. Integer vitae est at nunc varius viverra sit amet at magna. Vestibulum mi diam, pharetra id malesuada ac, venenatis nec turpis. Vestibulum metus nisl, pharetra non laoreet eu, laoreet a eros. Suspendisse ut arcu in mauris dapibus sodales. Vestibulum commodo congue elit at mollis. Fusce semper auctor odio, ut pharetra justo faucibus blandit. Fusce in pellentesque elit. Nunc adipiscing neque eu odio tincidunt ac mollis erat porta."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:46
+msgid "Features"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\sign_up.php:47
+msgid "Cras placerat scelerisque vehicula. Fusce eu ipsum vel mi convallis dapibus. Cras ut nibh metus, quis malesuada augue. Aenean a nisi nec sem accumsan gravida in in turpis. Nulla euismod lorem non sem imperdiet vestibulum. Donec blandit aliquet turpis sed dapibus. Duis fermentum facilisis diam, sit amet ultrices neque dictum eget."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:8
+msgid "PHP Login Control Panel"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:13
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:83
+msgid "Users"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:15
+msgid "View users"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:16
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:62
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:89
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:21
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:252
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:254
+msgid "Add user"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:20
+#: c:\wamp\www\envato\php-login-user-manage\install\header.php:82
+msgid "Levels"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:22
+msgid "View levels"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:23
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:127
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:144
+msgid "Create level"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:38
+msgid "Control users"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:43
+msgid "User search"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:85
+msgid "Note"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:85
+msgid "A random password will be generated and emailed to the user"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:103
+msgid "Modify levels"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:108
+msgid "Level search"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:131
+#: c:\wamp\www\envato\php-login-user-manage\admin\levels.php:22
+msgid "Level name"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\index.php:137
+#: c:\wamp\www\envato\php-login-user-manage\admin\levels.php:29
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_level.php:58
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:78
+msgid "Auth level"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\levels.php:36
+msgid "Disable level? Type \"disable\" and tick the checkbox"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\levels.php:54
+msgid "Users in level:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:7
+msgid "PHP Login Settings"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:14
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:88
+msgid "Denied messages"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:16
+msgid "Emails"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:18
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:127
+msgid "Welcome"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:19
+msgid "Activate"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:20
+msgid "Forgot"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:24
+msgid "Profiles"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:25
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:354
+msgid "Update"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:25
+msgid "new"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:41
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:331
+msgid "Admin email"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:44
+msgid "This email will be used to send all emails"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:48
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:324
+msgid "Site address"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:51
+msgid "This path should be set to where activate.php is located (must end with a trailing slash)"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:55
+msgid "Default session"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:58
+msgid "Default time in minutes a user can be logged in"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:59
+msgid "Enter 0 to log the user out when they close their browser"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:63
+msgid "Password encryption"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:67
+msgid "Force user to update password if not using selected encryption method"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:90
+msgid "Logged in"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:94
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:107
+msgid "Display message"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:99
+msgid "This controls the message a <strong>signed in</strong> user sees when accessing a protected page"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:103
+msgid "Logged out"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:112
+msgid "Show this error after a user is redirected to the login page (user is <strong>logged out</strong>)"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:125
+msgid "Welcome email"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:135
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:166
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:184
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:214
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:232
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:262
+msgid "Message body"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:136
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:167
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:185
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:215
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:233
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:263
+msgid "Shortcodes:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:137
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:168
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:186
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:216
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:234
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:264
+msgid "Site address:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:138
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:169
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:187
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:217
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:235
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:265
+msgid "Full name:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:139
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:170
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:188
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:218
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:236
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:266
+msgid "Username:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:140
+msgid "Email:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:141
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:189
+msgid "Activation link:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:143
+msgid "The email a user receives after signing up"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:156
+msgid "Activation emails"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:158
+msgid "Successfully activated"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:172
+msgid "The email a user receives after activating their account"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:176
+msgid "Resend activation link"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:191
+msgid "The email a user receives when requesting an activation link"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:204
+msgid "Account recovery emails"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:206
+msgid "Successfully recovered"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:220
+msgid "The email a user receives after successfully resetting their password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:224
+msgid "Recover account"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:237
+msgid "Reset link:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:239
+msgid "The email a user receives when requesting their username / password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:267
+msgid "Password:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:269
+msgid "When the admin creates a new user through the admin panel, the user will receive this email"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:270
+msgid "Note:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:270
+msgid "The password is randomly generated and should be included in the email"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:284
+msgid "Confirm delete"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:287
+msgid "You are about to delete a profile field, are you sure you want to do this?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:290
+msgid "Delete"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:298
+msgid "User profiles"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:301
+msgid "Profile Control"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:305
+msgid "Make all profiles public"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:309
+msgid "Display user's email"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:313
+msgid "Display user's full name"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:315
+msgid "Above controls coming soon in a future release!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:320
+msgid "Access logs"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:324
+msgid "Enable logging"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:328
+msgid "Viewable to admin only"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:330
+msgid "Log a timestamp + IP address for when a user signs in"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:338
+msgid "Input type"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:339
+msgid "Label"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:357
+msgid "Updates disabled"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:358
+msgid "Two thing may have happened:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:360
+msgid "Update checking is disabled"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:361
+msgid "Could not connect to server to fetch latest update details. Please make sure the PHP setting `allow_url_fopen` is enabled."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:365
+msgid "Update available!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:366
+msgid "There's a new update available! Please visit your CodeCanyon profile to download the new version."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:368
+msgid "You're up to date!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:369
+msgid "There are no new updates available. When a new update is released this message will change accordingly."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:374
+msgid "Check for updates"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:378
+msgid "Enable to automatically check for updates each time you load this page"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:380
+msgid "Disabling this may improve speed on the Settings page"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:384
+msgid "Current version"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:390
+msgid "Latest version"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:396
+msgid "Latest changelog"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:407
+msgid "saving..."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\settings.php:407
+msgid "Changes saved"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:5
+msgid "User Control:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:32
+msgid "Password again"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:44
+msgid "User levels"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:53
+msgid "Restrict user?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:61
+msgid "Delete user? (Can not be undone)"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\users.php:75
+msgid "Update user"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\ajax.php:17
+msgid "No suggestions"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\ajax.php:21
+msgid "Suggestions"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_level.php:43
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:69
+msgid "You must enter a level name."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_level.php:45
+msgid "Auth level has to be a number."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_level.php:58
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:78
+msgid "already exists"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_level.php:68
+msgid "Successfully added level"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_level.php:68
+msgid "to the database."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_user.php:48
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:78
+msgid "You must enter a name."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_user.php:50
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.login.php:67
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:56
+msgid "You must enter a username."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_user.php:52
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:87
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.settings.php:37
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:81
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:73
+msgid "You have entered an invalid e-mail address, try again."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_user.php:58
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:70
+msgid "That email address has already been taken."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_user.php:63
+msgid "Sorry, username already taken."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_user.php:96
+msgid "Successfully added user"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.add_user.php:96
+msgid "to the database. Credentials sent to user."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:65
+msgid "You can not edit this level."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:71
+msgid "You must enter an auth level."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:91
+msgid "User level"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:91
+msgid "has been updated disabled"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:99
+msgid "Information updated for user level"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:114
+msgid "Please be more specific in your search, at least 3 characters."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:118
+msgid "Top 10 Search Results"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:119
+msgid "You have searched for"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:119
+msgid "found"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:119
+msgid "results that match this criteria"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:122
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:66
+msgid "User Level"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:122
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:66
+msgid "Authority Level"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:122
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:66
+msgid "Active Users"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:122
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:66
+msgid "Status"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:142
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:86
+msgid "Active"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_level.php:142
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:86
+msgid "Disabled"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:12
+msgid "No user selected!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:38
+msgid "No such user!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:85
+msgid "You must enter name."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:89
+msgid "No user level has been selected."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:95
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:86
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:76
+msgid "Your passwords did not match."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:97
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:42
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:89
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:79
+msgid "Your password must be at least 5 characters."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:111
+#, php-format
+msgid "User removed from the database:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:120
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:111
+#, php-format
+msgid "User information (and password) updated for"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.edit_user.php:128
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:117
+#, php-format
+msgid "User information updated for"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.settings.php:34
+msgid "You must enter a default session (numeric value only)."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.settings.php:40
+msgid "Please enter your site address."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.settings.php:74
+msgid "Settings updated."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.settings.php:102
+msgid "Field name"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\class.settings.php:105
+msgid "Add field"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:22
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:113
+msgid "Real Name"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:22
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:113
+msgid "E-Mail Address"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:22
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:113
+msgid "Registered Date"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:29
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:117
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:344
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:350
+msgid "admin"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:30
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:118
+msgid "restricted"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:42
+msgid "No users found!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:130
+msgid "Sorry, there are no recently registered users."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:162
+msgid "Previous"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\admin\classes\functions.php:216
+msgid "Next"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.connect.php:36
+msgid "Installation has not yet been ran!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.connect.php:37
+msgid "Woops!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.connect.php:38
+msgid "You're missing a config.php file preventing a database connection from being made."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.connect.php:39
+msgid "Please click"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.connect.php:39
+msgid "on the home page to create a config file."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.connect.php:62
+msgid "Your database login details are incorrect, Hank."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.connect.php:66
+msgid "Your database name is incorrect, Hank."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:40
+msgid "Your passwords did not match, try again."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:59
+msgid "Verification failed."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:96
+msgid "Successfully reset your password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:98
+msgid "If you need any further assistance please contact the website administrator:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:121
+msgid "Confirm password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:128
+msgid "Reset Password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:144
+msgid "Please enter your username or email address."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:186
+msgid "We've emailed you password reset instructions. Check your email."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.forgot.php:189
+msgid "Hank, I searched for you high and low but couldn't find you :("
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:62
+msgid "Could not run query: "
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:239
+msgid "Access Logs"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:243
+msgid "Last Accessed"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:244
+msgid "Location"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:251
+msgid "at"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:256
+msgid "Has not logged in yet"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:272
+msgid "You're already logged in."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.generic.php:274
+#, php-format
+msgid "Go <a href=\"%s\">back</a> to the page you were viewing before this."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.login.php:55
+msgid "Invalid login attempt"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.login.php:69
+msgid "What's your password?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.login.php:79
+msgid "Incorrect username or password."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:15
+msgid "Alert"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:15
+msgid "The administrator has requested all users to update their passwords."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:65
+msgid "You must enter the current password to make changes."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.myaccount.php:73
+msgid "You entered the wrong current password."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:43
+msgid "Invalid signup attempt"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:62
+msgid "Your username must be under 11 characters"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:82
+msgid "Are you not human?"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:87
+msgid "Attention!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:129
+msgid "You are now logged in. Thank you for registering!"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:134
+msgid "Your login details"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:138
+msgid "E-Mail"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:144
+msgid "Check your email to activate your account."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\classes\class.signup.php:145
+#, php-format
+msgid "Or go to the <a href=\"%s\"> homepage</a>"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:53
+msgid "Could not run query:"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:66
+msgid "Password must be at least 5 characters."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:71
+msgid "Fill out all the details please"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:85
+msgid "Your Database details are incorrect, Hank."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:100
+msgid "Sorry, database name doesn't exist ! You must first create a database."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:245
+msgid "Could not create /classes/config.php, please confirm you have permission to create the file."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:272
+msgid "Hooray ! Installation is all done :)"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:273
+msgid "Please delete or rename the install folder to prevent intrustion"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:277
+msgid "Check out your"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:277
+msgid "home"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:277
+msgid "page."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:283
+msgid "Installation is not complete."
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:294
+msgid "Database Info"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:296
+msgid "Host"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:302
+msgid "Database name"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:304
+msgid "database_name"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:310
+msgid "db username"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:316
+msgid "db password"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:322
+msgid "Site Settings"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:327
+msgid "This path should be set to where activate.php is located"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:334
+msgid "This email address will be visible to your users"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:340
+msgid "Admin Account"
+msgstr ""
+
+#: c:\wamp\www\envato\php-login-user-manage\install\index.php:356
+msgid "Install"
+msgstr ""
+
