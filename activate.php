@@ -69,7 +69,7 @@ class Activate extends Generic {
 				 <p>" . sprintf(_('Go to the <a href="%s"> homepage</a>'), 'index.php') . "</p>";
 
 			$shortcodes = array(
-				'site_address'	=>	SITE_PATH,
+				'site_address'		=>	SITE_PATH,
 				'full_name'		=>	$row['name'],
 				'username'		=>	$username
 			);

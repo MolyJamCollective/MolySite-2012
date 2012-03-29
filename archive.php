@@ -178,16 +178,22 @@
 
     include_once('./templates/header.php');
 ?>
-	<div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;display:none;">
-		Loading Thumbnail...
-	</div>
-	<form action="?" method="POST">
-		<input type="text" name="searchString" style="position:relative;top:5px;" /> <button type="submit" class="btn btn-primary">Search</button>
-	</form>
-	<?php if( getSearchString() != "" ): ?>
-		<h2>Searching for <i><?php echo getSearchString(); ?></i></h2>
-	<?php endif; ?>
-    <table class="table table-striped table-bordered table-condensed">
+<div class="row-fluid">
+    <div class="span12">
+        <div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;display:none;">
+            Loading Thumbnail...
+        </div>
+        <form action="?" method="POST">
+            <input type="text" name="searchString" style="position:relative;top:5px;" /> <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <?php if( getSearchString() != "" ): ?>
+            <h2>Searching for <i><?php echo getSearchString(); ?></i></h2>
+        <?php endif; ?>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        <table class="table table-striped table-bordered table-condensed">
         <thead>
             <tr>
                 <th width="50"><a href="<?php echo getSortLinkString( "gameId" )?>"># <?php echo getSortImage( "gameId" ); ?></a></th>
@@ -198,11 +204,7 @@
             </tr>
         </thead>
         <tbody>
-<?php
-    foreach ($GameList as $Game)
-    {
-        $Popularity = ($Game->PageViews * 0.01) + ($Game->Downloads * 1);
-?>
+        <?php foreach ($GameList as $Game) { $Popularity = ($Game->PageViews * 0.01) + ($Game->Downloads * 1); ?>
             <tr class="gameRow" id="<?php echo $Game->gameId ?>">
                 <td><?php echo $Game->gameId ?></td>
                 <td><a href="display.php?GameObjectID=<?php echo $Game->gameId ?>"><?php echo $Game->GameName ?></a></td>
@@ -210,11 +212,13 @@
                 <td><?php echo $Popularity ?></td>
                 <td><?php echo $Game->CreatedDateTime ?></td>
             </tr>
-<?php
-    }
-?>
+        <?php } ?>
         </tbody>
-    </table>
+        </table>
+    </div>
+</div>
+
+    
 
 <?php
     include_once('./templates/footer.php');

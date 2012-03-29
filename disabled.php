@@ -1,8 +1,8 @@
 <?php
     include_once('./templates/globals.php');
     
-    $pageTitle = 'Page Title';
-    $pageHeader = 'Page Header';
+    $pageTitle = 'MolyJam - Account Disabled';
+    $pageHeader = 'Oops, Access Denied';
     $pageStyles = array();
     $activeTab = '0';
 
@@ -10,46 +10,57 @@
     $PageScriptsRaw = '';
 
     include_once('./templates/header.php');
-	include_once(dirname(__FILE__) . '/classes/class.generic.php');
+    include_once(dirname(__FILE__) . '/classes/class.generic.php');
 
-	// Attention ! Please read the following.
-	// It is important you do not edit pieces of code that aren't tagged as a configurable options identified by the following:
+    // Attention ! Please read the following.
+    // It is important you do not edit pieces of code that aren't tagged as a configurable options identified by the following:
 
-	// Configuration option.
+    // Configuration option.
 
-	// Each option that is easily editable has a modified example given.
+    // Each option that is easily editable has a modified example given.
 
-	$error = '';
+    $error = '';
 
-	if(isset($_POST['contactus'])) {
-
+    if(isset($_POST['contactus']))
+    {
 	$name     = $_POST['name'];
 	$email    = $_POST['email'];
 	$subject  = $_POST['subject'];
 	$comments = $_POST['comments'];
 	$verify   = strtolower($_POST['verify']);
 
-
 	// Configuration option.
 	// You may change the error messages below.
 	// e.g. $error = 'Attention! This is a customised error message!';
 
-	if(empty($name)) {
-		$error = '<div class="alert alert-error">'._('You must enter your name.').'</div>';
-	} else if(empty($email)) {
-		$error = '<div class="alert alert-error">'._('Please enter a valid email address.').'</div>';
-	} else if(!$generic->isEmail($email)) {
-		$error = '<div class="alert alert-error">'._('You have enter an invalid e-mail address, try again.').'</div>';
+	if(empty($name))
+	{
+	    $error = '<div class="alert alert-error">'._('You must enter your name.').'</div>';
+	}
+	else if(empty($email))
+	{
+	    $error = '<div class="alert alert-error">'._('Please enter a valid email address.').'</div>';
+	}
+	else if(!$generic->isEmail($email))
+	{
+	    $error = '<div class="alert alert-error">'._('You have enter an invalid e-mail address, try again.').'</div>';
 	}
 
-	if(empty($subject)) {
-		$error = '<div class="alert alert-error">'._('Please enter a subject.').'</div>';
-	} else if(empty($comments)) {
-		$error = '<div class="alert alert-error">'._('Please enter your message.').'</div>';
-	} else if(empty($verify)) {
-		$error = '<div class="alert alert-error">'._('Please enter the verification code.').'</div>';
-	} else if(trim($verify) != 'blue') {
-		$error = '<div class="alert alert-error">'._('The verification code you entered is incorrect.').'</div>';
+	if(empty($subject))
+	{
+	    $error = '<div class="alert alert-error">'._('Please enter a subject.').'</div>';
+	}
+	else if(empty($comments))
+	{
+	    $error = '<div class="alert alert-error">'._('Please enter your message.').'</div>';
+	}
+	else if(empty($verify))
+	{
+	    $error = '<div class="alert alert-error">'._('Please enter the verification code.').'</div>';
+	}
+	else if(trim($verify) != 'blue')
+	{
+	    $error = '<div class="alert alert-error">'._('The verification code you entered is incorrect.').'</div>';
 	}
 
 	if(empty($error)) { if(get_magic_quotes_gpc()) { $comments = stripslashes($comments); }
@@ -60,14 +71,12 @@
 
 	 if(!isset($address)) $address = "example@codecanyon.net";
 
-
 	 // Configuration option.
 	 // i.e. The standard subject will appear as, "You've been contacted by John Doe."
 
 	 // Example, $e_subject = '$name . ' has contacted you via Your Website.';
 
 	 $e_subject = ''._('You\'ve been contacted by').' ' . $name . '.';
-
 
 	 // Configuration option.
 	 // You can change this if you feel that you need to.
@@ -87,66 +96,62 @@
 	 echo "<div class='alert alert-success'>"._('Email Sent Successfully')."</div>";
 	 echo "<p>"._('Thank you')." <strong>$name</strong>," ._('your message has been submitted to us.')."</p>";
 
-	}
-	}
+	} 
+    }
 
-	if(!isset($_POST['contactus']) || !empty($error)) // Do not edit.
-	{
-
+    if(!isset($_POST['contactus']) || !empty($error)) // Do not edit.
+    {
 	echo $error;
 ?>
-	<h1><?php _e('Oops, Access Denied'); ?></h1>
+<div class="row-fluid">
+    <div class="span12">
 	<h4><?php _e('Sorry, your username or user group has been disabled!'); ?></h4>
 	<p><?php  _e('We have detected that your username or user group has been disabled; so you cannot view internal pages.'); ?></p>
 	<p><?php  _e('Fill out this form if you feel this is in error'); ?></p>
-
-		<br/>
-		<fieldset>
-
-		<form method="post" action="disabled.php">
-
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+	<br/>
+	<fieldset>
+	    <form method="post" action="disabled.php">
 		<div class="clearfix">
-		<label for="name"><?php _e('Name'); ?></label>
-			<div class="input">
-				<input id="name" name="name" size="30" type="text" value="<?php if(isset($name)) echo $name;?>"/>
-			</div>
+		    <label for="name"><?php _e('Name'); ?></label>
+		    <div class="input">
+			<input id="name" name="name" size="30" type="text" value="<?php if(isset($name)) echo $name;?>"/>
+		    </div>
 		</div><!-- /clearfix -->
-
 		<div class="clearfix">
-		<label for="email"><?php _e('Email'); ?></label>
-			<div class="input">
-				<input id="email" name="email" size="30" type="text" value="<?php if(isset($email)) echo $email;?>"/>
-			</div>
+		    <label for="email"><?php _e('Email'); ?></label>
+		    <div class="input">
+			<input id="email" name="email" size="30" type="text" value="<?php if(isset($email)) echo $email;?>"/>
+		    </div>
 		</div><!-- /clearfix -->
-
 		<div class="clearfix">
-		<label for="subject"><?php _e('Subject'); ?></label>
-			<div class="input">
-			 <select name="subject" id="subject">
-			  <option selected="selected" value="User / Group Disabled"><?php _e('Disabled Message'); ?></option>
-			  <option value="a Bug fix"><?php _e('Report a bug'); ?></option>
-			 </select>
-			</div>
+		    <label for="subject"><?php _e('Subject'); ?></label>
+		    <div class="input">
+			<select name="subject" id="subject">
+			    <option selected="selected" value="User / Group Disabled"><?php _e('Disabled Message'); ?></option>
+			    <option value="a Bug fix"><?php _e('Report a bug'); ?></option>
+			</select>
+		    </div>
 		</div><!-- /clearfix -->
-
 		<div class="clearfix">
-		<label for="comments" accesskey="C"><?php _e('Your comments'); ?></label>
-			<div class="input">
-				<textarea name="comments" cols="20" rows="3" class="xxlarge" /><?php if(isset($comments)) echo $comments; ?></textarea>
-			</div>
+		    <label for="comments" accesskey="C"><?php _e('Your comments'); ?></label>
+		    <div class="input">
+			<textarea name="comments" cols="20" rows="3" class="xxlarge" /><?php if(isset($comments)) echo $comments; ?></textarea>
+		    </div>
 		</div><!-- /clearfix -->
-
 		<div class="clearfix">
-		<label for="verify"><?php _e('What colour is the sky?'); ?></label>
-			<div class="input">
-				<input id="verify" name="verify" size="4" type="text" value="<?php if(isset($verify)) echo $verify;?>"/>
-			</div>
+		    <label for="verify"><?php _e('What colour is the sky?'); ?></label>
+		    <div class="input">
+			<input id="verify" name="verify" size="4" type="text" value="<?php if(isset($verify)) echo $verify;?>"/>
+		    </div>
 		</div><!-- /clearfix -->
-
 		<input name="contactus" type="submit" class="btn btn-primary" id="contactus" value="<?php _e('Submit'); ?>" />
-
-		</form>
-
-		</fieldset>
-
-<?php include_once('./templates/footer.php'); ?>
+	    </form>
+	</fieldset>
+    </div>
+</div>
+	
+<?php } include_once('./templates/footer.php'); ?>

@@ -52,73 +52,68 @@
         }
       }
       </script>
-      <div class="row">
-	<div class="span10 offset1">
+    
+<div class="row-fluid">
+    <div class="span10 offset1">
     <?php if( !empty( $_GET[ "EditID" ] ) ): ?>
-  	<form id="GameSubmission" class="form-horizontal" action="./upload.php?EditID=<?php echo $_GET[ "EditID" ]; ?>" method="post" enctype="multipart/form-data">
+	<form id="GameSubmission" class="form-horizontal" action="./upload.php?EditID=<?php echo $_GET[ "EditID" ]; ?>" method="post" enctype="multipart/form-data">
     <?php else: ?>
-      <form id="GameSubmission" class="form-horizontal" action="./upload.php" method="post" enctype="multipart/form-data">
+	<form id="GameSubmission" class="form-horizontal" action="./upload.php" method="post" enctype="multipart/form-data">
     <?php endif; ?>
         <fieldset>
-
-          <div class="control-group">
-            <label class="control-label" for="GameName">Name*</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge validate[required]" id="GameName" name="GameName" maxlength="250" value="<?php echo $Game->GameName; ?>" />
-              <p class="help-block">The Name of your Game</p>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="GamePicture">Picture</label>
-            <div class="controls">
-              <input type="file" value="" accept="image/*" class="input-xlarge validate[funcCall[checkImage]]" id="GamePicture" name="GamePicture" maxlength="250" />
-              <input type="hidden" id="GamePictureURL" name="GamePictureURL" value="">
-              <p class="help-block">Upload a picture which represents your game. Could be gameplay or title screen.
-              <?php if( !empty( $_GET[ "EditID" ] ) && $Game->GamePictureURL != "" ): ?>
-              <br />Leave this empty if you don't want to upload a new picture. Old picture will be overridden.
-              <?php endif; ?>
-              </p>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="GameTweet">Moly*eux Inspirational Tweet*</label>
-            <div class="controls">
-              <textarea class="input-xlarge validate[required]" id="GameTweet" name="GameTweet" rows="3" maxlength="250" ><?php echo $Game->GameTweet; ?></textarea>
-              <p class="help-block">Copy & Pasta that inspirational tweet here.</p>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="GameDescription">Description*</label>
-            <div class="controls">
-              <textarea class="input-xlarge validate[required]" id="GameDescription" name="GameDescription" rows="3" maxlength="500" ><?php echo $Game->GameDescription; ?></textarea>
-              <p class="help-block">Describe your game, if your game is a web-based game include a link to it here.</p>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="GameFiles">Files</label>
-            <div class="controls">
-              <input type="file" class="input-xlarge validate[funcCall[checkArchive]]" id="GameFiles" name="GameFiles" maxlength="250" />
-              <input type="hidden" id="GameFilesURL" name="GameFilesURL" value="">
-              <p class="help-block">Upload a zip the necessary files to play your game and a README.txt file explaining how to install your game.
-			  <?php if( !empty( $_GET[ "EditID" ] ) && $Game->GamePictureURL != "" ): ?>
-              <br />Leave this empty if you don't want to upload new game files. Old files will be overridden.
-              <?php endif; ?>
-			  </p>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="GameVideoURL">Video</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge validate[optional,custom[url]]" id="GameVideoURL" name="GameVideoURL" maxlength="250" value="<?php echo $Game->GameVideoURL; ?>" />
-              <p class="help-block">Link to a youtube video displaying gameplay. Suggested YouTube naming format: "MolyJam 2012 - GameName - Location"</p>
-            </div>
-          </div>
-          
+	    <div class="control-group">
+		<label class="control-label" for="GameName">Name*</label>
+		    <div class="controls">
+			<input type="text" class="input-xlarge validate[required]" id="GameName" name="GameName" maxlength="250" value="<?php echo $Game->GameName; ?>" />
+			<p class="help-block">The Name of your Game</p>
+		    </div>
+		</div>
+	    <div class="control-group">
+		<label class="control-label" for="GamePicture">Picture</label>
+		<div class="controls">
+		    <input type="file" value="" accept="image/*" class="input-xlarge validate[funcCall[checkImage]]" id="GamePicture" name="GamePicture" maxlength="250" />
+		    <input type="hidden" id="GamePictureURL" name="GamePictureURL" value="">
+		    <p class="help-block">Upload a picture which represents your game. Could be gameplay or title screen.
+		    <?php if( !empty( $_GET[ "EditID" ] ) && $Game->GamePictureURL != "" ): ?>
+			<br />Leave this empty if you don't want to upload a new picture. Old picture will be overridden.
+		    <?php endif; ?>
+		    </p>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<label class="control-label" for="GameTweet">Moly*eux Inspirational Tweet*</label>
+		<div class="controls">
+		    <textarea class="input-xlarge validate[required]" id="GameTweet" name="GameTweet" rows="3" maxlength="250" ><?php echo $Game->GameTweet; ?></textarea>
+		    <p class="help-block">Copy & Pasta that inspirational tweet here.</p>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<label class="control-label" for="GameDescription">Description*</label>
+		<div class="controls">
+		    <textarea class="input-xlarge validate[required]" id="GameDescription" name="GameDescription" rows="3" maxlength="500" ><?php echo $Game->GameDescription; ?></textarea>
+		    <p class="help-block">Describe your game, if your game is a web-based game include a link to it here.</p>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<label class="control-label" for="GameFiles">Files</label>
+		<div class="controls">
+		    <input type="file" class="input-xlarge validate[funcCall[checkArchive]]" id="GameFiles" name="GameFiles" maxlength="250" />
+		    <input type="hidden" id="GameFilesURL" name="GameFilesURL" value="">
+		    <p class="help-block">Upload a zip the necessary files to play your game and a README.txt file explaining how to install your game.
+		    <?php if( !empty( $_GET[ "EditID" ] ) && $Game->GamePictureURL != "" ): ?>
+			<br />Leave this empty if you don't want to upload new game files. Old files will be overridden.
+		    <?php endif; ?>
+		    </p>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<label class="control-label" for="GameVideoURL">Video</label>
+		<div class="controls">
+		    <input type="text" class="input-xlarge validate[optional,custom[url]]" id="GameVideoURL" name="GameVideoURL" maxlength="250" value="<?php echo $Game->GameVideoURL; ?>" />
+		    <p class="help-block">Link to a youtube video displaying gameplay. Suggested YouTube naming format: "MolyJam 2012 - GameName - Location"</p>
+		</div>
+	    </div>
+          <!-- Formatting Stopped Here -->
           <div class="control-group">
             <label class="control-label" for="MolyJamLocation">MolyJam Location*</label>
             <div class="controls">

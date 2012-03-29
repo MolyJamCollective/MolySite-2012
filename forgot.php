@@ -24,6 +24,7 @@
 ?>
 
 $forgot->process();
+
 <?php
     include_once('./templates/footer.php');
 ?>

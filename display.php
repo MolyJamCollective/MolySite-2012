@@ -35,78 +35,77 @@
     Database::InsertOrUpdate($query, $connection);
   		
 ?>
-	<p><a href="archive.php">Back to Games</a></p>
-    <section id="Game">
-          <div class="thumbnails">
-            <div class="span5">
-              <h3>Description</h3>
-              <p><?php echo $Game->GameDescription; ?></p>
-              
-              <br />
-              <br />
-              <br />
-              
-              <h3>Moly*eux Inspirational Tweet</h3>
-              <div class="well">
-                <p>"<?php echo $Game->GameTweet; ?>"</p>
-              </div>
-              
-              <br />
-              
-              <div align="center">
-                <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == ""){echo "disabled";}?>">Gameplay Video</a> <a href="display.php?GameObjectID=<?php echo $_GET[ "GameObjectID" ]; ?>&download=true" class="btn btn-large btn-primary <?php if($Game->GameFileURL == ""){echo "disabled";}?>">Download Game</a>
-              </div>
-            </div>
+<div class="row-fluid">
+      <div class="span1">&nbsp;</div>
+      <div class="span10">
+            <p class="pull-right"><a href="archive.php">Back to Games</a></p>
+      </div>
+</div>
+<div class="row-fluid">
+      <div class="span1">&nbsp;</div>
+      <div class="span10">
+            <section id="Game">
+                  <div class="thumbnails">
+                        <div class="span5">
+                              <h3>Description</h3>
+                              <p><?php echo $Game->GameDescription; ?></p>
+                              
+                              <br />
+                              <br />
+                              <br />
+                              
+                              <h3>Moly*eux Inspirational Tweet</h3>
+                              <div class="well">
+                                    <p>"<?php echo $Game->GameTweet; ?>"</p>
+                              </div>
+                              
+                              <br />
+                              
+                              <div align="center">
+                                    <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == ""){echo "disabled";}?>">Gameplay Video</a> <a href="display.php?GameObjectID=<?php echo $_GET[ "GameObjectID" ]; ?>&download=true" class="btn btn-large btn-primary <?php if($Game->GameFileURL == ""){echo "disabled";}?>">Download Game</a>
+                              </div>
+                        </div>
+                        <div class="span5 offset1">
+                              <?php if($Game->GamePictureURL != "")echo '<a href="' . $Game->GamePictureURL . '" class="thumbnail"><img src="' . $Game->GamePictureURL . '" alt="Game Photo"></a> '; ?>
+                        </div>
+                        
+                        <br />
+                        <br />
+                  </div>
+                  
+                  <br />
+                  <br />
             
-            <div class="span5 offset1">
-             <?php if($Game->GamePictureURL != "")
-                echo '
-              <a href="' . $Game->GamePictureURL . '" class="thumbnail">
-                <img src="' . $Game->GamePictureURL . '" alt="Game Photo">
-              </a> '; ?>
-            </div>
-            
-            <br />
-            <br />
-            
-          </div>
-          
-          <br />
-          <br />
-          
-          <div class="thumbnails">
-            
-            <div class="span5">
-              <h3>Team Members</h3>
-              <p><?php echo $Game->TeamMembers; ?></p>
-  
-              <br />
-              <br />
-              
-              <div class="footer">
-                <p><strong>Jam Location:</strong> <?php echo $Game->MolyJamLocation; ?></p>
-                <p><strong>Game License:</strong> <?php echo $Game->GameLicense; ?></p>
-              </div>
-            </div>
-            
-            <div class="span5 offset1">
-            <?php if($Game->TeamPictureURL != "")
-                echo '
-              <a href="' . $Game->TeamPictureURL . '" class="thumbnail">
-                <img src="' . $Game->TeamPictureURL . '" alt="Team Photo">
-              </a> '; ?>
-            </div>
-          </div>
-    </section>
-    <p><a href="archive.php">Back to Games</a></p>
-<?php
-  }
-  else
-  {
-?>
-      <h2>Game Not Found</h2>
-<?php
-  }
-
-  include_once('./templates/footer.php');
-?>
+                  <div class="thumbnails">
+                        <div class="span5">
+                              <h3>Team Members</h3>
+                              <p><?php echo $Game->TeamMembers; ?></p>
+        
+                              <br />
+                              <br />
+                              <div class="footer">
+                                    <p><strong>Jam Location:</strong> <?php echo $Game->MolyJamLocation; ?></p>
+                                    <p><strong>Game License:</strong> <?php echo $Game->GameLicense; ?></p>
+                              </div>
+                        </div>
+                        <div class="span5 offset1">
+                              <?php if($Game->TeamPictureURL != "") echo '<a href="' . $Game->TeamPictureURL . '" class="thumbnail"><img src="' . $Game->TeamPictureURL . '" alt="Team Photo"></a> '; ?>
+                        </div>
+                  </div>
+            </section>
+      </div>
+</div>
+<div class="row-fluid">
+      <div class="span1">&nbsp;</div>
+      <div class="span10">
+            <p class="pull-right"><a href="archive.php">Back to Games</a></p>
+      </div>
+</div>
+<?php } else { ?>
+      <div class="row-fluid">
+      <div class="span1">&nbsp;</div>
+      <div class="span10">
+            <center><h1>Game Not Found...</h1></center>
+      </div>
+</div>
+<?php } include_once('./templates/footer.php'); ?>
