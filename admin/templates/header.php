@@ -88,4 +88,4 @@
     <div class="page-header">
         <h1><?php echo $pageHeader; ?></h1>
     </div>
-    <?php include_once('../classes/class.check.php'); protect("1"); include_once(dirname(__FILE__) . '\..\classes\functions.php'); ?>
+    <?php include_once('../classes/class.check.php'); protect("1"); include_once(dirname(__FILE__) . '/../classes/functions.php'); ?>
