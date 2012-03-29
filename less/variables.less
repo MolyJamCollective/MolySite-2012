@@ -14,13 +14,13 @@ img.auto-size
 
 // Grays
 // -------------------------
-@black:                 #000;
-@grayDarker:            #222;
-@grayDark:              #333;
-@gray:                  #555;
-@grayLight:             #999;
-@grayLighter:           #eee;
-@white:                 #fff;
+@black:                 #111111;
+@grayDarker:            #333333;
+@grayDark:              #444444;
+@gray:                  #555555;
+@grayLight:             #999999;
+@grayLighter:           #dddddd;
+@white:                 #eeeeee;
 
 
 // Accent colors
@@ -62,9 +62,9 @@ img.auto-size
 // Tables
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
-@tableBackgroundAccent:             @grayDarker; // for striping
-@tableBackgroundHover:              @grayDark; // for hover
-@tableBorder:                       #ddd; // table and cell border
+@tableBackgroundAccent:             @grayDark; // for striping
+@tableBackgroundHover:              @gray; // for hover
+@tableBorder:                       @grayDarker; // table and cell border
 
 
 // Buttons
@@ -94,8 +94,8 @@ img.auto-size
 
 // Forms
 // -------------------------
-@inputBackground:               @white;
-@inputBorder:                   #ccc;
+@inputBackground:               @gray;
+@inputBorder:                   lighten(@inputBackground, 15%);
 @inputDisabledBackground:       @grayLighter;
 @formBackground:                @gray;
 @formFontColor:                 @textColor;
@@ -147,11 +147,11 @@ img.auto-size
 // Navbar
 // -------------------------
 @navbarHeight:                    40px;
-@navbarBackground:                @grayDark;
-@navbarBackgroundHighlight:       @gray;
+@navbarBackground:                @grayDarker;
+@navbarBackgroundHighlight:       @grayDark;
 
-@navbarText:                      @grayLight;
-@navbarLinkColor:                 @grayLight;
+@navbarText:                      @grayLighter;
+@navbarLinkColor:                 @grayLighter;
 @navbarLinkColorHover:            @white;
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       transparent;
