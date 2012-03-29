@@ -15,8 +15,8 @@
 <?php 	include_once('templates/header.php'); ?>
 <?php endif; ?>
 
-<?php include_once('classes/class.add_level.php'); ?>
-<?php include_once('classes/class.add_user.php'); ?>
+<?php include_once('./classes/class.add_level.php'); ?>
+<?php include_once('./classes/class.add_user.php'); ?>
 
 <div class="tabbable tabs-left">
     <ul class="nav nav-tabs span2">

@@ -9,8 +9,9 @@
 	`city` VARCHAR(255) NOT NULL,
 	`region` VARCHAR(255) NOT NULL,
 	`country` VARCHAR(255) NOT NULL,
-	`eventlink` VARCHAR(255) NOT NULL,
-	`eventemail` VARCHAR(255) NOT NULL, PRIMARY KEY  (`locationid`)) ENGINE=MyISAM;
+	`eventurl` VARCHAR(255) NOT NULL,
+	`eventemail` VARCHAR(255) NOT NULL,
+	`eventid` INT NOT NULL, PRIMARY KEY  (`locationid`)) ENGINE=MyISAM;
 */
 
 /**
@@ -18,7 +19,7 @@
 * @author Php Object Generator
 * @version POG 3.0f / PHP5
 * @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php5&wrapper=pog&objectName=Location&attributeList=array+%28%0A++0+%3D%3E+%27Title%27%2C%0A++1+%3D%3E+%27Address%27%2C%0A++2+%3D%3E+%27City%27%2C%0A++3+%3D%3E+%27Region%27%2C%0A++4+%3D%3E+%27Country%27%2C%0A++5+%3D%3E+%27EventLink%27%2C%0A++6+%3D%3E+%27EventEmail%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++1+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++2+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++3+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++4+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++5+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++6+%3D%3E+%27VARCHAR%28255%29%27%2C%0A%29
+* @link http://www.phpobjectgenerator.com/?language=php5&wrapper=pog&objectName=Location&attributeList=array+%28%0A++0+%3D%3E+%27Title%27%2C%0A++1+%3D%3E+%27Address%27%2C%0A++2+%3D%3E+%27City%27%2C%0A++3+%3D%3E+%27Region%27%2C%0A++4+%3D%3E+%27Country%27%2C%0A++5+%3D%3E+%27EventURL%27%2C%0A++6+%3D%3E+%27EventEmail%27%2C%0A++7+%3D%3E+%27EventID%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++1+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++2+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++3+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++4+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++5+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++6+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++7+%3D%3E+%27INT%27%2C%0A%29
 */
 include_once('class.pog_base.php');
 class Location extends POG_Base
@@ -53,12 +54,17 @@ class Location extends POG_Base
 	/**
 	 * @var VARCHAR(255)
 	 */
-	public $EventLink;
+	public $EventURL;
 	
 	/**
 	 * @var VARCHAR(255)
 	 */
 	public $EventEmail;
+	
+	/**
+	 * @var INT
+	 */
+	public $EventID;
 	
 	public $pog_attribute_type = array(
 		"locationId" => array('db_attributes' => array("NUMERIC", "INT")),
@@ -67,8 +73,9 @@ class Location extends POG_Base
 		"City" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"Region" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"Country" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
-		"EventLink" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
+		"EventURL" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"EventEmail" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
+		"EventID" => array('db_attributes' => array("NUMERIC", "INT")),
 		);
 	public $pog_query;
 	
@@ -89,15 +96,16 @@ class Location extends POG_Base
 		}
 	}
 	
-	function Location($Title='', $Address='', $City='', $Region='', $Country='', $EventLink='', $EventEmail='')
+	function Location($Title='', $Address='', $City='', $Region='', $Country='', $EventURL='', $EventEmail='', $EventID='')
 	{
 		$this->Title = $Title;
 		$this->Address = $Address;
 		$this->City = $City;
 		$this->Region = $Region;
 		$this->Country = $Country;
-		$this->EventLink = $EventLink;
+		$this->EventURL = $EventURL;
 		$this->EventEmail = $EventEmail;
+		$this->EventID = $EventID;
 	}
 	
 	
@@ -119,8 +127,9 @@ class Location extends POG_Base
 			$this->City = $this->Unescape($row['city']);
 			$this->Region = $this->Unescape($row['region']);
 			$this->Country = $this->Unescape($row['country']);
-			$this->EventLink = $this->Unescape($row['eventlink']);
+			$this->EventURL = $this->Unescape($row['eventurl']);
 			$this->EventEmail = $this->Unescape($row['eventemail']);
+			$this->EventID = $this->Unescape($row['eventid']);
 		}
 		return $this;
 	}
@@ -211,8 +220,9 @@ class Location extends POG_Base
 			$location->City = $this->Unescape($row['city']);
 			$location->Region = $this->Unescape($row['region']);
 			$location->Country = $this->Unescape($row['country']);
-			$location->EventLink = $this->Unescape($row['eventlink']);
+			$location->EventURL = $this->Unescape($row['eventurl']);
 			$location->EventEmail = $this->Unescape($row['eventemail']);
+			$location->EventID = $this->Unescape($row['eventid']);
 			$locationList[] = $location;
 		}
 		return $locationList;
@@ -236,19 +246,21 @@ class Location extends POG_Base
 			`city`='".$this->Escape($this->City)."', 
 			`region`='".$this->Escape($this->Region)."', 
 			`country`='".$this->Escape($this->Country)."', 
-			`eventlink`='".$this->Escape($this->EventLink)."', 
-			`eventemail`='".$this->Escape($this->EventEmail)."' where `locationid`='".$this->locationId."'";
+			`eventurl`='".$this->Escape($this->EventURL)."', 
+			`eventemail`='".$this->Escape($this->EventEmail)."', 
+			`eventid`='".$this->Escape($this->EventID)."' where `locationid`='".$this->locationId."'";
 		}
 		else
 		{
-			$this->pog_query = "insert into `location` (`title`, `address`, `city`, `region`, `country`, `eventlink`, `eventemail` ) values (
+			$this->pog_query = "insert into `location` (`title`, `address`, `city`, `region`, `country`, `eventurl`, `eventemail`, `eventid` ) values (
 			'".$this->Escape($this->Title)."', 
 			'".$this->Escape($this->Address)."', 
 			'".$this->Escape($this->City)."', 
 			'".$this->Escape($this->Region)."', 
 			'".$this->Escape($this->Country)."', 
-			'".$this->Escape($this->EventLink)."', 
-			'".$this->Escape($this->EventEmail)."' )";
+			'".$this->Escape($this->EventURL)."', 
+			'".$this->Escape($this->EventEmail)."', 
+			'".$this->Escape($this->EventID)."' )";
 		}
 		$insertId = Database::InsertOrUpdate($this->pog_query, $connection);
 		if ($this->locationId == "")
