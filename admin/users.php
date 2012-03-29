@@ -11,7 +11,7 @@
 
     include_once('./templates/header.php');
 ?>
-   <?php if(!isset($_POST['add_user']) && !isset($_POST['add_level'])) : ?>
+<?php if(!isset($_POST['add_user']) && !isset($_POST['add_level'])) : ?>
 <?php 	include_once('templates/header.php'); ?>
 <?php endif; ?>
 
