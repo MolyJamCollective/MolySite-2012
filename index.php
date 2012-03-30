@@ -10,6 +10,11 @@
     $PageScriptsRaw = '';
 
     include_once('./templates/header.php');
+    
+    include_once('./configuration.php');
+    include_once('./objects/class.database.php');
+    include_once('./objects/class.location.php');
+    include_once('./objects/class.organizer.php');
 ?>
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
@@ -44,27 +49,49 @@
     </div>
 </div>
 
+<?php
+    $Location = new Location();
+    $LocationList = $Location->GetList(array(array("locationid", ">", 0)));
+    $i = 0;
+    foreach ($LocationList as $Location)
+    {
+        
+        $Organizer = new Organizer();
+        $OrganizerList = $Organizer->GetList(array(array("locationid", "=", $Location->locationId)));
+
+        if($i % 2 == 0)
+        {
+?>
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
+    
+<?php   } ?>
+
     <div class="span3">
-        <h3><a href="#">Location #1</a></h3>
-            <dl class="dl-horizontal">
-            <dt>Person #1</dt>
-                <dd><a href="http://www.twitter.com/">@Twitter</a></dd>
+        <h3><a href="#"><?php echo $Location->Title ?></a></h3>
+        <dl class="dl-horizontal">
+
+<?php
+        foreach ($OrganizerList as $Organizer)
+        {
+?>
+            <dt><?php echo $Organizer->Name ?></dt>
+            <dd><a href="http://www.twitter.com/#!/<?php echo $Organizer->Twitter ?>">@<?php echo $Organizer->Twitter ?></a></dd>
+<?php   } ?>
             <dt></dt>
-                <dd><a href="mailto:">Email the team</a></dd>
+            <dd><a href="mailto:<?php echo $Location->EventEmail ?>"><?php echo $Location->EventEmail ?></a></dd>
         </dl>
     </div>
-    <div class="span3">
-        <h3><a href="#">Location #2</a></h3>
-            <dl class="dl-horizontal">
-            <dt>Person #1</dt>
-                <dd><a href="http://www.twitter.com/">@Twitter</a></dd>
-            <dt></dt>
-                <dd><a href="mailto:">Email the team</a></dd>
-        </dl>
-    </div>
+<?php
+        if($i % 2 == 1)
+        {
+?>
 </div>
+<?php
+        }
+    $i++;
+    }
+?>
 <?php
     include_once('./templates/footer.php');
 ?>
