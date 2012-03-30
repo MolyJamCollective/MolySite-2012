@@ -130,7 +130,7 @@ window.onload=function(){GetCount();}//call when everything has loaded
 <?php   } ?>
 
     <div class="span3">
-        <h3><a href="#"><?php echo $Location->Title ?></a></h3>
+        <h3><a href="<?php echo $Location->EventURL ?>"><?php echo $Location->Title ?></a></h3>
         <dl class="dl-horizontal">
 
 <?php
