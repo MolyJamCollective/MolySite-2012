@@ -117,6 +117,7 @@
   <a class="origin btn" id="Munich" href="http://www.twitch.tv/codesurgeon">Munich</a>
   <a class="origin btn" id="Sydney" href="http://www.justin.tv/molyjamsydney">Sydney</a>
   <a class="origin btn" id="Toronto" href="http://www.justin.tv/molyjamto">Toronto</a>
+  <a class="origin btn" id="Melbourne"  href="http://www.justin.tv/molyjammelbourne">Melbourne</a>
   <div id="videofeed">
     <!-- updated via JavaScript code, see below -->
   </div>
