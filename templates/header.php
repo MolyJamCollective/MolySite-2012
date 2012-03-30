@@ -14,20 +14,14 @@
     <meta name="robots" content="FOLLOW,INDEX" />
 
     <!-- Le styles -->
-    <link href="./css/bootstrap.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px toZ make the container go all the way to the bottom of the topbar */
       }
     </style>
-    <link href="./css/bootstrap-responsive.css" rel="stylesheet">
-    
     
     <link rel="stylesheet/less" href="./less/bootstrap.less">
-    <link href="./css/additive.css" rel="stylesheet">
     <script src="./js/less-1.3.0.min.js"></script>
-    
-    
 
 <?php
   for($i = 0; $i < sizeof($pageStyles); $i++)
