@@ -91,7 +91,11 @@
         }
     $i++;
     }
+    if($i % 1 == 0)
+    {
 ?>
+</div>
+<?php } ?>
 <?php
     include_once('./templates/footer.php');
 ?>
