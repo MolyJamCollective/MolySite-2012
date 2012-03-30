@@ -66,7 +66,7 @@
 				- - - - - - - - - - - - - - - - - -->
     <div class="tab-pane fade" id="user-add">
 	<fieldset>
-	    <form method="post" class="form form-horizontal" action="index.php" id="user-add-form">
+	    <form method="post" class="form form-horizontal" action="users.php" id="user-add-form">
 		<legend><?php _e('Add user'); ?></legend>
 		    <div id="message"></div>
 			<fieldset>
@@ -128,7 +128,7 @@
 				- - - - - - - - - - - - - - - - - -->
 				<div class="tab-pane fade" id="level-create">
 					<fieldset>
-						<form method="post" class="form form-horizontal" id="level-add-form" action="index.php">
+						<form method="post" class="form form-horizontal" id="level-add-form" action="users.php">
 							<legend><?php _e('Create level'); ?></legend>
 							<div id="level-message"></div>
 							<fieldset>
