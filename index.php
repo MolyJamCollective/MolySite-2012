@@ -105,7 +105,7 @@ window.onload=function(){GetCount();}//call when everything has loaded
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
     <div class="span6" style="background-color:#333333; text-align: center;">
-        <h3>Check out the <a href="http://batchgeo.com/map/MolyJam2012">map</a> for locations, <a href="./webchat.php">chat</a> with participants, or watch <a href="./livestream.php">livestream</a> of the events</h3>
+        <h3>Check out the <a href="http://batchgeo.com/map/MolyJam2012">map</a> for locations, <a href="./webchat.php">chat</a> with participants, or watch <a href="http://www.twitch.tv/event/molyjam">livestream</a> of the events</h3>
     </div>
     <div class="span3">&nbsp;</div>
 </div>
