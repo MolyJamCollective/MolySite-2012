@@ -100,7 +100,8 @@ window.onload=function(){GetCount();}//call when everything has loaded
         <h3>Check out the <a href="http://batchgeo.com/map/MolyJam2012">map</a> for locations, <a href="./webchat.php">chat</a> with participants, or watch <a href="./livestream.php">livestream</a> of the events</h3>
     </div>
 </div>
-
+<br />
+<br />
 <?php
     $Location = new Location();
     $LocationList = $Location->GetList(array(array("locationid", ">", 0)));
