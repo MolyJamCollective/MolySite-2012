@@ -128,7 +128,7 @@ window.onload=function(){GetCount();}//call when everything has loaded
         {
 ?>
             <dt><?php echo $Organizer->Name ?></dt>
-            <dd><a href="http://www.twitter.com/#!/<?php echo $Organizer->Twitter ?>">@<?php echo $Organizer->Twitter ?></a></dd>
+         <?php if(!empty($Organizer->Twitter)) { ?> <dd><a href="http://www.twitter.com/#!/<?php echo $Organizer->Twitter ?>">@<?php echo $Organizer->Twitter ?></a></dd><?php } ?>
 <?php   } ?>
             <dt></dt>
             <dd><a href="mailto:<?php echo $Location->EventEmail ?>"><?php echo $Location->EventEmail ?></a></dd>
