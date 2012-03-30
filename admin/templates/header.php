@@ -55,8 +55,24 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li <?php if($activeTab == 1) { echo 'class="active"';} ?>><a href="../index.php">Home</a></li>
-              <li <?php if($activeTab == 2) { echo 'class="active"';} ?>><a href="../archive.php">Games</a></li>
-              <li <?php if($activeTab == 3) { echo 'class="active"';} ?>><a href="../submit.php">Game Submission</a></li>
+              <li <?php if($activeTab == 2) { echo 'class="active"';} ?>><a href="../news.php">News</a></li>
+              <li <?php if($activeTab == 3) { echo 'class="active"';} ?>><a href="../faq.php">FAQs</a></li>
+              <li class="dropdown <?php if($activeTab == 4 || $activeTab == 5) { echo 'active';} ?>">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Games<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="nav-header">Archive</li>
+                  <li <?php if($activeTab == 4) { echo 'class="active"';} ?>><a href="../archive.php">MolyJam2012</a></li>
+                  <li class="divider"></li>
+                  <li <?php if($activeTab == 5) { echo 'class="active"';} ?>><a href="../submit.php">Submissions</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" <?php if($activeTab == 6 || $activeTab == 7) { echo 'class="active"';} ?> class="dropdown-toggle" data-toggle="dropdown">Live<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li <?php if($activeTab == 6) { echo 'class="active"';} ?>><a href="../webchat.php">Web Chat</a></li>
+                  <li <?php if($activeTab == 7) { echo 'class="active"';} ?>><a href="../livestream.php">Video Stream</a></li>
+                </ul>
+              </li>
             </ul>
 		<?php if(isset($_SESSION['username'])) { ?>
 		<ul class="nav pull-right">

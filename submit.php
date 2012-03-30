@@ -8,7 +8,7 @@
     
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
-    $activeTab = '3';
+    $activeTab = '5';
     
     $pageStyles = array('./css/validationEngine.jquery.css');
     

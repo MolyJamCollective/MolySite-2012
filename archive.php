@@ -55,7 +55,7 @@
     $pageTitle = 'MolyJam Game Archive System';
     $pageHeader = 'MolyJam Game Archive System';
     $pageStyles = array();
-    $activeTab = '2';
+    $activeTab = '4';
 
     $pageScripts = array();
     $PageScriptsRaw = '';

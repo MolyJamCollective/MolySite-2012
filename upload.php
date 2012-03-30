@@ -170,7 +170,7 @@
     
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
-    $activeTab = '3';
+    $activeTab = '5';
 
     include_once('./templates/header.php');
 ?>
