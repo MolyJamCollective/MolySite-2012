@@ -22,7 +22,6 @@
         
         $Organizer->Name = $_POST['name'];
         $Organizer->Twitter = $_POST['twitter'];
-        $Organizer->LocationID = $_POST['locationid'];
         
         $Organizer->Save();
     }

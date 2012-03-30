@@ -9,7 +9,7 @@
 	`eventemail` VARCHAR(255) NOT NULL,
 	`eventid` INT NOT NULL, PRIMARY KEY  (`locationid`)) ENGINE=MyISAM;
 	
-		CREATE TABLE `game` (
+	CREATE TABLE `game` (
 	`gameid` int(11) NOT NULL auto_increment,
 	`gamename` VARCHAR(255) NOT NULL,
 	`gamepictureurl` VARCHAR(255) NOT NULL,
@@ -33,7 +33,7 @@
 	`locationid` VARCHAR(255) NOT NULL,
 	`twitter` VARCHAR(255) NOT NULL, PRIMARY KEY  (`organizerid`)) ENGINE=MyISAM;
 	
-		CREATE TABLE `event` (
+	CREATE TABLE `event` (
 	`eventid` int(11) NOT NULL auto_increment,
 	`title` VARCHAR(255) NOT NULL,
 	`start` DATETIME NOT NULL,

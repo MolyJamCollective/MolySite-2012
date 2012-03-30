@@ -62,10 +62,10 @@
 		<li><a href="#organizer-add" data-toggle="tab"><i class="icon-plus"></i> Add Organizer</a></li>
 	    </ul>
 	</li>
-	<li><a href="#News" data-toggle="tab">News</a></li>
-	<li><a href="#InTheNews" data-toggle="tab">'In The News'</a></li>
-	<li><a href="#FAQ" data-toggle="tab">FAQ</a></li>
-	<li><a href="#Games" data-toggle="tab">Games</a></li>
+	<!-- li><a href="#News" data-toggle="tab">News</a></li -->
+	<!-- li><a href="#InTheNews" data-toggle="tab">'In The News'</a></li -->
+	<!-- li><a href="#FAQ" data-toggle="tab">FAQ</a></li -->
+	<!-- li><a href="#Games" data-toggle="tab">Games</a></li -->
     </ul>
     <div class="tab-content span8">
 <!-- - - - - - - - - - - - - - - - - Edit Event  - - - - - - - - - - - - - - - - - - -->
@@ -170,20 +170,23 @@
 		</div>
 		<div class="control-group">
                     <label class="control-label" for="eventid">Event</label>
-		                <div class="controls">
-              <select id="MolyJamLocation" class="validate[required]" name="MolyJamLocation">
-                <option value="">Select an Event</option>
+		    <div class="controls">
+			<select id="eventid" class="" name="eventid">
+			    <option value="">Select an Event</option>
 <?php
 		$Event = new Event();
 		$EventList = $Event->GetList(array(array("eventid", ">", 0)));
-
+		
 		foreach($EventList as $Event)
 		{
-echo "                <option value=\"".$Event->eventId."\" >".$Event->Title."</option>\n";
+		    $selected = '';
+		    if($Location->EventID == $Event->eventId)
+			$selected = 'selected=""';
+		    echo "			    <option value=\"".$Event->eventId."\" ".$selected." >".$Event->Title."</option>\n";
 		}
 ?>
-              </select>
-            </div>
+			</select>
+		    </div>
 		</div>
 	    </fieldset>
 	    <div class="form-actions">
@@ -215,13 +218,29 @@ echo "                <option value=\"".$Event->eventId."\" >".$Event->Title."</
 		<div class="control-group">
                     <label class="control-label" for="twitter">Twitter</label>
 		    <div class="controls">
-			<input type="text" class="input-xlarge" id="twitter" name="twitter" value="<?php echo $Organizer->Twitter; ?>">
+			<div class="input-prepend">
+			    <span class="add-on">@</span><input type="text" class="input-xlarge" id="twitter" name="twitter" value="<?php echo $Organizer->Twitter; ?>">
+			</div>
 		    </div>
 		</div>
 		<div class="control-group">
                     <label class="control-label" for="locationid">Location</label>
 		    <div class="controls">
-			<input type="text" class="input-xlarge" id="locationid" name="locationid" value="<?php echo $Organizer->LocationID; ?>">
+			<select id="locationid" class="" name="locationid">
+			    <option value="">Select a Location</option>
+<?php
+		$Location = new Location();
+		$LocationList = $Location->GetList(array(array("locationid", ">", 0)));
+
+		foreach($LocationList as $Location)
+		{
+		    $selected = '';
+		    if($Organizer->LocationID == $Location->locationId)
+			$selected = 'selected=""';
+		    echo "			    <option value=\"".$Location->locationId."\" ".$selected." >".$Location->Title."</option>\n";
+		}
+?>
+			</select>
 		    </div>
 		</div>
 	    </fieldset>
@@ -340,7 +359,18 @@ echo "                <option value=\"".$Event->eventId."\" >".$Event->Title."</
 		<div class="control-group">
                     <label class="control-label" for="eventid">Event</label>
 		    <div class="controls">
-			<input type="text" class="input-xlarge" id="eventid" name="eventid" value="<?php //echo $addUser->getPost("name"); ?>">
+			<select id="eventid" class="" name="eventid">
+			    <option value="">Select an Event</option>
+<?php
+		$Event = new Event();
+		$EventList = $Event->GetList(array(array("eventid", ">", 0)));
+
+		foreach($EventList as $Event)
+		{
+		    echo "			    <option value=\"".$Event->eventId."\" >".$Event->Title."</option>\n";
+		}
+?>
+			</select>
 		    </div>
 		</div>
 	    </fieldset>
@@ -374,13 +404,26 @@ echo "                <option value=\"".$Event->eventId."\" >".$Event->Title."</
 		<div class="control-group">
                     <label class="control-label" for="twitter">Twitter</label>
 		    <div class="controls">
-			<input type="text" class="input-xlarge" id="twitter" name="twitter" value="<?php //echo $addUser->getPost("name"); ?>">
+			<div class="input-prepend">
+			    <span class="add-on">@</span><input type="text" class="input-xlarge" id="twitter" name="twitter" value="">
+			</div>
 		    </div>
 		</div>
 		<div class="control-group">
-                    <label class="control-label" for="location">Location</label>
+                    <label class="control-label" for="locationid">Location</label>
 		    <div class="controls">
-			<input type="text" class="input-xlarge" id="location" name="location" value="<?php //echo $addUser->getPost("name"); ?>">
+			<select id="locationid" class="" name="locationid">
+			    <option value="">Select an Location</option>
+<?php
+		$Location = new Location();
+		$LocationList = $Location->GetList(array(array("locationid", ">", 0)));
+
+		foreach($LocationList as $Location)
+		{
+		    echo "			    <option value=\"".$Location->locationId."\" >".$Location->Title."</option>\n";
+		}
+?>
+			</select>
 		    </div>
 		</div>
 	    </fieldset>
