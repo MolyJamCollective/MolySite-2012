@@ -106,18 +106,21 @@
 <div class="row-fluid">
     <div class="span2">&nbsp;</div>
     <div class="span8">
-        
 
-  <a class="origin btn" id="Guadalajara" href="http://www.twitch.tv/molyjamguadalajara">Guadalajara</a>
-  <a class="origin btn" id="Lisbon" href="http://www.twitch.tv/4orbidd3n">Lisbon</a>
-  <a class="origin btn" id="LA" href="http://www.twitch.tv/molyjamla">Los Angeles</a>
-  <a class="origin btn" id="London" href="http://www.twitch.tv/metzopaino">London</a>
-  <a class="origin btn" id="Monterrey" href="http://www.twitch.tv/mikealebrije">Monterrey</a>
-  <a class="origin btn" id="Montreal" href="http://www.justin.tv/molyjammtl">Montreal</a>
-  <a class="origin btn" id="Munich" href="http://www.twitch.tv/codesurgeon">Munich</a>
-  <a class="origin btn" id="Sydney" href="http://www.justin.tv/molyjamsydney">Sydney</a>
-  <a class="origin btn" id="Toronto" href="http://www.justin.tv/molyjamto">Toronto</a>
   <a class="origin btn" id="Melbourne"  href="http://www.justin.tv/molyjammelbourne">Melbourne</a>
+  <a class="origin btn" id="Sydney" href="http://www.justin.tv/molyjamsydney">Sydney</a>
+  <a class="origin btn" id="TelAviv"  href="http://www.twitch.tv/molyjamta">Tel Aviv</a>
+  <a class="origin btn" id="Turku" href="http://www.twitch.tv/molyjamturku">Turku</a>
+  <a class="origin btn" id="London" href="http://www.twitch.tv/metzopaino">London</a>
+  <a class="origin btn" id="Lisbon" href="http://www.twitch.tv/4orbidd3n">Lisbon</a>
+  <a class="origin btn" id="Munich" href="http://www.twitch.tv/codesurgeon">Munich</a>
+  <a class="origin btn" id="Guadalajara" href="http://www.twitch.tv/molyjamguadalajara">Guadalajara</a>
+  <a class="origin btn" id="Monterrey" href="http://www.twitch.tv/mikealebrije">Monterrey</a>
+  <a class="origin btn" id="Montreal" href="http://www.justin.tv/molyjammtl">Montreal</a>  
+  <a class="origin btn" id="Toronto" href="http://www.justin.tv/molyjamto">Toronto</a>  
+  <a class="origin btn" id="Oakland"  href="http://www.justin.tv/oaklandmolyjam">Oakland</a>
+  <a class="origin btn" id="LA" href="http://www.twitch.tv/molyjamla">Los Angeles</a>
+  
   <div id="videofeed">
     <!-- updated via JavaScript code, see below -->
   </div>
