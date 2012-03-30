@@ -43,12 +43,12 @@
         <table class="table table-striped table-bordered table-condensed">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th width="5">#</th>
                     <th>Title</th>
                     <th>Start</th>
                     <th>Stop</th>
                     <th>Description</th>
-                    <th></th>
+                    <th width="80"></th>
                 </tr>
             </thead>
             <tbody>

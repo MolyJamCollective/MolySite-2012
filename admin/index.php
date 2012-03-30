@@ -19,18 +19,23 @@
     include_once('../objects/class.database.php');
     include_once('../objects/class.event.php');
     include_once('../objects/class.location.php');
+    include_once('../objects/class.organizer.php');
     
     include_once('./classes/class.events.php');
     include_once('./classes/class.locations.php');
+    include_once('./classes/class.organizers.php');
     
     if(isset($_POST['add_event'])){add_event();header('Location: index.php');}
-    if(isset($_POST['edit_event'])){edit_event();header('Location: index.php');}
-    
     if(isset($_POST['add_location'])){add_location();header('Location: index.php');}
+    if(isset($_POST['add_organizer'])){add_organizer();header('Location: index.php');}
+    
+    if(isset($_POST['edit_event'])){edit_event();header('Location: index.php');}
     if(isset($_POST['edit_location'])){edit_location();header('Location: index.php');}
+    if(isset($_POST['edit_organizer'])){edit_organizer();header('Location: index.php');}
     
     if(isset($_GET['EventDeleteID'])){remove_event();header('Location: index.php');}
     if(isset($_GET['LocationDeleteID'])){remove_location();header('Location: index.php');}
+    if(isset($_GET['OrganizerDeleteID'])){remove_organizer();header('Location: index.php');}
     
 ?>
 
@@ -48,6 +53,13 @@
 	    <ul class="dropdown-menu">
 		<li><a href="#location-control" data-toggle="tab">View Locations</a></li>
 		<li><a href="#location-add" data-toggle="tab"><i class="icon-plus"></i> Add Location</a></li>
+	    </ul>
+	</li>
+	<li class="dropdown">
+	    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Organizers<b class="caret"></b></a>
+	    <ul class="dropdown-menu">
+		<li><a href="#organizer-control" data-toggle="tab">View Organizers</a></li>
+		<li><a href="#organizer-add" data-toggle="tab"><i class="icon-plus"></i> Add Organizer</a></li>
 	    </ul>
 	</li>
 	<li><a href="#News" data-toggle="tab">News</a></li>
@@ -158,15 +170,65 @@
 		</div>
 		<div class="control-group">
                     <label class="control-label" for="eventid">Event</label>
-		    <div class="controls">
-			<input type="text" class="input-xlarge" id="eventid" name="eventid" value="<?php echo $Location->EventID; ?>">
-		    </div>
+		                <div class="controls">
+              <select id="MolyJamLocation" class="validate[required]" name="MolyJamLocation">
+                <option value="">Select an Event</option>
+<?php
+		$Event = new Event();
+		$EventList = $Event->GetList(array(array("eventid", ">", 0)));
+
+		foreach($EventList as $Event)
+		{
+echo "                <option value=\"".$Event->eventId."\" >".$Event->Title."</option>\n";
+		}
+?>
+              </select>
+            </div>
 		</div>
 	    </fieldset>
 	    <div class="form-actions">
 		<input type="hidden" name="edit_location">
 		<input type="hidden" name="edit_locationid" value="<?php echo $_GET['LocationEditID']; ?>">
 		<button type="submit" name="edit_location" class="btn btn-primary" id="location-edit-submit">Edit Location</button>
+	    </div>
+	</form>
+    </fieldset>
+</div>
+ <!-- - - - - - - - - - - - - - - - - Edit Organizer  - - - - - - - - - - - - - - - - - - -->
+    <?php } elseif(isset($_GET['OrganizerEditID']))
+    {
+	$Organizer = new Organizer();
+	$Organizer->Get($_GET['OrganizerEditID']);
+    ?>
+<div class="" id="organizer-edit">
+    <fieldset>
+	<form method="post" class="form form-horizontal" action="index.php" id="organizer-edit-form">
+	    <legend>Edit Organizer</legend>
+	    <div id="message"></div>
+	    <fieldset>
+		<div class="control-group">
+		    <label class="control-label" for="name">Name</label>
+		    <div class="controls">
+			<input type="text" class="input-xlarge" id="name" name="name" value="<?php echo $Organizer->Name; ?>">
+		    </div>
+		</div>
+		<div class="control-group">
+                    <label class="control-label" for="twitter">Twitter</label>
+		    <div class="controls">
+			<input type="text" class="input-xlarge" id="twitter" name="twitter" value="<?php echo $Organizer->Twitter; ?>">
+		    </div>
+		</div>
+		<div class="control-group">
+                    <label class="control-label" for="locationid">Location</label>
+		    <div class="controls">
+			<input type="text" class="input-xlarge" id="locationid" name="locationid" value="<?php echo $Organizer->LocationID; ?>">
+		    </div>
+		</div>
+	    </fieldset>
+	    <div class="form-actions">
+		<input type="hidden" name="edit_organizer">
+		<input type="hidden" name="edit_organizerid" value="<?php echo $_GET['OrganizerEditID']; ?>">
+		<button type="submit" name="edit_organizer" class="btn btn-primary" id="organizer-edit-submit">Edit Organizer</button>
 	    </div>
 	</form>
     </fieldset>
@@ -285,6 +347,46 @@
 	    <div class="form-actions">
 		<input type="hidden" name="add_location">
 		<button type="submit" name="add_location" class="btn btn-primary" id="location-add-submit">Add Location</button>
+	    </div>
+	</form>
+    </fieldset>
+</div>
+<!-- - - - - - - - - - - - - - - - - Control Organizer - - - - - - - - - - - - - - - - -->
+    <div class="tab-pane fade in active" id="organizer-control">
+	<fieldset>
+	    <legend>Organizers</legend>
+	    <?php list_organizer(); ?>
+	</fieldset>
+    </div>
+<!-- - - - - - - - - - - - - - - - - Add Organizer  - - - - - - - - - - - - - - - - - - -->
+<div class="tab-pane fade" id="organizer-add">
+    <fieldset>
+	<form method="post" class="form form-horizontal" action="index.php" id="organizer-add-form">
+	    <legend>Add Organizer</legend>
+	    <div id="message"></div>
+	    <fieldset>
+		<div class="control-group">
+		    <label class="control-label" for="name">Name</label>
+		    <div class="controls">
+			<input type="text" class="input-xlarge" id="name" name="name" value="<?php //echo $addUser->getPost("name"); ?>">
+		    </div>
+		</div>
+		<div class="control-group">
+                    <label class="control-label" for="twitter">Twitter</label>
+		    <div class="controls">
+			<input type="text" class="input-xlarge" id="twitter" name="twitter" value="<?php //echo $addUser->getPost("name"); ?>">
+		    </div>
+		</div>
+		<div class="control-group">
+                    <label class="control-label" for="location">Location</label>
+		    <div class="controls">
+			<input type="text" class="input-xlarge" id="location" name="location" value="<?php //echo $addUser->getPost("name"); ?>">
+		    </div>
+		</div>
+	    </fieldset>
+	    <div class="form-actions">
+		<input type="hidden" name="add_organizer">
+		<button type="submit" name="add_organizer" class="btn btn-primary" id="organizer-add-submit">Add Organizer</button>
 	    </div>
 	</form>
     </fieldset>

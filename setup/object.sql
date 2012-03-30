@@ -5,8 +5,9 @@
 	`city` VARCHAR(255) NOT NULL,
 	`region` VARCHAR(255) NOT NULL,
 	`country` VARCHAR(255) NOT NULL,
-	`eventlink` VARCHAR(255) NOT NULL,
-	`eventemail` VARCHAR(255) NOT NULL, PRIMARY KEY  (`locationid`)) ENGINE=MyISAM;
+	`eventurl` VARCHAR(255) NOT NULL,
+	`eventemail` VARCHAR(255) NOT NULL,
+	`eventid` INT NOT NULL, PRIMARY KEY  (`locationid`)) ENGINE=MyISAM;
 	
 		CREATE TABLE `game` (
 	`gameid` int(11) NOT NULL auto_increment,
@@ -26,8 +27,9 @@
 	`lastediteddatetime` DATETIME NOT NULL,
 	`editid` VARCHAR(255) NOT NULL, PRIMARY KEY  (`gameid`)) ENGINE=MyISAM;
 	
-		CREATE TABLE `organizer` (
+	CREATE TABLE `organizer` (
 	`organizerid` int(11) NOT NULL auto_increment,
+	`name` VARCHAR(255) NOT NULL,
 	`locationid` VARCHAR(255) NOT NULL,
 	`twitter` VARCHAR(255) NOT NULL, PRIMARY KEY  (`organizerid`)) ENGINE=MyISAM;
 	

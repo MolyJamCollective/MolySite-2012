@@ -4,6 +4,7 @@
 
 	CREATE TABLE `organizer` (
 	`organizerid` int(11) NOT NULL auto_increment,
+	`name` VARCHAR(255) NOT NULL,
 	`locationid` VARCHAR(255) NOT NULL,
 	`twitter` VARCHAR(255) NOT NULL, PRIMARY KEY  (`organizerid`)) ENGINE=MyISAM;
 */
@@ -13,13 +14,18 @@
 * @author Php Object Generator
 * @version POG 3.0f / PHP5
 * @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php5&wrapper=pog&objectName=Organizer&attributeList=array+%28%0A++0+%3D%3E+%27LocationID%27%2C%0A++1+%3D%3E+%27Twitter%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++1+%3D%3E+%27VARCHAR%28255%29%27%2C%0A%29
+* @link http://www.phpobjectgenerator.com/?language=php5&wrapper=pog&objectName=Organizer&attributeList=array+%28%0A++0+%3D%3E+%27Name%27%2C%0A++1+%3D%3E+%27LocationID%27%2C%0A++2+%3D%3E+%27Twitter%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++1+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++2+%3D%3E+%27VARCHAR%28255%29%27%2C%0A%29
 */
 include_once('class.pog_base.php');
 class Organizer extends POG_Base
 {
 	public $organizerId = '';
 
+	/**
+	 * @var VARCHAR(255)
+	 */
+	public $Name;
+	
 	/**
 	 * @var VARCHAR(255)
 	 */
@@ -32,6 +38,7 @@ class Organizer extends POG_Base
 	
 	public $pog_attribute_type = array(
 		"organizerId" => array('db_attributes' => array("NUMERIC", "INT")),
+		"Name" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"LocationID" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"Twitter" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		);
@@ -54,8 +61,9 @@ class Organizer extends POG_Base
 		}
 	}
 	
-	function Organizer($LocationID='', $Twitter='')
+	function Organizer($Name='', $LocationID='', $Twitter='')
 	{
+		$this->Name = $Name;
 		$this->LocationID = $LocationID;
 		$this->Twitter = $Twitter;
 	}
@@ -74,6 +82,7 @@ class Organizer extends POG_Base
 		while ($row = Database::Read($cursor))
 		{
 			$this->organizerId = $row['organizerid'];
+			$this->Name = $this->Unescape($row['name']);
 			$this->LocationID = $this->Unescape($row['locationid']);
 			$this->Twitter = $this->Unescape($row['twitter']);
 		}
@@ -161,6 +170,7 @@ class Organizer extends POG_Base
 		{
 			$organizer = new $thisObjectName();
 			$organizer->organizerId = $row['organizerid'];
+			$organizer->Name = $this->Unescape($row['name']);
 			$organizer->LocationID = $this->Unescape($row['locationid']);
 			$organizer->Twitter = $this->Unescape($row['twitter']);
 			$organizerList[] = $organizer;
@@ -181,12 +191,14 @@ class Organizer extends POG_Base
 		if ($rows > 0)
 		{
 			$this->pog_query = "update `organizer` set 
+			`name`='".$this->Escape($this->Name)."', 
 			`locationid`='".$this->Escape($this->LocationID)."', 
 			`twitter`='".$this->Escape($this->Twitter)."' where `organizerid`='".$this->organizerId."'";
 		}
 		else
 		{
-			$this->pog_query = "insert into `organizer` (`locationid`, `twitter` ) values (
+			$this->pog_query = "insert into `organizer` (`name`, `locationid`, `twitter` ) values (
+			'".$this->Escape($this->Name)."', 
 			'".$this->Escape($this->LocationID)."', 
 			'".$this->Escape($this->Twitter)."' )";
 		}

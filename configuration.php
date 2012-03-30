@@ -38,7 +38,7 @@ $configuration['plugins_path'] = 'C:\wamp\www\MolyJamGameArchivingSystem\plugins
 
 //file upload and ftp settings
 $configuration['ftp_host'] = '127.0.0.1';
-$configuration['ftp_user'] = 'username';
+$configuration['ftp_user'] = 'root';
 $configuration['ftp_pass'] = '';
 $configuration['ftp_root'] = '/MolyJamGameArchivingSystem/';
 

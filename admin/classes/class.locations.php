@@ -1,5 +1,14 @@
 <?php
     
+    function shorten_text($text = '')
+    {
+        $len = strlen($text);
+        if($len > 24)
+            $len = 24;
+        
+        return substr($text, 0, $len);
+    }
+    
     function remove_location()
     {
         $Location = new Location();
@@ -46,7 +55,7 @@
         <table class="table table-striped table-bordered table-condensed">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th width="5">#</th>
                     <th>Title</th>
                     <th>Address</th>
                     <th>City</th>
@@ -55,7 +64,7 @@
                     <th>Link</th>
                     <th>Email</th>
                     <th>Event</th>
-                    <th></th>
+                    <th width="80"></th>
                 </tr>
             </thead>
             <tbody>
@@ -63,6 +72,7 @@
             {
                 $Event = new Event();
                 $Event->Get($Location->EventID);
+                $URLText = shorten_text($Location->EventURL);
                 
                 ?>
                 <tr class="eventRow" id="<?php echo $Location->eventId ?>">
@@ -72,8 +82,8 @@
                     <td><?php echo $Location->City; ?></td>
                     <td><?php echo $Location->Region; ?></td>
                     <td><?php echo $Location->Country; ?></td>
-                    <td><a href="<?php echo $Location->EventURL; ?>" target="_blank"><?php echo $Location->EventURL; ?></a></td>
-                    <td><a href="mailto:<?php echo $Location->EventEmail; ?>"><?php echo $Location->EventEmail; ?></a></td>
+                    <td><?php if(!empty($Location->EventURL)){?><a href="<?php echo $Location->EventURL; ?>" target="_blank">Link</a><?php } ?></td>
+                    <td><?php if(!empty($Location->EventEmail)){?><a href="mailto:<?php echo $Location->EventEmail; ?>">Email</a><?php } ?></td>
                     <td><?php echo $Event->Title; ?></td>
                     <td><a class="btn" href="<?php echo '?LocationEditID='.$Location->locationId ?>">Edit</a> <a class="btn btn-danger" href="<?php echo '?LocationDeleteID='.$Location->locationId ?>">X</a></td>
                 </tr>
