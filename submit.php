@@ -134,7 +134,7 @@
               		
                     echo "                <option value=\"".$Location->Title."\" ".$selected.">".$Location->Title."</option>\n";
                   }
-?>
+?>		<option value="Internet">Other/Internet</option>
               </select>
             </div>
           </div>
