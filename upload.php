@@ -7,7 +7,7 @@
     include_once("./utility/sendConfirmationEmail.php");    
     
     
-    $Game = new GameObject();
+    $Game = new Game();
         
     if( !empty($_POST["GameName"]) ) // if false, page was refreshed after an edit
     {  
@@ -27,6 +27,7 @@
         $Game->MolyJamLocation  = $_POST["MolyJamLocation"];
         $Game->TeamMembers      = $_POST["TeamMember"];
         $Game->GameLicense      = $_POST["GameLicense"];
+        $Game->GameEngine       = $_POST["GameEngine"];
         
         if(!$Game->Duplicate()) // if true, page was refresh as this is a double entry
         {
@@ -34,7 +35,7 @@
             if(!empty($_POST[ "Email" ]))
             {
                 $Game->Save($_POST[ "Email" ]);
-                        SendConfirmationEmail( $_POST[ "Email" ], $Game );
+                SendConfirmationEmail( $_POST[ "Email" ], $Game );
             }
             else
             {
@@ -42,7 +43,7 @@
             }
             
             $ftp = new ftp();
-            if( empty( $_GET[ "EditID" ] ) )
+            if( empty( $_GET[ "EditID" ] ) && !empty($Game->gameId) )
             {
                 $ftp->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameId );
                 //$ftp->chmod( $GLOBALS['configuration']['upload_dir'].$Game->gameId, 0777);
@@ -226,6 +227,7 @@
       <div class="footer">
         <p><strong>Jam Location:</strong> <?php echo $Game->MolyJamLocation; ?></p>
         <p><strong>Game License:</strong> <?php echo $Game->GameLicense; ?></p>
+        <p><strong>Game License:</strong> <?php echo $Game->GameEngine; ?></p>
       </div>
     </div>
     <div class="span5 offset1">
@@ -237,7 +239,7 @@
     </div>
   </div>
 </section>
-<div align="center" class="span12"> <a href="./display.php?GameObjectID=<?php echo $Game->gameId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./submit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a> </div>
+<div align="center" class="span12"> <a href="./display.php?GameID=<?php echo $Game->gameId; ?>" class="btn btn-large btn-success">Confirm</a> <a href="./submit.php?EditID=<?php echo $Game->EditID; ?>" class="btn btn-large btn-primary">Edit</a> </div>
 <br />
 <?php
     include_once('./templates/footer.php');

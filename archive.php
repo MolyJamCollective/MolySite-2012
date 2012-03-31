@@ -6,7 +6,7 @@
     include_once("./objects/class.database.php");
     include_once("./objects/class.game.php");
 
-    $Game = new GameObject(); //create a book object
+    $Game = new Game(); //create a book object
     
     
     $sortBy = "";
@@ -207,7 +207,7 @@
         <?php foreach ($GameList as $Game) { $Popularity = ($Game->PageViews * 0.01) + ($Game->Downloads * 1); ?>
             <tr class="gameRow" id="<?php echo $Game->gameId ?>">
                 <td><?php echo $Game->gameId ?></td>
-                <td><a href="display.php?GameObjectID=<?php echo $Game->gameId ?>"><?php echo $Game->GameName ?></a></td>
+                <td><a href="display.php?GameID=<?php echo $Game->gameId ?>"><?php echo $Game->GameName ?></a></td>
                 <td><a href="?search=<?php echo $Game->MolyJamLocation ?>"><?php echo $Game->MolyJamLocation ?></a></td>
                 <td><?php echo $Popularity ?></td>
                 <td><?php echo $Game->CreatedDateTime ?></td>

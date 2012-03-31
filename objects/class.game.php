@@ -14,6 +14,7 @@
 	`teampictureurl` VARCHAR(255) NOT NULL,
 	`teammembers` TEXT NOT NULL,
 	`gamelicense` VARCHAR(255) NOT NULL,
+	`gameengine` VARCHAR(255) NOT NULL,
 	`pageviews` INT NOT NULL,
 	`downloads` INT NOT NULL,
 	`createddatetime` DATETIME NOT NULL,
@@ -22,14 +23,14 @@
 */
 
 /**
-* <b>GameObject</b> class with integrated CRUD methods.
+* <b>Game</b> class with integrated CRUD methods.
 * @author Php Object Generator
 * @version POG 3.0f / PHP5
 * @copyright Free for personal & commercial use. (Offered under the BSD license)
-* @link http://www.phpobjectgenerator.com/?language=php5&wrapper=pog&objectName=GameObject&attributeList=array+%28%0A++0+%3D%3E+%27GameName%27%2C%0A++1+%3D%3E+%27GamePictureURL%27%2C%0A++2+%3D%3E+%27GameTweet%27%2C%0A++3+%3D%3E+%27GameDescription%27%2C%0A++4+%3D%3E+%27GameFileURL%27%2C%0A++5+%3D%3E+%27GameVideoURL%27%2C%0A++6+%3D%3E+%27MolyJamLocation%27%2C%0A++7+%3D%3E+%27TeamPictureURL%27%2C%0A++8+%3D%3E+%27TeamMembers%27%2C%0A++9+%3D%3E+%27GameLicense%27%2C%0A++10+%3D%3E+%27PageViews%27%2C%0A++11+%3D%3E+%27Downloads%27%2C%0A++12+%3D%3E+%27CreatedDateTime%27%2C%0A++13+%3D%3E+%27lastEditedDateTime%27%2C%0A++14+%3D%3E+%27EditID%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++1+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++2+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++3+%3D%3E+%27TEXT%27%2C%0A++4+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++5+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++6+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++7+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++8+%3D%3E+%27TEXT%27%2C%0A++9+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++10+%3D%3E+%27INT%27%2C%0A++11+%3D%3E+%27INT%27%2C%0A++12+%3D%3E+%27DATETIME%27%2C%0A++13+%3D%3E+%27DATETIME%27%2C%0A++14+%3D%3E+%27VARCHAR%28255%29%27%2C%0A%29
+* @link http://www.phpobjectgenerator.com/?language=php5&wrapper=pog&objectName=Game&attributeList=array+%28%0A++0+%3D%3E+%27GameName%27%2C%0A++1+%3D%3E+%27GamePictureURL%27%2C%0A++2+%3D%3E+%27GameTweet%27%2C%0A++3+%3D%3E+%27GameDescription%27%2C%0A++4+%3D%3E+%27GameFileURL%27%2C%0A++5+%3D%3E+%27GameVideoURL%27%2C%0A++6+%3D%3E+%27MolyJamLocation%27%2C%0A++7+%3D%3E+%27TeamPictureURL%27%2C%0A++8+%3D%3E+%27TeamMembers%27%2C%0A++9+%3D%3E+%27GameLicense%27%2C%0A++10+%3D%3E+%27PageViews%27%2C%0A++11+%3D%3E+%27Downloads%27%2C%0A++12+%3D%3E+%27CreatedDateTime%27%2C%0A++13+%3D%3E+%27lastEditedDateTime%27%2C%0A++14+%3D%3E+%27EditID%27%2C%0A++15+%3D%3E+%27GameEngine%27%2C%0A%29&typeList=array+%28%0A++0+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++1+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++2+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++3+%3D%3E+%27TEXT%27%2C%0A++4+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++5+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++6+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++7+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++8+%3D%3E+%27TEXT%27%2C%0A++9+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++10+%3D%3E+%27INT%27%2C%0A++11+%3D%3E+%27INT%27%2C%0A++12+%3D%3E+%27DATETIME%27%2C%0A++13+%3D%3E+%27DATETIME%27%2C%0A++14+%3D%3E+%27VARCHAR%28255%29%27%2C%0A++15+%3D%3E+%27VARCHAR%28255%29%27%2C%0A%29
 */
 include_once('class.pog_base.php');
-class GameObject extends POG_Base
+class Game extends POG_Base
 {
 	public $gameId = '';
 
@@ -84,6 +85,11 @@ class GameObject extends POG_Base
 	public $GameLicense;
 	
 	/**
+	 * @var VARCHAR(255)
+	 */
+	public $GameEngine;
+	
+	/**
 	 * @var INT
 	 */
 	public $PageViews;
@@ -120,6 +126,7 @@ class GameObject extends POG_Base
 		"TeamPictureURL" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"TeamMembers" => array('db_attributes' => array("TEXT", "TEXT")),
 		"GameLicense" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
+		"GameEngine" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		"PageViews" => array('db_attributes' => array("NUMERIC", "INT")),
 		"Downloads" => array('db_attributes' => array("NUMERIC", "INT")),
 		"CreatedDateTime" => array('db_attributes' => array("TEXT", "DATETIME")),
@@ -145,7 +152,7 @@ class GameObject extends POG_Base
 		}
 	}
 	
-	function GameObject($GameName='', $GamePictureURL='', $GameTweet='', $GameDescription='', $GameFileURL='', $GameVideoURL='', $MolyJamLocation='', $TeamPictureURL='', $TeamMembers='', $GameLicense='', $PageViews='', $Downloads='', $CreatedDateTime='', $lastEditedDateTime='')
+	function Game($GameName='', $GamePictureURL='', $GameTweet='', $GameDescription='', $GameFileURL='', $GameVideoURL='', $MolyJamLocation='', $TeamPictureURL='', $TeamMembers='', $GameLicense='', $GameEngine='', $PageViews='', $Downloads='', $CreatedDateTime='', $lastEditedDateTime='')
 	{
 		$this->GameName = $GameName;
 		$this->GamePictureURL = $GamePictureURL;
@@ -157,6 +164,7 @@ class GameObject extends POG_Base
 		$this->TeamPictureURL = $TeamPictureURL;
 		$this->TeamMembers = $TeamMembers;
 		$this->GameLicense = $GameLicense;
+		$this->GameEngine = $GameEngine;
 		$this->PageViews = $PageViews;
 		$this->Downloads = $Downloads;
 		$this->CreatedDateTime = $CreatedDateTime;
@@ -167,7 +175,7 @@ class GameObject extends POG_Base
 	/**
 	* Gets object from database
 	* @param integer $gameId 
-	* @return object $GameObject
+	* @return object $Game
 	*/
 	function Get($gameId)
 	{
@@ -187,6 +195,7 @@ class GameObject extends POG_Base
 			$this->TeamPictureURL = $this->Unescape($row['teampictureurl']);
 			$this->TeamMembers = $this->Unescape($row['teammembers']);
 			$this->GameLicense = $this->Unescape($row['gamelicense']);
+			$this->GameEngine = $this->Unescape($row['gameengine']);
 			$this->PageViews = $this->Unescape($row['pageviews']);
 			$this->Downloads = $this->Unescape($row['downloads']);
 			$this->CreatedDateTime = $row['createddatetime'];
@@ -199,7 +208,7 @@ class GameObject extends POG_Base
 	/**
 	* Gets object from database
 	* @param string $editId 
-	* @return object $GameObject
+	* @return object $Game
 	*/
 	function GetFromEditId($editId)
 	{
@@ -219,6 +228,7 @@ class GameObject extends POG_Base
 			$this->TeamPictureURL = $this->Unescape($row['teampictureurl']);
 			$this->TeamMembers = $this->Unescape($row['teammembers']);
 			$this->GameLicense = $this->Unescape($row['gamelicense']);
+			$this->GameEngine = $this->Unescape($row['gameengine']);
 			$this->PageViews = $this->Unescape($row['pageviews']);
 			$this->Downloads = $this->Unescape($row['downloads']);
 			$this->CreatedDateTime = $row['createddatetime'];
@@ -227,7 +237,6 @@ class GameObject extends POG_Base
 		}
 		return $this;
 	}
-	
 	
 	/**
 	* Returns a sorted array of objects that match given conditions
@@ -280,7 +289,6 @@ class GameObject extends POG_Base
 				}
 			}
 		}
-		
 		if ($sortBy == 'popularity')
 		{
 			$sortBy = "( `pageviews` + `downloads` * 100 )";
@@ -308,7 +316,6 @@ class GameObject extends POG_Base
 			$sortBy = "gameid";
 		}
 		$this->pog_query .= " order by ".$sortBy." ".($ascending ? "asc" : "desc")." $sqlLimit";
-		
 		$thisObjectName = get_class($this);
 		$cursor = Database::Reader($this->pog_query, $connection);
 		while ($row = Database::Read($cursor))
@@ -325,6 +332,7 @@ class GameObject extends POG_Base
 			$game->TeamPictureURL = $this->Unescape($row['teampictureurl']);
 			$game->TeamMembers = $this->Unescape($row['teammembers']);
 			$game->GameLicense = $this->Unescape($row['gamelicense']);
+			$game->GameEngine = $this->Unescape($row['gameengine']);
 			$game->PageViews = $this->Unescape($row['pageviews']);
 			$game->Downloads = $this->Unescape($row['downloads']);
 			$game->CreatedDateTime = $row['createddatetime'];
@@ -348,7 +356,7 @@ class GameObject extends POG_Base
 	
 	/**
 	* Checks if there this is a double entry
-	* @param integer $GameObject
+	* @param integer $Game
 	* @return bool $Results
 	*/
 	function Duplicate()
@@ -385,6 +393,7 @@ class GameObject extends POG_Base
 		return $this;
 	}
 	
+	
 	/**
 	* Saves the object to the database
 	* @return integer $gameId
@@ -408,6 +417,7 @@ class GameObject extends POG_Base
 			`teampictureurl`='".$this->Escape($this->TeamPictureURL)."', 
 			`teammembers`='".$this->Escape($this->TeamMembers)."', 
 			`gamelicense`='".$this->Escape($this->GameLicense)."', 
+			`gameengine`='".$this->Escape($this->GameEngine)."',
 			`pageviews`='".$this->Escape($this->PageViews)."', 
 			`downloads`='".$this->Escape($this->Downloads)."', 
 			`createddatetime`='".$this->CreatedDateTime."', 
@@ -416,8 +426,8 @@ class GameObject extends POG_Base
 		}
 		else
 		{
-			// Insert New Entry
-			$this->pog_query = "insert into `game` (`gamename`, `gamepictureurl`, `gametweet`, `gamedescription`, `gamefileurl`, `gamevideourl`, `molyjamlocation`, `teampictureurl`, `teammembers`, `gamelicense`, `pageviews`, `downloads`, `createddatetime`, `lastediteddatetime`, `editid` ) values (
+			// Insert New
+			$this->pog_query = "insert into `game` (`gamename`, `gamepictureurl`, `gametweet`, `gamedescription`, `gamefileurl`, `gamevideourl`, `molyjamlocation`, `teampictureurl`, `teammembers`, `gamelicense`, `gameengine`,  `pageviews`, `downloads`, `createddatetime`, `lastediteddatetime`, `editid`) values (
 			'".$this->Escape($this->GameName)."', 
 			'".$this->Escape($this->GamePictureURL)."', 
 			'".$this->Escape($this->GameTweet)."', 
@@ -428,27 +438,31 @@ class GameObject extends POG_Base
 			'".$this->Escape($this->TeamPictureURL)."', 
 			'".$this->Escape($this->TeamMembers)."', 
 			'".$this->Escape($this->GameLicense)."', 
+			'".$this->Escape($this->GameEngine)."',
 			'".$this->Escape($this->PageViews)."', 
 			'".$this->Escape($this->Downloads)."', 
 			NOW(), 
 			'".$this->lastEditedDateTime."', 
 			'".$this->Escape($this->EditID)."' )";
 		}
-		$insertId = Database::InsertOrUpdate($this->pog_query, $connection);
 		
+		$insertId = Database::InsertOrUpdate($this->pog_query, $connection);
 		if ($this->gameId == "")
 		{
-			$this->Get($insertId);
 			
+			$this->Get($insertId);
+
 			if( !empty($email) )
 			{
 				$this->EditID = $this->GenerateEditID($email);
-				$this->Save("");
+				$this->Save();
 				$this->Get($insertId);
 			}
+			
 		}
 		return $this->gameId;
 	}
+	
 	
 	/**
 	* Clones the object and saves it to the database

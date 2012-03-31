@@ -24,7 +24,7 @@
     
     include_once('./templates/header.php');
     
-    $Game = new GameObject();
+    $Game = new Game();
     
     if( !empty( $_GET[ "EditID" ] ) )
     {
@@ -114,12 +114,11 @@
 		    <p class="help-block">Link to a youtube video displaying gameplay. Suggested YouTube naming format: "MolyJam 2012 - GameName - Location"</p>
 		</div>
 	    </div>
-          <!-- Formatting Stopped Here -->
-          <div class="control-group">
-            <label class="control-label" for="MolyJamLocation">MolyJam Location*</label>
-            <div class="controls">
-              <select id="MolyJamLocation" class="validate[required]" name="MolyJamLocation">
-                <option value="">Select a location</option>
+	    <div class="control-group">
+		<label class="control-label" for="MolyJamLocation">MolyJam Location*</label>
+		<div class="controls">
+		    <select id="MolyJamLocation" class="validate[required]" name="MolyJamLocation">
+			<option value="">Select a location</option>
 <?php
                   $Location = new Location();
 		  $LocationList = $Location->GetList(array(array("locationid", ">", 0)),"title",true);
@@ -131,35 +130,33 @@
                   	{
                   		$selected = "selected";
               		}
-              		
-                    echo "                <option value=\"".$Location->Title."\" ".$selected.">".$Location->Title."</option>\n";
+              		echo "			<option value=\"".$Location->Title."\" ".$selected.">".$Location->Title."</option>\n";
                   }
-?>		<option value="Internet">Other/Internet</option>
-              </select>
-            </div>
-          </div>
+?>			<option value="Internet">Other/Internet</option>
+		    </select>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<label class="control-label" for="TeamPicture">Team Picture</label>
+		<div class="controls">
+		    <input type="file" class="input-xlarge validate[funcCall[checkImage]]" accept="image/*" id="TeamPicture" name="TeamPicture" maxlength="250" />
+		    <input type="hidden" id="TeamPictureURL" name="TeamPictureURL" value="">
+		    <p class="help-block">Upload a picture of your team members.
+			<?php if( !empty( $_GET[ "EditID" ] ) && $Game->GamePictureURL != "" ): ?>
+			<br />Leave this empty if you don't want to upload a new picture. Old picture will be overridden.
+			<?php endif; ?>
+		    </p>
+		</div>
+	    </div>
           
-          <div class="control-group">
-            <label class="control-label" for="TeamPicture">Team Picture</label>
-            <div class="controls">
-              <input type="file" class="input-xlarge validate[funcCall[checkImage]]" accept="image/*" id="TeamPicture" name="TeamPicture" maxlength="250" />
-              <input type="hidden" id="TeamPictureURL" name="TeamPictureURL" value="">
-              <p class="help-block">Upload a picture of your team members.
-			  <?php if( !empty( $_GET[ "EditID" ] ) && $Game->GamePictureURL != "" ): ?>
-              <br />Leave this empty if you don't want to upload a new picture. Old picture will be overridden.
-              <?php endif; ?>
-			  </p>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="TeamMember">Team Members*</label>
-            <div class="controls">
-              <textarea class="input-xlarge validate[required]" id="TeamMember" name="TeamMember" rows="3" maxlength="500"><?php echo $Game->TeamMembers; ?></textarea>
-              <p class="help-block">Give credit to all those people who helped make it happen.</p>
-            </div>
-          </div>
-          
+	    <div class="control-group">
+		<label class="control-label" for="TeamMember">Team Members*</label>
+		<div class="controls">
+		    <textarea class="input-xlarge validate[required]" id="TeamMember" name="TeamMember" rows="3" maxlength="500"><?php echo $Game->TeamMembers; ?></textarea>
+		    <p class="help-block">Give credit to all those people who helped make it happen.</p>
+		</div>
+	    </div>
+          <!-- Formating stopped Here -->
 	  <div class="control-group">
             <label class="control-label" for="GameLicense">License</label>
             <div class="controls">
@@ -196,6 +193,24 @@
 	      <p class="help-block">This is the license type under which you wish to share your game in. If not sure what to put here consult <a href="http://www.creativecommons.org/choose/" target="_blank">CreativeCommons.org/Choose/</a></p>
             </div>
           </div>
+	  
+	  <div class="control-group">
+		<label class="control-label" for="GameEngine">Engine*</label>
+		<div class="controls">
+		    <select id="GameEngine" class="validate[required]" name="GameEngine">
+			<option <?php if($Game->GameEngine == "") { echo 'selected'; } ?> value="">Select a Engine</option>
+			<option <?php if($Game->GameEngine == "Construct 2") { echo 'selected'; } ?> value="Construct 2">Construct 2</option>
+			<option <?php if($Game->GameEngine == "CryEngine 3") { echo 'selected'; } ?> value="CryEngine 3">CryEngine 3</option>
+			<option <?php if($Game->GameEngine == "GameMaker") { echo 'selected'; } ?> value="GameMaker">GameMaker</option>
+			<option <?php if($Game->GameEngine == "GameSalad") { echo 'selected'; } ?> value="GameSalad">GameSalad</option>
+			<option <?php if($Game->GameEngine == "Unity3D") { echo 'selected'; } ?> value="Unity3D">Unity3D</option>
+			<option <?php if($Game->GameEngine == "Unreal") { echo 'selected'; } ?> value="Unreal">Unreal</option>
+			<option <?php if($Game->GameEngine == "XNA") { echo 'selected'; } ?> value="XNA">XNA</option>
+			<option <?php if($Game->GameEngine == "Other") { echo 'selected'; } ?> value="Other">Other</option>
+			<option <?php if($Game->GameEngine == "None") { echo 'selected'; } ?> value="Other">None</option>
+		    </select>
+		</div>
+	    </div>
 	  
           <div class="control-group">
             <label class="control-label" for="Email">Email<?php if( empty( $_GET[ "EditID" ] ) ) { echo '*';} ?></label>

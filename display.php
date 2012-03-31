@@ -3,8 +3,8 @@
   include_once("./objects/class.database.php");
   include_once("./objects/class.game.php");
 
-  $Game = new GameObject();
-  $Game->Get($_GET['GameObjectID']);
+  $Game = new Game();
+  $Game->Get($_GET['GameID']);
 
   include_once('./templates/globals.php');
     
@@ -25,15 +25,15 @@
   {
   	$updateDownloadCounter = "";
   	
-  	if( !empty( $_GET[ "download" ] ) && $Game->GameFileURL != "" )
+  	if( !empty( $_GET[ "download" ] ) && ($Game->GameFileURL != "" && $Game->GameFileURL != "#" ))
   	{
   		$updateDownloadCounter = ", `downloads`=`downloads` + 1";
-    }
+	}
     
     $connection = Database::Connect();
     $query = "UPDATE `game` SET `pageviews`=`pageviews` + 1" . $updateDownloadCounter . " WHERE `gameid`='".$Game->gameId."'";
     Database::InsertOrUpdate($query, $connection);
-  		
+    
 ?>
 <div class="row-fluid">
       <div class="span1">&nbsp;</div>
@@ -62,7 +62,17 @@
                               <br />
                               
                               <div align="center">
-                                    <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary <?php if($Game->GameVideoURL == ""){echo "disabled";}?>">Gameplay Video</a> <a href="display.php?GameObjectID=<?php echo $_GET[ "GameObjectID" ]; ?>&download=true" class="btn btn-large btn-primary <?php if($Game->GameFileURL == ""){echo "disabled";}?>">Download Game</a>
+				<?php if($Game->GameVideoURL == "") { ?>
+				  <button class="btn btn-large btn-primary disabled">Gameplay Video</button>
+				<?php } else { ?>
+				  <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary">Gameplay Video</a>
+				<?php } ?>
+				
+				<?php if($Game->GameVideoURL == "") { ?>
+				  <button class="btn btn-large btn-primary disabled">Download Game</button>
+				<?php } else { ?>
+				  <a href="./display.php?GameID=<?php echo $_GET[ "GameID" ]; ?>&download=true" class="btn btn-large btn-primary">Gameplay Video</a>
+				<?php } ?>
                               </div>
                         </div>
                         <div class="span5 offset1">
@@ -86,6 +96,7 @@
                               <div class="footer">
                                     <p><strong>Jam Location:</strong> <?php echo $Game->MolyJamLocation; ?></p>
                                     <p><strong>Game License:</strong> <?php echo $Game->GameLicense; ?></p>
+				    <p><strong>Game Engine:</strong> <?php echo $Game->GameEngine; ?></p>
                               </div>
                         </div>
                         <div class="span5 offset1">
