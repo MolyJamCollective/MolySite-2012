@@ -78,33 +78,33 @@ window.onload=function(){GetCount();}//call when everything has loaded
 </div>
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
-    <div class="span6" style="background-color:#00CC00; text-align: center;">
+    <div class="span6" style="background-color:#00CC00; text-align: center; max-width: 780px">
         <h2 class="allcaps cream">AN INTERNATIONAL 48-HOUR GAME JAM</h2>
     </div>
     <div class="span3">&nbsp;</div>
 </div>
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
-    <div class="span6" style="background-color:#00AA00; text-align: center;">
+    <div class="span6" style="background-color:#00AA00; text-align: center; max-width: 780px">
         <h2>EXPLORING THE WORKS OF <a href="http://www.twitter.com/petermolydeux" style="color: #EEEEEE">@PeterMolydeux</a></h2>
     </div>
     <div class="span3">&nbsp;</div>
 </div>
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
-    <div class="span6" style="background-color:#008800; text-align: center;">
+    <div class="span6" style="background-color:#008800; text-align: center;max-width: 780px">
         <h2>MARCH 30TH - APRIL 1ST, 2012
     </div>
     <div class="span3">&nbsp;</div>
 </div>
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
-    <div class="span6" id="countdown" style="background-color:#006600; text-align: center; font-size: 24px; line-height: 36px;font-family: inherit;font-weight: bold;color: inherit;text-rendering: optimizelegibility;"></div>
+    <div class="span6" id="countdown" style="background-color:#006600; text-align: center; font-size: 24px; line-height: 36px;font-family: inherit;font-weight: bold;color: inherit;text-rendering: optimizelegibility; max-width: 780px"></div>
     <div class="span3">&nbsp;</div>
 </div>
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
-    <div class="span6" style="background-color:#333333; text-align: center;">
+    <div class="span6" style="background-color:#333333; text-align: center; max-width: 780px">
         <h3>Check out the <a href="http://batchgeo.com/map/MolyJam2012">map</a> for locations, <a href="./webchat.php">chat</a> with participants, or watch <a href="http://www.twitch.tv/event/molyjam">livestream</a> of the events</h3>
     </div>
     <div class="span3">&nbsp;</div>
