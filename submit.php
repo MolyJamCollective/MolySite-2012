@@ -5,6 +5,7 @@
     include_once("./objects/class.database.php");
     include_once("./objects/class.game.php");
     include_once("./objects/class.ftp.php");
+    include_once("./objects/class.location.php");
     
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
@@ -120,17 +121,18 @@
               <select id="MolyJamLocation" class="validate[required]" name="MolyJamLocation">
                 <option value="">Select a location</option>
 <?php
-                  include("./data.php");
+                  $Location = new Location();
+		  $LocationList = $Location->GetList(array(array("locationid", ">", 0)),"title",true);
                 
-                  for($i = 0; $i < sizeof($Locations); $i++)
+                  foreach ($LocationList as $Location)
                   {
                   	$selected = "";
-                  	if( $Locations[$i] == $Game->MolyJamLocation )
+                  	if( $Location->Title == $Game->MolyJamLocation )
                   	{
                   		$selected = "selected";
               		}
               		
-                    echo "                <option value=\"".$Locations[$i]."\" ".$selected.">".$Locations[$i]."</option>\n";
+                    echo "                <option value=\"".$Location->Title."\" ".$selected.">".$Location->Title."</option>\n";
                   }
 ?>
               </select>
