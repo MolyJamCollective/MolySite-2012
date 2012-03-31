@@ -71,7 +71,7 @@
                 <a href="#" <?php if($activeTab == 6 || $activeTab == 7) { echo 'class="active"';} ?> class="dropdown-toggle" data-toggle="dropdown">Live<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li <?php if($activeTab == 6) { echo 'class="active"';} ?>><a href="../webchat.php">Web Chat</a></li>
-                  <li <?php if($activeTab == 7) { echo 'class="active"';} ?>><a href="../livestream.php">Video Stream</a></li>
+                  <li <?php if($activeTab == 7) { echo 'class="active"';} ?>><a href="http://www.twitch.tv/event/molyjam">Video Stream</a></li>
                 </ul>
               </li>
             </ul>
