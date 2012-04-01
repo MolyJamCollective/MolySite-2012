@@ -50,9 +50,9 @@ function CreateThumbnail( $tmpName, $targetPath )
     
     $Game = new Game();
     
-    if($_POST['GameName'] != "" || $_GET['EditID'] != "" ) // If the game has valid data
+    if($_POST['GameName'] != "" || !empty($_GET['EditID']) ) // If the game has valid data
     {
-        if($_GET['EditID'] != "") // Edited Game
+        if(!empty($_GET['EditID'])) // Edited Game
         {
             //Echo '<h2 style="color: red;">Trying to edit the game?</h2>';
             
