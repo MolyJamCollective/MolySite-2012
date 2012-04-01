@@ -11,7 +11,7 @@
 <SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
 <!--
 
-dateFuture = new Date(2012,2,30,19,00,00); // Uses base 0 data, unless days uses base 1
+dateFuture = new Date(2012,3,1,19,00,00); // Uses base 0 data, unless days uses base 1
 
 function GetCount(){
 
