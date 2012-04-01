@@ -29,6 +29,11 @@
         $Game->GameLicense      = $_POST["GameLicense"];
         $Game->GameEngine       = $_POST["GameEngine"];
         
+        if( $_POST['GameFilesLink'] != "")
+        {
+            $Game->GameFileURL = $_POST['GameFilesLink']; 
+        }
+        
         if(!$Game->Duplicate()) // if true, page was refresh as this is a double entry
         {
                 

@@ -20,19 +20,8 @@
       $("#GameSubmission").validationEngine();
     });
   </script>
-  ';
-    
-    include_once('./templates/header.php');
-    
-    $Game = new Game();
-    
-    if( !empty( $_GET[ "EditID" ] ) )
-    {
-    	$Game->GetFromEditId( $_GET[ "EditID" ] );
-    }
-    
-?>
-      <script>
+  
+    <script>
       function checkImage(field, rules, i, options)
 	  {
 	  	var fileExt = field.val().substring( field.val().length - 4 ).toLowerCase();
@@ -52,7 +41,28 @@
           return "Please select a ZIP file";
         }
       }
-      </script>
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $(".uploadType").hide();
+    $("#fileType").change(function(){
+      $(".uploadType").hide();
+      $("#" + $(this).val()).show();    
+    });
+    });
+    </script>
+  ';
+    
+    include_once('./templates/header.php');
+    
+    $Game = new Game();
+    
+    if( !empty( $_GET[ "EditID" ] ) )
+    {
+    	$Game->GetFromEditId( $_GET[ "EditID" ] );
+    }
+    
+?>
     
 <div class="row-fluid">
     <div class="span10 offset1">
@@ -98,14 +108,27 @@
 	    <div class="control-group">
 		<label class="control-label" for="GameFiles">Files</label>
 		<div class="controls">
-		    <input type="file" class="input-xlarge validate[funcCall[checkArchive]]" id="GameFiles" name="GameFiles" maxlength="250" />
-		    <input type="hidden" id="GameFilesURL" name="GameFilesURL" value="">
-		    <p class="help-block">Upload a zip the necessary files to play your game and a README.txt file explaining how to install your game.
-		    <?php if( !empty( $_GET[ "EditID" ] ) && $Game->GamePictureURL != "" ): ?>
-			<br />Leave this empty if you don't want to upload new game files. Old files will be overridden.
-		    <?php endif; ?>
-		    </p>
+		    <select id="fileType">
+			<option value="">Selected a File Type</option>
+			<option value="File">Upload a File</option>
+			<option value="Link">Submit a Link</option>
+		    </select>
+		    <div id="File" class="uploadType well">
+			<input type="file" class="input-xlarge validate[funcCall[checkArchive]]" id="GameFiles" name="GameFiles" maxlength="250" />
+			<input type="hidden" id="GameFilesURL" name="GameFilesURL" value="">
+			<p class="help-block">Upload a zip the necessary files to play your game and a README.txt file explaining how to install your game.
+			<?php if( !empty( $_GET[ "EditID" ] ) && $Game->GamePictureURL != "" ): ?>
+			    <br />Leave this empty if you don't want to upload new game files. Old files will be overridden.
+			<?php endif; ?>
+			</p>
+		    </div>
+		    <div id="Link" class="uploadType well">
+			<br />
+			<input type="text" class="input-xlarge validate[optional,custom[url]]" id="GameFilesLink" name="GameFilesLink" maxlength="250" value="" />
+			<p class="help-block">Submit a link to your web based game</p>
+		    </div>
 		</div>
+
 	    </div>
 	    <div class="control-group">
 		<label class="control-label" for="GameVideoURL">Video</label>
@@ -207,7 +230,7 @@
 			<option <?php if($Game->GameEngine == "Unreal") { echo 'selected'; } ?> value="Unreal">Unreal</option>
 			<option <?php if($Game->GameEngine == "XNA") { echo 'selected'; } ?> value="XNA">XNA</option>
 			<option <?php if($Game->GameEngine == "Other") { echo 'selected'; } ?> value="Other">Other</option>
-			<option <?php if($Game->GameEngine == "None") { echo 'selected'; } ?> value="Other">None</option>
+			<option <?php if($Game->GameEngine == "None") { echo 'selected'; } ?> value="None">None</option>
 		    </select>
 		</div>
 	    </div>
