@@ -132,12 +132,13 @@ class ftp
     //Params:	$file	File to be deleted
     function delete( $file ) 
     {
-	if( !file_exists( $file ) )
+	if( file_exists( $file ) )
 	{
-	    echo "FTP delete: File not found (".$file.")";
+	    //echo "FTP delete: File not found (".$file.")";
+	    return ftp_delete( $this->conn, $file );
 	}
 			
-	return ftp_delete( $this->conn, $file );
+	//return ftp_delete( $this->conn, $file );
     }
     
     function rmdir( $dir )
