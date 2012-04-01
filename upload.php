@@ -63,14 +63,40 @@ function CreateThumbnail( $tmpName, $targetPath )
                 $UploadedFile = false;
                 $FTP = new ftp();
                 
-                $Game->GameName         = $_POST["GameName"];
-                $Game->GameTweet        = $_POST["GameTweet"];
-                $Game->GameDescription  = $_POST["GameDescription"];
-                $Game->GameVideoURL     = $_POST["GameVideoURL"];
-                $Game->MolyJamLocation  = $_POST["MolyJamLocation"];
-                $Game->TeamMembers      = $_POST["TeamMember"];
-                $Game->GameLicense      = $_POST["GameLicense"];
-                $Game->GameEngine       = $_POST["GameEngine"];
+                if(!empty($_POST["GameName"]))
+                {
+                    $Game->GameName         = $_POST["GameName"];
+                }
+                    
+                if(!empty($_POST["GameTweet"]))
+                {
+                    $Game->GameTweet        = $_POST["GameTweet"];
+                }
+                if(!empty($_POST["GameDescription"]))
+                {
+                    $Game->GameDescription  = $_POST["GameDescription"];
+                }
+                if(!empty($_POST["GameVideoURL"]))
+                {
+                    $Game->GameVideoURL     = $_POST["GameVideoURL"];
+                }
+                if(!empty($_POST["MolyJamLocation"]))
+                {
+                    $Game->MolyJamLocation  = $_POST["MolyJamLocation"];
+                }
+                if(!empty($_POST["TeamMember"]))
+                {
+                    $Game->TeamMembers      = $_POST["TeamMember"];
+                }
+                if(!empty($_POST["GameLicense"]))
+                {
+                    $Game->GameLicense      = $_POST["GameLicense"];
+                }
+                if(!empty($_POST["GameEngine"]))
+                {
+                    $Game->GameEngine       = $_POST["GameEngine"];
+                }
+                
                 
 // -------- Start Upload Game Files                
                 if( $_POST['GameFilesLink'] != "") // Posted Game Link
