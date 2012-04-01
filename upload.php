@@ -99,11 +99,7 @@ function CreateThumbnail( $tmpName, $targetPath )
                 
                 
 // -------- Start Upload Game Files                
-                if( $_POST['GameFilesLink'] != "") // Posted Game Link
-                {
-                    $Game->GameFileURL = $_POST['GameFilesLink']; 
-                }
-                elseif($_FILES[ "GameFiles" ][ "name" ] != "") // Posted Game File
+                if($_FILES[ "GameFiles" ][ "name" ] != "") // Posted Game File
                 {
                     if( $Game->GameFileURL != "" )
                     {
@@ -121,6 +117,10 @@ function CreateThumbnail( $tmpName, $targetPath )
                     {
                         Echo '<h2 style="color: red;">Game file uploading has failed.</h2>';
                     }
+                }
+                elseif( $_POST['GameFilesLink'] != "") // Posted Game Link
+                {
+                    $Game->GameFileURL = $_POST['GameFilesLink']; 
                 }
 // -------- End Upload Game Files
 // -------- Start Upload Game Picture
