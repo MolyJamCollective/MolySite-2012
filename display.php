@@ -68,10 +68,10 @@
 				  <a href="<?php echo $Game->GameVideoURL; ?>" target="_blank" class="btn btn-large btn-primary">Gameplay Video</a>
 				<?php } ?>
 				
-				<?php if($Game->GameVideoURL == "") { ?>
+				<?php if($Game->GameFileURL == "") { ?>
 				  <button class="btn btn-large btn-primary disabled">Download Game</button>
 				<?php } else { ?>
-				  <a href="./display.php?GameID=<?php echo $_GET[ "GameID" ]; ?>&download=true" class="btn btn-large btn-primary">Gameplay Video</a>
+				  <a href="./display.php?GameID=<?php echo $_GET[ "GameID" ]; ?>&download=true" class="btn btn-large btn-primary">Download Game</a>
 				<?php } ?>
                               </div>
                         </div>
