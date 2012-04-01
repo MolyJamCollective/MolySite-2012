@@ -56,12 +56,20 @@
     include_once('./templates/header.php');
     
     $Game = new Game();
+    $Error = false;
     
     if( !empty( $_GET[ "EditID" ] ) )
     {
     	$Game->GetFromEditId( $_GET[ "EditID" ] );
+	if($Game->GameName == "") // Game Was Not Found
+	{
+	    Echo '<h2 style="color: red">EditID was not found</h2>';
+	    $Error = true;
+	}
     }
-    
+    if(!$Error)
+    {
+	
 ?>
     
 <div class="row-fluid">
@@ -261,5 +269,5 @@
       </div>
 </div>
 <?php
-    include_once('./templates/footer.php');
+    } include_once('./templates/footer.php');
 ?>
