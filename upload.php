@@ -101,10 +101,7 @@ function CreateThumbnail( $tmpName, $targetPath )
 // -------- Start Upload Game Files                
                 if($_FILES[ "GameFiles" ][ "name" ] != "") // Posted Game File
                 {
-                    if( $Game->GameFileURL != "" )
-                    {
-                       $FTP->delete( $Game->GameFileURL );
-                    }
+                    $FTP->delete( $Game->GameFileURL );
                     
                     $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game.zip"; 
                 
@@ -112,6 +109,7 @@ function CreateThumbnail( $tmpName, $targetPath )
                     {
                         $UploadedFile = true;
                         $Game->GameFileURL = $target_path;
+                        Echo '<h2 style="color: green;">Game file uploading has succeeded.</h2>';
                     } 
                     else // Else Upload Failed
                     {
@@ -126,10 +124,7 @@ function CreateThumbnail( $tmpName, $targetPath )
 // -------- Start Upload Game Picture
                 if( !empty( $_FILES[ "GamePicture" ][ "name" ] ) )
                 {
-                    if( $Game->GamePictureURL != "" )
-                    {
-                       $FTP->delete( $Game->GamePictureURL );
-                    }
+                    $FTP->delete( $Game->GamePictureURL );
                     
                     $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
             
@@ -137,7 +132,8 @@ function CreateThumbnail( $tmpName, $targetPath )
                     if( move_uploaded_file( $_FILES[ "GamePicture" ][ "tmp_name" ], $target_path ) )  // Temp Upload Success
                     {
                         $UploadedFile = true;
-                        $Game->GamePictureURL = $target_path;         
+                        $Game->GamePictureURL = $target_path;
+                        Echo '<h2 style="color: green;">Game picture uploading has succeeded.</h2>';
                     } 
                     else
                     {
@@ -148,10 +144,7 @@ function CreateThumbnail( $tmpName, $targetPath )
 // -------- Start Upload Game Picture
                 if( !empty( $_FILES[ "TeamPicture" ][ "name" ] ) )
                 {
-                    if( $Game->GamePictureURL != "" )
-                    {
-                       $FTP->delete( $Game->GamePictureURL );
-                    }
+                    $FTP->delete( $Game->GamePictureURL );
                     
                     $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/team." . strtolower( pathinfo( $_FILES[ "TeamPicture" ][ "name" ], PATHINFO_EXTENSION ) );
             
@@ -159,6 +152,7 @@ function CreateThumbnail( $tmpName, $targetPath )
                     {
                         $UploadedFile = true;
                         $Game->TeamPictureURL = $target_path;
+                        Echo '<h2 style="color: green;">Team picture uploading has succeeded.</h2>';
                     } 
                     else
                     {
@@ -166,6 +160,11 @@ function CreateThumbnail( $tmpName, $targetPath )
                     }
                 }	
 // -------- End Upload Game Picture
+
+                if($UploadedFile == true)
+                {
+                    Echo '<h2 style="color: green;">Uploaded file may take several minutes to be reflected on the website.</h2>';
+                }
                 $Game->Save();
             }
             else // Else EditID/Game was not found
