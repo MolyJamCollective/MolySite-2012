@@ -114,7 +114,7 @@
       </div>
     </div>
     
-  <div class="container">
+  <div class="container-fluid">
 
     <div class="page-header">
         <h1><?php echo $pageHeader; ?></h1>
