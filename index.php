@@ -7,53 +7,7 @@
     $activeTab = '1';
 
     $pageScripts = array();
-    $PageScriptsRaw = '
-<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
-<!--
-
-dateFuture = new Date(2012,3,1,19,00,00); // Uses base 0 data, unless days uses base 1
-
-function GetCount(){
-
-        dateNow = new Date();                                                                        //grab current date
-        amount = dateFuture.getTime() - dateNow.getTime();                //calc milliseconds between dates
-        delete dateNow;
-
-        // time is already past
-        if(amount < 0){
-                document.getElementById(\'countdown\').innerHTML="Now!";
-        }
-        // date is still good
-        else{
-                days=0;hours=0;mins=0;secs=0;out="";
-
-                amount = Math.floor(amount/1000);//kill the "milliseconds" so just secs
-
-                days=Math.floor(amount/86400);//days
-                amount=amount%86400;
-
-                hours=Math.floor(amount/3600);//hours
-                amount=amount%3600;
-
-                mins=Math.floor(amount/60);//minutes
-                amount=amount%60;
-
-                secs=Math.floor(amount);//seconds
-
-                if(days != 0){out += days +" day"+((days!=1)?"s":"")+", ";}
-                if(days != 0 || hours != 0){out += hours +" hour"+((hours!=1)?"s":"")+", ";}
-                if(days != 0 || hours != 0 || mins != 0){out += mins +" minute"+((mins!=1)?"s":"")+", ";}
-                out += secs +" seconds";
-                document.getElementById(\'countdown\').innerHTML=out;
-
-                setTimeout("GetCount()", 1000);
-        }
-}
-
-window.onload=function(){GetCount();}//call when everything has loaded
-
-//-->
-</script>';
+    $PageScriptsRaw = '';
 
     include_once('./templates/header.php');
     
@@ -95,11 +49,6 @@ window.onload=function(){GetCount();}//call when everything has loaded
     <div class="span6" style="background-color:#008800; text-align: center;max-width: 780px">
         <h2>MARCH 30TH - APRIL 1ST, 2012
     </div>
-    <div class="span3">&nbsp;</div>
-</div>
-<div class="row-fluid">
-    <div class="span3">&nbsp;</div>
-    <div class="span6" id="countdown" style="background-color:#006600; text-align: center; font-size: 24px; line-height: 36px;font-family: inherit;font-weight: bold;color: inherit;text-rendering: optimizelegibility; max-width: 780px"></div>
     <div class="span3">&nbsp;</div>
 </div>
 <div class="row-fluid">
