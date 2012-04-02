@@ -290,6 +290,16 @@ function CreateThumbnail( $tmpName, $targetPath )
     $activeTab = '5';
 
     include_once('./templates/header.php');
+    
+    if($_POST['GameName'] != "" || !empty($_GET['EditID']) ) // If the game has valid data
+    {
+    	$cache->deleteCachedFile( "archive" );
+    	
+    	if(!empty($_GET['EditID'])) // Edited Game
+        {
+    		$cache->deleteCachedFile( "display.GameID." . $Game->gameId );
+   		}
+   	}
 ?>
 
 <section id="Game" class="well">

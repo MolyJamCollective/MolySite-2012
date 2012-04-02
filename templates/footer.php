@@ -36,7 +36,7 @@
 
 <?php 
 
-//$cache->save();
+$cache->save();
 $cache->push();
 
 ?>

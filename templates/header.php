@@ -8,11 +8,12 @@ $cache = new Cache();
 
 if( $cache->cachedFileExists() )
 {
-//	$cache->renderCachedFile();
-//	die();
+	$cache->renderCachedFile();
+	die();
 }
 
 $cache->start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
