@@ -180,7 +180,7 @@
 ?>
 <div class="row-fluid">
     <div class="span12">
-        <div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;display:none;">
+        <div id="gameThumbnail" style="position:absolute;border:1px solid #ccc;padding:10px;background-color:#fff;display:none;color:#000;">
             Loading Thumbnail...
         </div>
         <form action="?" method="POST">

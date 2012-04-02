@@ -33,4 +33,10 @@
 
   </body>
 </html>
-<?php ob_end_flush(); ?>
+
+<?php 
+
+//$cache->save();
+$cache->push();
+
+?>

@@ -1,5 +1,19 @@
-<?php include_once( 'classes/class.translate.php' ); ?>
-<?php if (!isset($_SESSION)) session_start(); ob_start(); ?>
+<?php 
+include_once( 'classes/class.translate.php' );
+include_once( 'classes/class.cache.php' );
+
+if (!isset($_SESSION)) session_start(); 
+
+$cache = new Cache();
+
+if( $cache->cachedFileExists() )
+{
+//	$cache->renderCachedFile();
+//	die();
+}
+
+$cache->start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

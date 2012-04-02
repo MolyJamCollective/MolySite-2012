@@ -13,9 +13,11 @@
 	{
 		if( $row[ "gamepictureurl" ] != "" )
 		{
-			if( file_exists( GetThumbnailFilename( $row[ "gamepictureurl" ] ) ) )
+			$thumbnailFile = GetThumbnailFilename( $row[ "gamepictureurl" ] );
+			
+			if( file_exists( "../" . $thumbnailFile ) )
 			{
-				echo "<img src='" .  GetThumbnailFilename( $row[ "gamepictureurl" ] ) . "' width='320' height='240' />";				
+				echo "<img src='" .  $thumbnailFile . "' width='320' height='240' /><br />";				
 			}
 			else
 			{

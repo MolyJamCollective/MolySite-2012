@@ -43,4 +43,6 @@ $configuration['ftp_pass'] = '';
 $configuration['ftp_root'] = '/MolyJamGameArchivingSystem/';
 
 $configuration['upload_dir'] = 'uploads/';
+$configuration['cache_dir'] = 'cache/';
+
 ?>
