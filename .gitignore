@@ -1,6 +1,6 @@
 .komodotools
-
 *.komodoproject
 uploads
 !uploads/uploads.txt
 *.backup.*
+configuration.php
