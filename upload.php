@@ -1,5 +1,16 @@
 <?php
 // ------------- Start Functions
+
+function str_insert($insertstring, $intostring, $offset) {
+   $offset = strlen($intostring) - $offset;
+   $part1 = substr($intostring, 0, $offset);
+   $part2 = substr($intostring, $offset);
+  
+   $part1 = $part1 . $insertstring;
+   $whole = $part1 . $part2;
+   return $whole;
+}
+
 function GetThumbnailFilename( $file )
 {
     return pathinfo( $file, PATHINFO_DIRNAME ) . "/" . pathinfo( $file, PATHINFO_FILENAME ) . "_thumb." . pathinfo( $file, PATHINFO_EXTENSION );
@@ -16,11 +27,11 @@ function CreateThumbnail( $tmpName, $targetPath )
     
     if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
     {
-            $tsrc = imagecreatefrompng( $tmpName );
+        $tsrc = imagecreatefrompng( $tmpName );
     }
     else
     {
-            $tsrc = imagecreatefromjpeg( $tmpName );
+        $tsrc = imagecreatefromjpeg( $tmpName );
     }		
     
     $tdst = imagecreatetruecolor($twidth,$theight);
@@ -28,6 +39,7 @@ function CreateThumbnail( $tmpName, $targetPath )
     
     //save resized thumb image
     $tfinfile = $targetPath;
+    echo $targetPath;
     
     if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
     {
@@ -101,7 +113,7 @@ function CreateThumbnail( $tmpName, $targetPath )
 // -------- Start Upload Game Files                
                 if($_FILES[ "GameFiles" ][ "name" ] != "") // Posted Game File
                 {
-                    $FTP->delete( $Game->GameFileURL );
+                    //$FTP->delete( $Game->GameFileURL );
                     
                     $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game.zip"; 
                 
@@ -124,8 +136,8 @@ function CreateThumbnail( $tmpName, $targetPath )
 // -------- Start Upload Game Picture
                 if( !empty( $_FILES[ "GamePicture" ][ "name" ] ) )
                 {
-                    $FTP->delete( $Game->GamePictureURL );
-                    
+                    //$FTP->delete( $Game->GamePictureURL );
+
                     $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
             
                     CreateThumbnail( $_FILES[ "GamePicture" ][ "tmp_name" ], GetThumbnailFilename( $target_path ) );   
@@ -144,10 +156,11 @@ function CreateThumbnail( $tmpName, $targetPath )
 // -------- Start Upload Game Picture
                 if( !empty( $_FILES[ "TeamPicture" ][ "name" ] ) )
                 {
-                    $FTP->delete( $Game->GamePictureURL );
+                    //$FTP->delete( $Game->GamePictureURL );
                     
                     $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/team." . strtolower( pathinfo( $_FILES[ "TeamPicture" ][ "name" ], PATHINFO_EXTENSION ) );
             
+                    CreateThumbnail( $_FILES[ "TeamPicture" ][ "tmp_name" ], GetThumbnailFilename( $target_path ) );
                     if( move_uploaded_file( $_FILES[ "TeamPicture" ][ "tmp_name" ], $target_path ) ) 
                     {
                         $UploadedFile = true;
@@ -243,6 +256,7 @@ function CreateThumbnail( $tmpName, $targetPath )
                 {
                     $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/team." . strtolower( pathinfo( $_FILES[ "TeamPicture" ][ "name" ], PATHINFO_EXTENSION ) );
             
+                    CreateThumbnail( $_FILES[ "TeamPicture" ][ "tmp_name" ], GetThumbnailFilename( $target_path ) );   
                     if( move_uploaded_file( $_FILES[ "TeamPicture" ][ "tmp_name" ], $target_path ) ) 
                     {
                         $UploadedFile = true;
@@ -312,7 +326,7 @@ function CreateThumbnail( $tmpName, $targetPath )
       <?php if($Game->GamePictureURL != "")
                 echo '
               <a href="' . $Game->GamePictureURL . '" class="thumbnail">
-                <img src="' .$Game->GamePictureURL . '" alt="Game Photo">
+                <img src="' . str_insert('_thumb',$Game->GamePictureURL,4) . '" alt="Game Photo">
               </a> '; ?>
     </div>
     <br />
@@ -336,7 +350,7 @@ function CreateThumbnail( $tmpName, $targetPath )
       <?php if($Game->TeamPictureURL != "")
                 echo '
               <a href="' . $Game->TeamPictureURL . '" class="thumbnail">
-                <img src="' . $Game->TeamPictureURL . '" alt="Team Photo">
+                <img src="' . str_insert('_thumb',$Game->TeamPictureURL,4) . '" alt="Team Photo">
               </a> '; ?>
     </div>
   </div>

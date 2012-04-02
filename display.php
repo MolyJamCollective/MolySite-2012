@@ -1,4 +1,14 @@
 <?php
+function str_insert($insertstring, $intostring, $offset) {
+   $offset = strlen($intostring) - $offset;
+   $part1 = substr($intostring, 0, $offset);
+   $part2 = substr($intostring, $offset);
+  
+   $part1 = $part1 . $insertstring;
+   $whole = $part1 . $part2;
+   return $whole;
+}
+
   include_once("./configuration.php");
   include_once("./objects/class.database.php");
   include_once("./objects/class.game.php");
@@ -76,7 +86,7 @@
                               </div>
                         </div>
                         <div class="span5 offset1">
-                              <?php if($Game->GamePictureURL != "")echo '<a href="' . $Game->GamePictureURL . '" class="thumbnail"><img src="' . $Game->GamePictureURL . '" alt="Game Photo"></a> '; ?>
+                              <?php if($Game->GamePictureURL != "")echo '<a href="' . $Game->GamePictureURL . '" class="thumbnail"><img src="' . str_insert('_thumb',$Game->GamePictureURL,4) . '" alt="Game Photo"></a> '; ?>
                         </div>
                         
                         <br />
@@ -100,7 +110,7 @@
                               </div>
                         </div>
                         <div class="span5 offset1">
-                              <?php if($Game->TeamPictureURL != "") echo '<a href="' . $Game->TeamPictureURL . '" class="thumbnail"><img src="' . $Game->TeamPictureURL . '" alt="Team Photo"></a> '; ?>
+                              <?php if($Game->TeamPictureURL != "") echo '<a href="' . $Game->TeamPictureURL . '" class="thumbnail"><img src="' . str_insert('_thumb',$Game->TeamPictureURL,4) . '" alt="Team Photo"></a> '; ?>
                         </div>
                   </div>
             </section>
