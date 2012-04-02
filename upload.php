@@ -294,10 +294,19 @@ function CreateThumbnail( $tmpName, $targetPath )
     if($_POST['GameName'] != "" || !empty($_GET['EditID']) ) // If the game has valid data
     {
     	$cache->deleteCachedFile( "archive" );
-    	
+    	$cache->deleteCachedFile( "archive.sortBy.createddatetime.sortOrder.desc" );
+    	$cache->deleteCachedFile( "archive.sortBy.createddatetime.sortOrder.asc" );	
+    	$cache->deleteCachedFile( "archive.sortBy.gameId.sortOrder.asc" );	
+    	$cache->deleteCachedFile( "archive.sortBy.gameId.sortOrder.desc" );	
+    	$cache->deleteCachedFile( "archive.sortBy.gamename.sortOrder.asc" );	
+    	$cache->deleteCachedFile( "archive.sortBy.gamename.sortOrder.desc" );	
+    	$cache->deleteCachedFile( "archive.sortBy.molyjamlocation.sortOrder.asc" );	
+    	$cache->deleteCachedFile( "archive.sortBy.molyjamlocation.sortOrder.desc" );
+			
     	if(!empty($_GET['EditID'])) // Edited Game
         {
     		$cache->deleteCachedFile( "display.GameID." . $Game->gameId );
+    		$cache->deleteCachedFile( "display.GameID." . $Game->gameId . ".download.true" );
    		}
    	}
 ?>
