@@ -199,7 +199,6 @@
                 <th width="50"><a href="<?php echo getSortLinkString( "gameId" )?>"># <?php echo getSortImage( "gameId" ); ?></a></th>
                 <th><a href="<?php echo getSortLinkString( "gamename" )?>">Name <?php echo getSortImage( "gamename" ); ?></a></th>
                 <th width="150"><a href="<?php echo getSortLinkString( "molyjamlocation" )?>">Location <?php echo getSortImage( "molyjamlocation" ); ?></a></th>
-                <th width="90"><a href="<?php echo getSortLinkString( "popularity", true )?>">Popularity <?php echo getSortImage( "popularity" ); ?></a></th>
                 <th width="300"><a href="<?php echo getSortLinkString( "createddatetime" )?>">Created <?php echo getSortImage( "createddatetime" ); ?></a></th>
             </tr>
         </thead>
@@ -209,7 +208,6 @@
                 <td><?php echo $Game->gameId ?></td>
                 <td><a href="display.php?GameID=<?php echo $Game->gameId ?>"><?php echo $Game->GameName ?></a></td>
                 <td><a href="?search=<?php echo $Game->MolyJamLocation ?>"><?php echo $Game->MolyJamLocation ?></a></td>
-                <td><?php echo $Popularity ?></td>
                 <td><?php echo $Game->CreatedDateTime ?></td>
             </tr>
         <?php } ?>
