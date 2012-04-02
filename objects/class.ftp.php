@@ -115,7 +115,11 @@ class ftp
 	//Params:	$dir	name of directory
 	function mkdir( $dir )
 	{
-		return ftp_mkdir( $this->conn, $dir );
+		$result = ftp_mkdir( $this->conn, $dir );
+		if($result){
+			return ftp_chmod( $this->conn, 0777, $dir );
+		}
+		return $result;
 	}
 	
     //rename
