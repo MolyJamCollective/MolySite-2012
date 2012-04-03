@@ -1,5 +1,6 @@
 <?php
 
+include_once("./objects/class.ftp.php");
 
 class Cache 
 {
@@ -45,9 +46,24 @@ class Cache
 		ob_end_flush(); 
 	}
 	
-	function deleteCachedFile( $filename )
+	function deleteCachedFile( $filename, $deleteSimilar = false )
 	{
-		file_put_contents( $GLOBALS['configuration']['cache_dir'] . $filename . ".html", " " );
+		$FTP = new ftp();
+		
+		if( $deleteSimilar == true )
+		{
+			$list = $FTP->nlist( $GLOBALS['configuration']['cache_dir'] );
+			
+			foreach( $list as $value )
+			{
+				if( substr( $value, strlen( $GLOBALS['configuration']['cache_dir'] ), strlen( $filename ) ) == $filename )
+				{
+					$FTP->delete( $value );
+				}
+			}
+		}
+		
+		$FTP->delete( $GLOBALS['configuration']['cache_dir'] . $filename . ".html" );
 	}
 }
 
