@@ -280,7 +280,7 @@ function CreateThumbnail( $tmpName, $targetPath )
     }
     else // Invalied data
     {
-        Echo '<h2 style="color: red;">Invalied Data</h2>';
+        Echo '<h2 style="color: red;">Invalid Data</h2>';
     }
     
     include_once('./templates/globals.php'); 
@@ -291,14 +291,10 @@ function CreateThumbnail( $tmpName, $targetPath )
 
     include_once('./templates/header.php');
     
-    if($_POST['GameName'] != "" || !empty($_GET['EditID']) ) // If the game has valid data
+    if( $Game->gameId != "" ) // If the game was created/edited correctly
     {
     	$cache->deleteCachedFile( "archive", true );
-			
-    	if(!empty($_GET['EditID'])) // Edited Game
-        {
-    		$cache->deleteCachedFile( "display.GameID." . $Game->gameId, true );
-   		}
+   		$cache->deleteCachedFile( "display.GameID." . $Game->gameId, true );
    	}
 ?>
 
