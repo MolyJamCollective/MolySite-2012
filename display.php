@@ -12,7 +12,7 @@ function str_insert($insertstring, $intostring, $offset) {
   include_once("./configuration.php");
   include_once("./objects/class.database.php");
   include_once("./objects/class.game.php");
-
+  include_once("./objects/class.greenPixel.php");
   $Game = new Game();
   $Game->Get($_GET['GameID']);
 
@@ -22,9 +22,36 @@ function str_insert($insertstring, $intostring, $offset) {
   $pageHeader = $Game->GameName;
   $activeTab = '2';
   
+  $pageStyles = array('./css/validationEngine.jquery.css');
+    
+    $pageScripts = array('./js/jquery.validationEngine.js','./js/jquery.validationEngine-en.js','./js/other-validations.js');
+    $PageScriptsRaw ='
+  <script>
+    $(document).ready(function(){
+      $("#SendGreenPixel").validationEngine();
+      $("#GreenPixelMessage").keydown(function() {
+		  $("#pixelChars").html( 140 - $(this).val().length - 1 );
+		});
+    });
+    
+    function checkGreenPixel(field, rules, i, options)
+	  {
+        if ( field.val().length > 140 ) 
+		{
+          return "Please only use 140 characters";
+        }
+      }
+  </script>';
+  
   if( !empty( $_GET[ "download" ] ) && $Game->GameFileURL != "" )
   {
   	echo "<meta http-equiv='refresh' content='0; url=". $Game->GameFileURL . "' />"; 
+  }
+  
+  if( !empty( $_GET[ "sendPixel" ] ) )
+  {
+	$pixel = new GreenPixel( $Game->gameId, mysql_escape_string( $_POST["GreenPixelMessage" ] ) );
+	$pixel->Save();
   }
 
   include_once('./templates/header.php');
@@ -100,9 +127,17 @@ function str_insert($insertstring, $intostring, $offset) {
                         <div class="span5">
                               <h3>Team Members</h3>
                               <p><?php echo $Game->TeamMembers; ?></p>
-        
-                              <br />
-                              <br />
+        <br />
+                  <br />
+        						<h3>Send a Green Pixel to the devs</h3>
+        						<?php if( empty( $_GET[ "sendPixel" ] ) ): ?>
+                              <form id="SendGreenPixel" class="form-horizontal" action="?GameID=<?php echo $Game->gameId; ?>&sendPixel=true" method="POST">
+                              <textarea class="input-xlarge validate[required,funcCall[checkGreenPixel]]" id="GreenPixelMessage" name="GreenPixelMessage" rows="3" style="width:370px;" maxlength="250" ></textarea>
+                              <button type="submit" class="btn btn-primary">Send</button> <div id="pixelChars" style="display:inline-block;font-weight:bold;font-size:16px;position:relative;top:2px;margin-left:10px;">140</div>
+                              </form>
+                              <?php else: ?>
+                              	<img src="img/greenPixel.jpg" alt="Green Pixel" /> <b>Your message has been sent.</b>
+                              <?php endif; ?>
                               <div class="footer">
                                     <p><strong>Jam Location:</strong> <?php echo $Game->MolyJamLocation; ?></p>
                                     <p><strong>Game License:</strong> <?php echo $Game->GameLicense; ?></p>

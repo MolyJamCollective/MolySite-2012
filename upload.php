@@ -39,8 +39,7 @@ function CreateThumbnail( $tmpName, $targetPath )
     
     //save resized thumb image
     $tfinfile = $targetPath;
-    echo $targetPath;
-    
+
     if( pathinfo( $targetPath, PATHINFO_EXTENSION ) == "png" )
     {
             imagepng($tdst, $tfinfile, 5);
@@ -53,6 +52,14 @@ function CreateThumbnail( $tmpName, $targetPath )
 
 // ------------- End Functions
 
+	include_once('./templates/globals.php'); 
+    
+    $pageTitle = 'MolyJam Game Submission System';
+    $pageHeader = 'MolyJam Game Submission System';
+    $activeTab = '5';
+
+    include_once('./templates/header.php');
+    
     include_once("./configuration.php");
     include_once("./objects/class.database.php");
     include_once("./objects/class.game.php");
@@ -282,15 +289,7 @@ function CreateThumbnail( $tmpName, $targetPath )
     {
         Echo '<h2 style="color: red;">Invalid Data</h2>';
     }
-    
-    include_once('./templates/globals.php'); 
-    
-    $pageTitle = 'MolyJam Game Submission System';
-    $pageHeader = 'MolyJam Game Submission System';
-    $activeTab = '5';
 
-    include_once('./templates/header.php');
-    
     if( $Game->gameId != "" ) // If the game was created/edited correctly
     {
     	$cache->deleteCachedFile( "archive", true );

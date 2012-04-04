@@ -4,6 +4,7 @@
     include_once("./configuration.php");
     include_once("./objects/class.database.php");
     include_once("./objects/class.game.php");
+    include_once("./objects/class.greenPixel.php");
     include_once("./objects/class.ftp.php");
     include_once("./objects/class.location.php");
     
@@ -56,22 +57,40 @@
     include_once('./templates/header.php');
     
     $Game = new Game();
+   
+    
     $Error = false;
     
     if( !empty( $_GET[ "EditID" ] ) )
     {
     	$Game->GetFromEditId( $_GET[ "EditID" ] );
-	if($Game->GameName == "") // Game Was Not Found
-	{
-	    Echo '<h2 style="color: red">EditID was not found</h2>';
-	    $Error = true;
-	}
+		if($Game->GameName == "") // Game Was Not Found
+		{
+		    Echo '<h2 style="color: red">EditID was not found</h2>';
+		    $Error = true;
+		}
     }
     if(!$Error)
     {
 	
 ?>
-    
+
+<?php 
+
+if( !empty( $_GET[ "EditID" ] ) ):
+
+$GreenPixel = new GreenPixel();
+$greenPixels = $GreenPixel->GetList( array( array("gameid", "=", $Game->gameId) ) ); 
+?>
+
+<h3>Page Views: <?php echo $Game->PageViews; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Downloads: <?php echo $Game->Downloads; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Green Pixels: <?php echo count($greenPixels); ?> (<a href="#greenPixels">view</a>)</h3>
+
+
+<div class="page-header">
+    <h1>Edit your entry</h1>
+</div>
+<?php endif; ?>
+
 <div class="row-fluid">
     <div class="span10 offset1">
     <?php if( !empty( $_GET[ "EditID" ] ) ): ?>
@@ -268,6 +287,22 @@
       </form>
       </div>
 </div>
+
+
+<?php if( !empty( $_GET[ "EditID" ] ) ): ?>
+<a name="greenPixels"></a>
+<div class="page-header">
+    <h1>Green Pixels</h1>
+</div>
+
+<?php for( $i = count( $greenPixels ) - 1; $i >= 0; $i-- ): ?>
+
+<img src="img/greenPixel.jpg" alt="Green Pixel" style="float:left;margin-right:10px;" /><div><?php echo $greenPixels[ $i ]->Text; ?></div>
+<div style="clear:both;"></div><br />
+
+<?php endfor; ?>
+
+<?php endif; ?>
 <?php
     } include_once('./templates/footer.php');
 ?>
