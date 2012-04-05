@@ -61,6 +61,11 @@
     
     if( !empty( $_GET[ "EditID" ] ) )
     {
+    	if( strlen( $_GET['EditID'] ) != 32 )
+		  {
+		  	die( "Do you think that is what Moly would deux?" );
+		  }
+  
     	$Game->GetFromEditId( $_GET[ "EditID" ] );
 		if($Game->GameName == "") // Game Was Not Found
 		{
@@ -82,7 +87,7 @@ $greenPixels = $GreenPixel->GetList( array( array("gameid", "=", $Game->gameId) 
 ?>
 
 <h3>Page Views: <?php echo $Game->PageViews; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Downloads: <?php echo $Game->Downloads; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Green Pixels: <?php echo count($greenPixels); ?> (<a href="#greenPixels">view</a>)</h3>
-
+<br />* Due to a bug the stats weren't updating between tuesday the 3rd and thursday the 5th, so your numbers are probably higher. We are very sorry about that mishap.
 
 <div class="page-header">
     <h1>Edit your entry</h1>

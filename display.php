@@ -13,8 +13,14 @@ function str_insert($insertstring, $intostring, $offset) {
   include_once("./objects/class.game.php");
   include_once("./objects/class.greenPixel.php");
   
+  if( is_numeric( $_GET['GameID'] ) == false )
+  {
+  	die( "Do you think that is what Moly would deux?" );
+  }
+ 	
+  $gameId = mysql_escape_string( $_GET['GameID'] );
   $Game = new Game();
-  $Game->Get($_GET['GameID']);
+  $Game->Get($gameId);
 
   include_once('./templates/globals.php');
     
@@ -43,8 +49,6 @@ function str_insert($insertstring, $intostring, $offset) {
       }
   </script>';
   
-  echo "<pre>"; print_r( $_SESSION ); echo "</pre>";
-
   if( !empty( $_GET[ "download" ] ) && $Game->GameFileURL != "" )
   {
   	echo "<meta http-equiv='refresh' content='0; url=". $Game->GameFileURL . "' />"; 
@@ -98,7 +102,7 @@ function str_insert($insertstring, $intostring, $offset) {
                   <div class="thumbnails">
                         <div class="span5">
                               <h3>Description</h3>
-                              <p><?php echo $Game->GameDescription; ?></p>
+                              <p><?php echo nl2br( $Game->GameDescription ); ?></p>
                               
                               <br />
                               <br />
@@ -106,7 +110,7 @@ function str_insert($insertstring, $intostring, $offset) {
                               
                               <h3>Moly*eux Inspirational Tweet</h3>
                               <div class="well">
-                                    <p>"<?php echo $Game->GameTweet; ?>"</p>
+                                    <p>"<?php echo nl2br( $Game->GameTweet ); ?>"</p>
                               </div>
                               
                               <br />
@@ -139,7 +143,7 @@ function str_insert($insertstring, $intostring, $offset) {
                   <div class="thumbnails">
                         <div class="span5">
                               <h3>Team Members</h3>
-                              <p><?php echo $Game->TeamMembers; ?></p>
+                              <p><?php echo nl2br( $Game->TeamMembers ); ?></p>
         <br />
                   <br />
         						<h3>Send a Green Pixel to the devs</h3>

@@ -7,6 +7,11 @@
     	return pathinfo( $file, PATHINFO_DIRNAME ) . "/" . pathinfo( $file, PATHINFO_FILENAME ) . "_thumb." . pathinfo( $file, PATHINFO_EXTENSION );
    	}
    	
+   	if( is_numeric( $_GET["id"] ) == false )
+   	{
+   		die( "Do you think that is what Moly would deux?" );
+  	}
+  		
     $connection = Database::Connect();
 	$cursor = Database::Reader( "select `gamepictureurl` from `game` where `gameid`='".intval($_GET["id"])."' LIMIT 1", $connection);
 	while ($row = Database::Read($cursor))
