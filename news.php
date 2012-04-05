@@ -1,5 +1,5 @@
 <?php
-    include_once('./templates/globals.php');
+    include_once("./templates/include.php");
     
     $pageTitle = 'MolyJam - News';
     $pageHeader = '';

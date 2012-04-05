@@ -1,8 +1,6 @@
 <?php
-    include_once('./templates/globals.php');
+    include_once("./templates/include.php");
     
-    include_once("./configuration.php");
-    include_once("./objects/class.database.php");
     include_once("./objects/class.game.php");
     include_once("./objects/class.greenPixel.php");
     include_once("./objects/class.ftp.php");

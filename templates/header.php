@@ -2,8 +2,6 @@
 include_once( 'classes/class.translate.php' );
 include_once( 'classes/class.cache.php' );
 
-if (!isset($_SESSION)) session_start(); 
-
 $cache = new Cache();
 
 if( $cache->cachedFileExists() )

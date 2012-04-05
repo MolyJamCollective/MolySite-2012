@@ -9,10 +9,10 @@ function str_insert($insertstring, $intostring, $offset) {
    return $whole;
 }
 
-  include_once("./configuration.php");
-  include_once("./objects/class.database.php");
+  include_once("./templates/include.php");
   include_once("./objects/class.game.php");
   include_once("./objects/class.greenPixel.php");
+  
   $Game = new Game();
   $Game->Get($_GET['GameID']);
 
@@ -43,9 +43,31 @@ function str_insert($insertstring, $intostring, $offset) {
       }
   </script>';
   
+  echo "<pre>"; print_r( $_SESSION ); echo "</pre>";
+
   if( !empty( $_GET[ "download" ] ) && $Game->GameFileURL != "" )
   {
   	echo "<meta http-equiv='refresh' content='0; url=". $Game->GameFileURL . "' />"; 
+  	
+  	if( empty( $_SESSION[ "download" ][ $Game->gameId ] ) )
+  	{
+	  	$connection = Database::Connect();
+	    $query = "UPDATE `game` SET `downloads`=`downloads` + 1 WHERE `gameid`='".$Game->gameId."'";
+	    Database::InsertOrUpdate($query, $connection);
+	    
+	    $_SESSION[ "download" ][ $Game->gameId ] = true;
+    }
+  }
+  else
+  {
+  	if( empty( $_SESSION[ "view" ][ $Game->gameId ] ) )
+  	{
+	  	$connection = Database::Connect();
+	    $query = "UPDATE `game` SET `pageviews`=`pageviews` + 1 WHERE `gameid`='".$Game->gameId."'";
+	    Database::InsertOrUpdate($query, $connection);
+	    
+	    $_SESSION[ "view" ][ $Game->gameId ] = true;
+    }
   }
   
   if( !empty( $_GET[ "sendPixel" ] ) )
@@ -61,16 +83,7 @@ function str_insert($insertstring, $intostring, $offset) {
   if($Game->GameName != "")
   {
   	$updateDownloadCounter = "";
-  	
-  	if( !empty( $_GET[ "download" ] ) && ($Game->GameFileURL != "" && $Game->GameFileURL != "#" ))
-  	{
-  		$updateDownloadCounter = ", `downloads`=`downloads` + 1";
-	}
-    
-    $connection = Database::Connect();
-    $query = "UPDATE `game` SET `pageviews`=`pageviews` + 1" . $updateDownloadCounter . " WHERE `gameid`='".$Game->gameId."'";
-    Database::InsertOrUpdate($query, $connection);
-    
+ 	
 ?>
 <div class="row-fluid">
       <div class="span1">&nbsp;</div>

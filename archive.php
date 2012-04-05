@@ -2,8 +2,7 @@
     // TODO:: Hover over game for image popup
     // TODO:: Click Row for Display
 
-    include_once("./configuration.php");
-    include_once("./objects/class.database.php");
+    include_once("./templates/include.php");
     include_once("./objects/class.game.php");
 
     $Game = new Game(); //create a book object

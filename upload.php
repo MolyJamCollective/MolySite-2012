@@ -52,16 +52,14 @@ function CreateThumbnail( $tmpName, $targetPath )
 
 // ------------- End Functions
 
-	include_once('./templates/globals.php'); 
-    
+    include_once("./templates/include.php");
+	
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
     $activeTab = '5';
 
     include_once('./templates/header.php');
     
-    include_once("./configuration.php");
-    include_once("./objects/class.database.php");
     include_once("./objects/class.game.php");
     include_once("./objects/class.ftp.php");
     include_once("./objects/class.phpmailer.php");
