@@ -59,6 +59,13 @@
     
     $Error = false;
     
+    if( empty( $_GET[ "EditID" ] ) && empty( $_GET[ "sneakySubmissionActivation" ] ) )
+    {
+    	$Error = true;
+    	
+    	Echo '<h2 style="color: red">Submission has been disabled.</h2>';
+   	}
+    
     if( !empty( $_GET[ "EditID" ] ) )
     {
     	if( strlen( $_GET['EditID'] ) != 32 )

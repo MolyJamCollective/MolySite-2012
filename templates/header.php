@@ -85,7 +85,8 @@ $cache->start();
               <li <?php if($activeTab == 1) { echo 'class="active"';} ?>><a href="./index.php">Home</a></li>
               <li <?php if($activeTab == 2) { echo 'class="active"';} ?>><a href="./news.php">News</a></li>
               <li <?php if($activeTab == 3) { echo 'class="active"';} ?>><a href="./faq.php">FAQs</a></li>
-              <li class="dropdown <?php if($activeTab == 4 || $activeTab == 5) { echo 'active';} ?>">
+              <li <?php if($activeTab == 4) { echo 'class="active"';} ?>><a href="./archive.php">Games</a></li>
+              <!--<li class="dropdown <?php if($activeTab == 4 || $activeTab == 5) { echo 'active';} ?>">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Games<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="nav-header">Archive</li>
@@ -93,7 +94,7 @@ $cache->start();
                   <li class="divider"></li>
                   <li <?php if($activeTab == 5) { echo 'class="active"';} ?>><a href="./submit.php">Submissions</a></li>
                 </ul>
-              </li>
+              </li>-->
               <li class="dropdown">
                 <a href="#" <?php if($activeTab == 6 || $activeTab == 7) { echo 'class="active"';} ?> class="dropdown-toggle" data-toggle="dropdown">Live<b class="caret"></b></a>
                 <ul class="dropdown-menu">
