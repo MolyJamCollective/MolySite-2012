@@ -1,21 +1,23 @@
-<?php
-    include_once("./templates/include.php");
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Molyjam 2012</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    $pageTitle = 'What Would Molydeux?';
-    $pageHeader = '';
-    $pageStyles = array();
-    $activeTab = '1';
+    <meta name="robots" content="FOLLOW,INDEX" />
 
-    $pageScripts = array();
-    $PageScriptsRaw = '';
-
-    include_once('./templates/header.php');
+    <!-- Le styles -->
+    <style>
+      body {
+        padding-top: 60px; /* 60px toZ make the container go all the way to the bottom of the topbar */
+      }
+    </style>
     
-    include_once('./configuration.php');
-    include_once('./objects/class.database.php');
-    include_once('./objects/class.location.php');
-    include_once('./objects/class.organizer.php');
-?>
+    <link rel="stylesheet/less" href="./less/bootstrap.less">
+    <script src="./js/less-1.3.0.min.js"></script>
+</head>
+<body>
+
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
     <div class="span6">
@@ -30,7 +32,7 @@
     </div>
     <div class="span3">&nbsp;</div>
 </div>
-<div class="row-fluid">
+<!--<div class="row-fluid">
     <div class="span3">&nbsp;</div>
     <div class="span6" style="background-color:#00CC00; text-align: center; max-width: 780px">
         <h2 class="allcaps cream">AN INTERNATIONAL 48-HOUR GAME JAM</h2>
@@ -50,63 +52,13 @@
         <h2>MARCH 30TH - APRIL 1ST, 2012
     </div>
     <div class="span3">&nbsp;</div>
-</div>
+</div>-->
 <div class="row-fluid">
     <div class="span3">&nbsp;</div>
     <div class="span6" style="background-color:#333333; text-align: center; max-width: 780px">
-        <h3>Check out the <a href="http://batchgeo.com/map/MolyJam2012">map</a> for locations, <a href="./webchat.php">chat</a> with participants, or watch <a href="http://www.twitch.tv/event/molyjam">livestream</a> of the events</h3>
+        <h3><br />Oh no! Something went wrong. We will be back up tomorrow.<br />&nbsp;</h3>
     </div>
     <div class="span3">&nbsp;</div>
 </div>
-<br />
-<br />
-<?php
-    $Location = new Location();
-    $LocationList = $Location->GetList(array(array("locationid", ">", 0)));
-    $i = 0;
-    foreach ($LocationList as $Location)
-    {
-        
-        $Organizer = new Organizer();
-        $OrganizerList = $Organizer->GetList(array(array("locationid", "=", $Location->locationId)));
-
-        if($i % 2 == 0)
-        {
-?>
-<div class="row-fluid">
-    <div class="span3">&nbsp;</div>
-    
-<?php   } ?>
-
-    <div class="span3">
-        <h3><a href="<?php echo $Location->EventURL ?>"><?php echo $Location->Title ?></a></h3>
-        <dl class="dl-horizontal">
-
-<?php
-        foreach ($OrganizerList as $Organizer)
-        {
-?>
-            <dt><?php echo $Organizer->Name ?></dt>
-         <?php if(!empty($Organizer->Twitter)) { ?> <dd><a href="http://www.twitter.com/#!/<?php echo $Organizer->Twitter ?>">@<?php echo $Organizer->Twitter ?></a></dd><?php } ?>
-<?php   } ?>
-            <dt></dt>
-            <dd><a href="mailto:<?php echo $Location->EventEmail ?>"><?php echo $Location->EventEmail ?></a></dd>
-        </dl>
-    </div>
-<?php
-        if($i % 2 == 1)
-        {
-?>
-</div>
-<?php
-        }
-    $i++;
-    }
-    if($i % 1 == 0)
-    {
-?>
-</div>
-<?php } ?>
-<?php
-    include_once('./templates/footer.php');
-?>
+</body>
+</html>

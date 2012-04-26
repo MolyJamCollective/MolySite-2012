@@ -5,7 +5,8 @@
     include_once("./objects/class.greenPixel.php");
     include_once("./objects/class.ftp.php");
     include_once("./objects/class.location.php");
-    
+    include_once("./utility/sendConfirmationEmail.php"); 
+	
     $pageTitle = 'MolyJam Game Submission System';
     $pageHeader = 'MolyJam Game Submission System';
     $activeTab = '5';
@@ -59,7 +60,7 @@
     
     $Error = false;
     
-    if( empty( $_GET[ "EditID" ] ) && empty( $_GET[ "sneakySubmissionActivation" ] ) )
+    if( empty( $_GET[ "EditID" ] ) && empty( $_GET[ "sneakySubmissionActivation" ] ) && empty( $_GET[ "gameId" ] ) && empty( $_GET[ "action" ] ) )
     {
     	$Error = true;
     	
@@ -80,6 +81,64 @@
 		    $Error = true;
 		}
     }
+    
+    if( !empty( $_GET[ "gameId" ] ) && is_numeric( $_GET[ "gameId" ] ) )
+    {
+        $Game->Get( $_GET[ "gameId" ] );
+        
+        if($Game->GameName == "") // Game Was Not Found
+		{
+		    Echo '<h2 style="color: red">GameId was not found</h2>';
+		    $Error = true;
+		}
+    }
+    
+    if( !empty( $_GET[ "action" ] ) && $_GET[ "action" ] == "insertEmail" )
+    {
+        //echo md5( $_POST[ "Email" ] . $Game->gameId ) . " - " . $Game->EditID . "<br />";
+        if( md5( $_POST[ "Email" ] . $Game->gameId ) == $Game->EditID )
+        {
+            $Game->Email = mysql_escape_string( $_POST[ "Email" ] );
+            $Game->Save();
+            
+			SendConfirmationEmail( $_POST[ "Email" ], $Game );
+			
+            echo "<h2>Thank you for entering you E-Mail address.</h2><br /><br />";
+			echo "We have resend the email containing the link you need to edit your game. Just in case.<br />";
+			echo "Please follow that link to re upload your game data and screenshot/team picture.";
+			
+			$Error = true;
+        }
+        else
+        {
+            Echo '<h2 style="color: red">The E-Mail you entered does not match the address you have entered previously</h2>';
+        }
+    }
+    
+    if( $Error == false && $Game->Email == "" )
+    {
+        if( empty( $_GET[ "action" ] ) ): ?>
+        <h2>Hey, we created a problem. :(</h2>
+        <?php endif; ?>
+        We lost all the screenshots and game files and would ask you to re-upload them.<br />
+        But first, please re-enter your email address you used to submit the game so we are able to contact you more quickly in the future:<br /><br />
+        <form id="GameSubmission" class="form-horizontal" action="./submit.php?action=insertEmail&gameId=<?php echo $Game->gameId; ?>" method="post">
+            <div class="control-group">
+                <label class="control-label" for="Email">Email*</label>
+                <div class="controls">
+                <?php if( empty( $_GET[ "action" ] ) ): ?>
+                    <input type="text" class="input-xlarge validate[required,custom[email]]" id="Email" name="Email" maxlength="250" />
+                <?php else: ?>
+                    <input type="text" class="input-xlarge validate[required,custom[email]]" id="Email" name="Email" maxlength="250" value="<?php echo $_POST[ "Email" ]; ?>" />
+                <?php endif; ?>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-left:160px;margin-top:10px;">Submit Email</button>
+            </div>
+        </form>
+        <?php
+        $Error = true;
+    }
+    
     if(!$Error)
     {
 	
@@ -103,8 +162,8 @@ $greenPixels = $GreenPixel->GetList( array( array("gameid", "=", $Game->gameId) 
 
 <div class="row-fluid">
     <div class="span10 offset1">
-    <?php if( !empty( $_GET[ "EditID" ] ) ): ?>
-	<form id="GameSubmission" class="form-horizontal" action="./upload.php?EditID=<?php echo $_GET[ "EditID" ]; ?>" method="post" enctype="multipart/form-data">
+    <?php if( !empty( $_GET[ "EditID" ] ) || !empty( $_GET[ "gameId" ] ) ): ?>
+	<form id="GameSubmission" class="form-horizontal" action="./upload.php?EditID=<?php echo $Game->EditID; ?>" method="post" enctype="multipart/form-data">
     <?php else: ?>
 	<form id="GameSubmission" class="form-horizontal" action="./upload.php" method="post" enctype="multipart/form-data">
     <?php endif; ?>
@@ -275,8 +334,8 @@ $greenPixels = $GreenPixel->GetList( array( array("gameid", "=", $Game->gameId) 
           <div class="control-group">
             <label class="control-label" for="Email">Email<?php if( empty( $_GET[ "EditID" ] ) ) { echo '*';} ?></label>
             <div class="controls">
-	<?php if( !empty( $_GET[ "EditID" ] ) ): ?>
-	    <input type="text" class="input-xlarge disabled" id="Email" name="Email" maxlength="250" value="" disabled>
+	<?php if( !empty( $_GET[ "EditID" ] ) || !empty( $_GET[ "action" ] ) ): ?>
+	    <input type="text" class="input-xlarge disabled" style="color:#555;" id="Email" name="Email" maxlength="250" value="<?php echo $Game->Email; ?>" disabled>
 	<?php else: ?>
 	    <input type="text" class="input-xlarge validate[required,custom[email]]" id="Email" name="Email" maxlength="250" />
 	<?php endif; ?>

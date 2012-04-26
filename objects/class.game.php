@@ -114,6 +114,11 @@ class Game extends POG_Base
 	 */
 	public $EditID;
 	
+    /**
+	 * @var VARCHAR(255)
+	 */
+	public $Email;
+    
 	public $pog_attribute_type = array(
 		"gameId" => array('db_attributes' => array("NUMERIC", "INT")),
 		"GameName" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
@@ -132,6 +137,7 @@ class Game extends POG_Base
 		"CreatedDateTime" => array('db_attributes' => array("TEXT", "DATETIME")),
 		"lastEditedDateTime" => array('db_attributes' => array("TEXT", "DATETIME")),
 		"EditID" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
+        "Email" => array('db_attributes' => array("TEXT", "VARCHAR", "255")),
 		);
 	public $pog_query;
 	
@@ -201,6 +207,7 @@ class Game extends POG_Base
 			$this->CreatedDateTime = $row['createddatetime'];
 			$this->lastEditedDateTime = $row['lastediteddatetime'];
 			$this->EditID = $this->Unescape($row['editid']);
+            $this->Email = $this->Unescape($row["email"]);
 		}
 		return $this;
 	}
@@ -234,6 +241,7 @@ class Game extends POG_Base
 			$this->CreatedDateTime = $row['createddatetime'];
 			$this->lastEditedDateTime = $row['lastediteddatetime'];
 			$this->EditID = $this->Unescape($row['editid']);
+            $this->Email = $this->Unescape($row["email"]);
 		}
 		return $this;
 	}
@@ -338,6 +346,7 @@ class Game extends POG_Base
 			$game->CreatedDateTime = $row['createddatetime'];
 			$game->lastEditedDateTime = $row['lastediteddatetime'];
 			$game->EditID = $this->Unescape($row['editid']);
+            $this->Email = $this->Unescape($row["email"]);
 			$gameList[] = $game;
 		}
 		return $gameList;
@@ -389,6 +398,7 @@ class Game extends POG_Base
 			$this->CreatedDateTime = $row['createddatetime'];
 			$this->lastEditedDateTime = $row['lastediteddatetime'];
 			$this->EditID = $this->Unescape($row['editid']);
+            $this->Email = $this->Unescape($row["email"]);
 		}
 		return $this;
 	}
@@ -422,12 +432,13 @@ class Game extends POG_Base
 			`downloads`='".$this->Escape($this->Downloads)."', 
 			`createddatetime`='".$this->CreatedDateTime."', 
 			`lastediteddatetime`= NOW(), 
-			`editid`='".$this->Escape($this->EditID)."' where `gameid`='".$this->gameId."'";
+			`editid`='".$this->Escape($this->EditID)."',
+            `email`='".$this->Escape($this->Email)."' where `gameid`='".$this->gameId."'";
 		}
 		else
 		{
 			// Insert New
-			$this->pog_query = "insert into `game` (`gamename`, `gamepictureurl`, `gametweet`, `gamedescription`, `gamefileurl`, `gamevideourl`, `molyjamlocation`, `teampictureurl`, `teammembers`, `gamelicense`, `gameengine`,  `pageviews`, `downloads`, `createddatetime`, `lastediteddatetime`, `editid`) values (
+			$this->pog_query = "insert into `game` (`gamename`, `gamepictureurl`, `gametweet`, `gamedescription`, `gamefileurl`, `gamevideourl`, `molyjamlocation`, `teampictureurl`, `teammembers`, `gamelicense`, `gameengine`,  `pageviews`, `downloads`, `createddatetime`, `lastediteddatetime`, `editid`, `email`) values (
 			'".$this->Escape($this->GameName)."', 
 			'".$this->Escape($this->GamePictureURL)."', 
 			'".$this->Escape($this->GameTweet)."', 
@@ -443,7 +454,8 @@ class Game extends POG_Base
 			'".$this->Escape($this->Downloads)."', 
 			NOW(), 
 			'".$this->lastEditedDateTime."', 
-			'".$this->Escape($this->EditID)."' )";
+			'".$this->Escape($this->EditID)."',
+            '".$this->Escape($this->Email)."' )";
 		}
 		
 		$insertId = Database::InsertOrUpdate($this->pog_query, $connection);

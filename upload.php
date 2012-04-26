@@ -16,6 +16,26 @@ function GetThumbnailFilename( $file )
     return pathinfo( $file, PATHINFO_DIRNAME ) . "/" . pathinfo( $file, PATHINFO_FILENAME ) . "_thumb." . pathinfo( $file, PATHINFO_EXTENSION );
 }
 
+function GetGameZipFilename($string)
+{
+	$string = strtolower($string);
+	$string = str_replace(" ", "-", $string);
+	$string = str_replace("ä", "ae", $string);
+	$string = str_replace("ö", "oe", $string);
+	$string = str_replace("ü", "ue", $string);
+	$string = str_replace("ß", "ss", $string);
+	$allowed = array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9","-");
+	for($i=0;$i<strlen($string);$i++)
+	{
+		if(!in_array($string[$i],$allowed))
+		{
+			$string = str_replace($string[$i], "", $string);
+			$i--;
+		}
+	}
+	return "molyjam2012-" . $string . ".zip";
+}
+
 function CreateThumbnail( $tmpName, $targetPath )
 {
     $tsize = getImageSize( $tmpName );
@@ -79,7 +99,8 @@ function CreateThumbnail( $tmpName, $targetPath )
             {
                 $UploadedFile = false;
                 $FTP = new ftp();
-                
+                $FTP->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameId );
+				
                 if(!empty($_POST["GameName"]))
                 {
                     $Game->GameName         = $_POST["GameName"];
@@ -120,8 +141,8 @@ function CreateThumbnail( $tmpName, $targetPath )
                 {
                     //$FTP->delete( $Game->GameFileURL );
                     
-                    $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game.zip"; 
-                
+                    $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/" . GetGameZipFilename( $Game->GameName );
+                    
                     if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) // Temp Upload Success
                     {
                         $UploadedFile = true;
@@ -144,7 +165,7 @@ function CreateThumbnail( $tmpName, $targetPath )
                     //$FTP->delete( $Game->GamePictureURL );
 
                     $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game." . strtolower( pathinfo( $_FILES[ "GamePicture" ][ "name" ], PATHINFO_EXTENSION ) );
-            
+
                     CreateThumbnail( $_FILES[ "GamePicture" ][ "tmp_name" ], GetThumbnailFilename( $target_path ) );   
                     if( move_uploaded_file( $_FILES[ "GamePicture" ][ "tmp_name" ], $target_path ) )  // Temp Upload Success
                     {
@@ -225,8 +246,9 @@ function CreateThumbnail( $tmpName, $targetPath )
                 }
                 elseif($_FILES[ "GameFiles" ][ "name" ] != "") // Posted Game File
                 {    
-                    $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/game.zip"; 
-                
+                    $target_path = $GLOBALS['configuration']['upload_dir'] . $Game->gameId . "/" . GetGameZipFilename( $Game->GameName ); 
+                    echo $target_path;
+                    
                     if( move_uploaded_file( $_FILES[ "GameFiles" ][ "tmp_name" ], $target_path ) ) // Temp Upload Success
                     {
                         $UploadedFile = true;
