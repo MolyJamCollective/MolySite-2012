@@ -28,7 +28,7 @@ class ftp
 	//Purpose:	Connect to FTP
 	function connect()
 	{
-        $this->conn=ftp_connect( $GLOBALS['configuration']['ftp_host'] );
+        $this->conn=ftp_connect( $GLOBALS['configuration']['ftp_host'] ) or die("Couldn't connect to Server");
         
         if( !$this->conn )
         {
@@ -36,7 +36,7 @@ class ftp
        	}
         else
         {
-	        $login_result = ftp_login( $this->conn, $GLOBALS['configuration']['ftp_user'], $GLOBALS['configuration']['ftp_pass'] );
+	        $login_result = ftp_login( $this->conn, $GLOBALS['configuration']['ftp_user'], $GLOBALS['configuration']['ftp_pass'] ) or die("Wrong login information");
 	        
 			if ( $this->conn && $login_result ) 
 			{
@@ -50,7 +50,7 @@ class ftp
 
 		if( !$this->connected )
 		{
-			return el()->error( "FTP connection failed!" );
+			die( "FTP connection failed!" );
 		}
 		
 		if( $GLOBALS['configuration']['ftp_root'] != "" )
@@ -119,6 +119,11 @@ class ftp
 		if($result){
 			return ftp_chmod( $this->conn, 0777, $dir );
 		}
+        else
+        {
+            die( "couldn't create folder" );
+        }
+        
 		return $result;
 	}
 	

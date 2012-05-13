@@ -99,7 +99,7 @@ function CreateThumbnail( $tmpName, $targetPath )
             {
                 $UploadedFile = false;
                 $FTP = new ftp();
-                $FTP->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameId );
+                $FTP->mkdir( "/var/www/html/" . $GLOBALS['configuration']['upload_dir'].$Game->gameId );
 				
                 if(!empty($_POST["GameName"]))
                 {
@@ -237,7 +237,7 @@ function CreateThumbnail( $tmpName, $targetPath )
                     $Game->Save();
                 }
                 
-                $FTP->mkdir( $GLOBALS['configuration']['upload_dir'].$Game->gameId );
+                $FTP->mkdir( "/var/www/html/" . $GLOBALS['configuration']['upload_dir'].$Game->gameId );
                 
 // -------- Start Upload Game Files                
                 if( $_POST['GameFilesLink'] != "") // Posted Game Link

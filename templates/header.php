@@ -70,64 +70,11 @@ $cache->start();
   </head>
 
   <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="./index.php">MolyJam</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li <?php if($activeTab == 1) { echo 'class="active"';} ?>><a href="./index.php">Home</a></li>
-              <li <?php if($activeTab == 2) { echo 'class="active"';} ?>><a href="./news.php">News</a></li>
-              <li <?php if($activeTab == 3) { echo 'class="active"';} ?>><a href="./faq.php">FAQs</a></li>
-              <li <?php if($activeTab == 4) { echo 'class="active"';} ?>><a href="./archive.php">Games</a></li>
-              <!--<li class="dropdown <?php if($activeTab == 4 || $activeTab == 5) { echo 'active';} ?>">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Games<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-header">Archive</li>
-                  <li <?php if($activeTab == 4) { echo 'class="active"';} ?>><a href="./archive.php">MolyJam2012</a></li>
-                  <li class="divider"></li>
-                  <li <?php if($activeTab == 5) { echo 'class="active"';} ?>><a href="./submit.php">Submissions</a></li>
-                </ul>
-              </li>-->
-              <li class="dropdown">
-                <a href="#" <?php if($activeTab == 6 || $activeTab == 7) { echo 'class="active"';} ?> class="dropdown-toggle" data-toggle="dropdown">Live<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li <?php if($activeTab == 6) { echo 'class="active"';} ?>><a href="./webchat.php">Web Chat</a></li>
-                  <li <?php if($activeTab == 7) { echo 'class="active"';} ?>><a href="http://www.twitch.tv/event/molyjam">Video Stream</a></li>
-                </ul>
-              </li>
-            </ul>
-            <?php if(isset($_SESSION['username'])) { ?>
-		<ul class="nav pull-right">
-			<li class="dropdown">
-				<p class="navbar-text dropdown-toggle" data-toggle="dropdown" id="userDrop"><?php _e('Logged in as'); ?> <a href="#"><?php echo $_SESSION['username']; ?></a><b class="caret"></b></p>
-				<ul class="dropdown-menu">
-		<?php if(in_array(1, $_SESSION['user_level'])) { ?>
-					<li><a href="./admin/index.php"><i class="icon-home"></i> <?php _e('Control Panel'); ?></a></li>
-                                        <li><a href="./admin/users.php"><i class="icon-cog"></i> <?php _e('User Settings'); ?></a></li>
-					<li><a href="./admin/settings.php"><i class="icon-cog"></i> <?php _e('Site Settings'); ?></a></li> <?php } ?>
-					<li><a href="./my-account.php"><i class="icon-user"></i> <?php _e('My Account'); ?></a></li>
-					<li class="divider"></li>
-					<li><a href="./logout.php"><?php _e('Sign out'); ?></a></li>
-				</ul>
-			</li>
-		</ul>
-		<?php } else { ?>
-		<ul class="nav pull-right">
-			<li><a href="./login.php" class="signup-link"><strong><?php _e('Sign in'); ?></strong></a></li>
-		</ul>
-		<?php } ?>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-    
+  
+<?php 
+include( './templates/nav.php' );
+?>
+	
   <div class="container-fluid">
 
   <?php if(!empty($pageHeader)) { ?>

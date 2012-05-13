@@ -26,7 +26,7 @@ function str_insert($insertstring, $intostring, $offset) {
     
   $pageTitle = $Game->GameName;
   $pageHeader = $Game->GameName;
-  $activeTab = '2';
+  $activeTab = '4';
   
   $pageStyles = array('./css/validationEngine.jquery.css');
     
@@ -124,9 +124,13 @@ function str_insert($insertstring, $intostring, $offset) {
 				
 				<?php if($Game->GameFileURL == "") { ?>
 				  <button class="btn btn-large btn-primary disabled">Download Game</button>
+                  <?php if($Game->Downloads > 0) { ?>
+                    <br /><span style="text-align:left;color:#c22e2e">The game files for this entry are still lost. If you know the developer, please send him to this <a href="http://www.whatwouldmolydeux.com/?p=25" target="_blank">blog post</a>.</span>
+                  <?php } ?>
 				<?php } else { ?>
 				  <a href="./display.php?GameID=<?php echo $_GET[ "GameID" ]; ?>&download=true" class="btn btn-large btn-primary">Download Game</a>
 				<?php } ?>
+                
                               </div>
                         </div>
                         <div class="span5 offset1">
