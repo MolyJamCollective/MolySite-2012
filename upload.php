@@ -312,8 +312,8 @@ function CreateThumbnail( $tmpName, $targetPath )
 
     if( $Game->gameId != "" ) // If the game was created/edited correctly
     {
-    	$cache->deleteCachedFile( "archive", true );
-   		$cache->deleteCachedFile( "display.GameID." . $Game->gameId, true );
+    	//$cache->deleteCachedFile( "archive", true );
+   		//$cache->deleteCachedFile( "display.GameID." . $Game->gameId, true );
    	}
 ?>
 

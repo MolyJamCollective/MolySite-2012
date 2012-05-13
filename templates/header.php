@@ -2,7 +2,7 @@
 include_once( 'classes/class.translate.php' );
 include_once( 'classes/class.cache.php' );
 
-$cache = new Cache();
+/*$cache = new Cache();
 
 if( $cache->cachedFileExists() )
 {
@@ -10,7 +10,7 @@ if( $cache->cachedFileExists() )
 	die();
 }
 
-$cache->start();
+$cache->start();*/
 
 ?>
 <!DOCTYPE html>

@@ -4,3 +4,4 @@ uploads
 !uploads/uploads.txt
 *.backup.*
 configuration.php
+wp
